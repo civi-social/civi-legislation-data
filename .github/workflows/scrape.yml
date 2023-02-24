@@ -29,7 +29,6 @@ jobs:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_CACHE: ${{inputs.skip_cache}}
         run: npm run scrape
-
       - name: Update Nightly Release
         uses: andelf/nightly-release@v1
         env:
@@ -39,4 +38,4 @@ jobs:
           name: "Nightly release of legislation $$"
           prerelease: false
           files: |
-            ./civi-legislation-data/scraper/build/*.legislation.json
+            ./scraper/build/*.legislation.json
