@@ -22,6 +22,8 @@ jobs:
           node-version: 16
           cache: "npm"
           cache-dependency-path: package-lock.json
+      - name: NPM Install
+        run: npm i
       - name: Run Scraper
         run: npm run scrape
 
