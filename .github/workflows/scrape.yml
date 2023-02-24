@@ -6,7 +6,10 @@ on:
 
   # Allow manual running from Github Actions tab
   workflow_dispatch:
-
+    inputs:
+      skip_cache:
+        type: boolean
+        description: Skip pulling from cache?
 jobs:
   save_data:
     runs-on: ubuntu-latest
@@ -16,6 +19,7 @@ jobs:
       - name: Save legislation data as JSON
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          SKIP_CACHE: ${{inputs.skip_cache}}
         run: |
           sudo apt-get update
           sudo apt-get install -y curl

@@ -6,9 +6,6 @@
     "postinstall": "tsc api/*.ts --outDir dist --declaration --declarationMap --sourceMap"
   },
   "main": "dist/index.js",
-  "peerDependencies": {
-    "axios": ">= 1.0.0"
-  },
   "devDependencies": {
     "@types/node": "18.14.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",

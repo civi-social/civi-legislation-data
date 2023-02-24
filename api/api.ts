@@ -1,5 +1,8 @@
+import { locales, Locales } from "./types";
+
 export const civiLegislationApi = {
-  getLegislationDataUrl: (locale: "chicago" | "illinois" | "usa"): string => {
+  getLegislationDataUrl: (locale: Locales): string => {
     return `https://github.com/civi-social/civi-legislation-data/releases/download/nightly/${locale}.legislation.json`;
   },
+  locales,
 };

@@ -1,11 +1,7 @@
-import type {
-  LegiscanBillById,
-  LegiscanMasterListBill,
-} from "../api/legiscan.types";
+import { FilterMasterListFn, LegiscanToCiviMapFn } from "../api/legiscan";
 import { STATUS_MAP } from "../api/legiscan.types";
-import type { CiviLegislationData } from "../../api/types";
 
-export const filterMasterList = (bills: LegiscanMasterListBill[]) => {
+export const filterMasterList: FilterMasterListFn = (bills) => {
   return (
     bills
       // only show bills that are passed introduction stage
@@ -13,9 +9,7 @@ export const filterMasterList = (bills: LegiscanMasterListBill[]) => {
   );
 };
 
-export const billByIdToCiviLegislation = (
-  bill: LegiscanBillById
-): CiviLegislationData => {
+export const legiscanToCivi: LegiscanToCiviMapFn = (bill) => {
   return {
     id: bill.bill_number,
     title: bill.title,

@@ -1,11 +1,15 @@
 import axios from "axios";
+import { civiLegislationApi, CiviLegislationData, Locales } from "../../api";
 import { LEGISCAN_API_KEY } from "../config";
 import {
   GetBillByIdResponse,
+  GetSessionResult,
   LegiscanBillById,
   LegiscanMasterListBill,
   LegiscanMasterListResult,
 } from "./legiscan.types";
+
+type LegiscanLocales = Exclude<Locales, "chicago">;
 
 const getMasterList = async (
   sessionId: string
@@ -49,6 +53,98 @@ const getBillById = async (id: string): Promise<LegiscanBillById> => {
       `https://api.legiscan.com/?op=getBill&id=${id}&key=${LEGISCAN_API_KEY}`
     );
     return results.data.bill;
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
+const getLatestSessionId = async (locale: LegiscanLocales): Promise<string> => {
+  console.log("Get Session IDs for locale", locale);
+  const stateLocaleMap: Record<LegiscanLocales, string> = {
+    usa: "US",
+    illinois: "IL",
+  };
+  const state = stateLocaleMap[locale];
+  try {
+    const results = await axios.get<GetSessionResult>(
+      `https://api.legiscan.com/?op=getSessionList&state=${state}&key=${LEGISCAN_API_KEY}`
+    );
+    const id = results.data.sessions[0].session_id;
+    if (!id) {
+      Promise.reject("session id not found");
+    }
+    return String(id);
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
+export type FilterMasterListFn = (
+  bills: LegiscanMasterListBill[]
+) => LegiscanMasterListBill[];
+
+export type LegiscanToCiviMapFn = (
+  bill: LegiscanBillById
+) => CiviLegislationData;
+
+export const getCiviLegislationBills = async ({
+  skipCache,
+  filterMasterList,
+  legiscanToCivi,
+  locale,
+}: {
+  skipCache: boolean;
+  filterMasterList: FilterMasterListFn;
+  legiscanToCivi: LegiscanToCiviMapFn;
+  locale: LegiscanLocales;
+}): Promise<CiviLegislationData[]> => {
+  const logPrefix = `GetBills_${locale}:`;
+  console.info(logPrefix, "getting bills");
+
+  try {
+    const sessionId = await getLatestSessionId(locale);
+
+    // Get Master List
+    const bills = await legiscan.getMasterList(sessionId);
+    const masterListFiltered = filterMasterList(bills);
+
+    let cachedLegislation: CiviLegislationData[];
+    if (skipCache) {
+      cachedLegislation = [];
+    } else {
+      // Get previous data from current release in GH
+      const url = civiLegislationApi.getLegislationDataUrl(locale);
+      const cachedResult = await axios.get<CiviLegislationData[]>(url);
+      cachedLegislation = cachedResult.data;
+    }
+
+    const civiLegislationData: CiviLegislationData[] = [];
+
+    // Loop through the current master list
+    for (const masterListBill of masterListFiltered) {
+      // See if previous data has it
+      const cachedBill = cachedLegislation.find(
+        (b) => b.id === masterListBill.number
+      );
+      // Check if the status dates match
+      if (cachedBill?.statusDate === masterListBill.status_date) {
+        console.info(
+          logPrefix,
+          "using cached data for bill",
+          masterListBill.number
+        );
+        civiLegislationData.push(cachedBill);
+      } else {
+        // If they don't, hit legiscan again to get the bill details
+        const billDetails = await legiscan.getBillById(
+          String(masterListBill.bill_id)
+        );
+        const newDataBill = legiscanToCivi(billDetails);
+        civiLegislationData.push(newDataBill);
+      }
+    }
+
+    return civiLegislationData;
   } catch (e) {
     return Promise.reject(e);
   }

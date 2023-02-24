@@ -9,3 +9,7 @@ export interface CiviLegislationData {
   description?: string;
   tags?: string[];
 }
+
+export const locales = ["chicago", "illinois", "usa"] as const;
+
+export type Locales = (typeof locales)[number];
