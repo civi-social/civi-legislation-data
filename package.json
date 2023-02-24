@@ -2,9 +2,10 @@
   "name": "@civi/legislation-data",
   "version": "0.1.0",
   "scripts": {
-    "scrape": "npx ts-node scraper/run"
+    "scrape": "npx ts-node scraper/run",
+    "postinstall": "tsc"
   },
-  "main": "index.ts",
+  "main": "dist/index.js",
   "peerDependencies": {
     "axios": ">= 1.0.0"
   },

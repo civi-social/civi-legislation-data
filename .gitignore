@@ -1,5 +1,10 @@
 # Custom
 *.legislation.json
+dist
+build
+*.js
+*.map
+*.d.ts
 
 # Logs
 logs
