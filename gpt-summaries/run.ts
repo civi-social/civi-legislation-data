@@ -50,8 +50,12 @@ const legislationAddSummaries = () => {
 
   summarizeText(OPEN_API_KEY, text.trim(), 3)
     .then((s: any) => {
-      console.log(s?.choices?.[0]?.text);
-      console.log("\n\n");
+      console.log(
+        s?.choices?.forEach((choice: any, i: any) => {
+          console.log(`choice ${i + 1} \n\n`);
+          console.log(choice.text);
+        })
+      );
     })
     .catch((e) => {
       console.error("error");
