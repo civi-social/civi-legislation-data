@@ -113,9 +113,7 @@ export const getCiviLegislationBills = async ({
       cachedLegislation = [];
     } else {
       // Get previous data from current release in GH
-      const url = civiLegislationApi.getLegislationDataUrl(locale);
-      const cachedResult = await axios.get<CiviLegislationData[]>(url);
-      cachedLegislation = cachedResult.data;
+      cachedLegislation = await getCachedLegislation(locale);
     }
 
     const civiLegislationData: CiviLegislationData[] = [];
@@ -147,6 +145,19 @@ export const getCiviLegislationBills = async ({
     return civiLegislationData;
   } catch (e) {
     return Promise.reject(e);
+  }
+};
+
+const getCachedLegislation = async (
+  locale: Locales
+): Promise<CiviLegislationData[]> => {
+  try {
+    // Get previous data from current release in GH
+    const url = civiLegislationApi.getLegislationDataUrl(locale);
+    const cachedResult = await axios.get<CiviLegislationData[]>(url);
+    return cachedResult.data;
+  } catch {
+    return [];
   }
 };
 
