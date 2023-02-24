@@ -5,7 +5,8 @@ import * as usa from "./localities/usa.legiscan";
 import { writeJSON } from "./writeFile";
 
 const scrapeLegislation = async () => {
-  const skipCache = Boolean(process.env.SKIP_CACHE);
+  const skipCache =
+    process.env.SKIP_CACHE === "true" || process.env.SKIP_CACHE === "1";
 
   if (skipCache) {
     console.info("skipping cached data.");
