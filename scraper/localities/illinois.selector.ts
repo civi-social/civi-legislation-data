@@ -1,8 +1,4 @@
-import { CiviLegislationData } from "../../api/types";
-import type {
-  LegiscanBillById,
-  LegiscanMasterListBill,
-} from "../api/legiscan.types";
+import { FilterMasterListFn, LegiscanToCiviMapFn } from "../api/legiscan";
 import { STATUS_MAP } from "../api/legiscan.types";
 
 /**
@@ -15,7 +11,7 @@ const getNumberFromBill = (s: string): number =>
 /**
  * Converts the Legiscan master list to data that can be rendered by the UI
  */
-export const filterMasterList = (bills: LegiscanMasterListBill[]) => {
+export const filterMasterList: FilterMasterListFn = (bills) => {
   return (
     bills
       // for now, only get legislation data that is related to creating or amending bills
@@ -51,9 +47,7 @@ export const filterMasterList = (bills: LegiscanMasterListBill[]) => {
   );
 };
 
-export const billByIdToCiviLegislation = (
-  bill: LegiscanBillById
-): CiviLegislationData => {
+export const legiscanToCivi: LegiscanToCiviMapFn = (bill) => {
   const title = bill.description
     .split(".")[0]
     .replace("Creates the ", "")
