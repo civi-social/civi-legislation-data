@@ -1,4 +1,7 @@
 import axios from "axios";
+import fs from "fs";
+import path from "path";
+import { CiviLegislationData } from "../api";
 
 if (!process.env.OPEN_API_KEY) {
   console.error("Need to provide OPEN_API_KEY as environment var");
@@ -14,7 +17,7 @@ async function summarizeText(
   const response = await axios.post(
     "https://api.openai.com/v1/engines/davinci-codex/completions",
     {
-      prompt: `Summarize this proposed legislation in a way a high school student would understand. Use less than 100 words. \n ${text}`,
+      prompt: `Summarize this proposed legislation in simple English. Use less than 50 words. \n ${text}`,
       max_tokens: 60,
       temperature: 0.5,
       n: numSentences,
@@ -33,15 +36,27 @@ async function summarizeText(
   return summary;
 }
 
-const text = `
-Requires the Department of Human Services to (i) establish a new intervention license category entitled \"OPS Harm Reduction Services\", (ii) establish standards for entities to become licensed under the OPS Harm Reduction Services category, and (iii) create a licensing application process. Provides that, notwithstanding any other law, ordinance, or regulation, any entity licensed as an OPS Harm Reduction Services provider may operate an overdose prevention site as authorized by the Department.
-`;
+const legislationAddSummaries = () => {
+  const jsonStr = fs.readFileSync(
+    path.join(__dirname, "../dist_legislation/illinois.legislation.json"),
+    "utf8"
+  );
+  const legislation = JSON.parse(jsonStr) as CiviLegislationData[];
+  const text = legislation[0].title + "\n" + legislation[1].description;
+  console.log("====ORIGINAL====\n\n");
+  console.log(text.trim());
+  console.log("\n\n");
+  console.log("====GPT====\n");
 
-summarizeText(OPEN_API_KEY, text, 3)
-  .then((s) => {
-    console.log(s);
-  })
-  .catch((e) => {
-    console.error("error");
-    console.error(e);
-  });
+  summarizeText(OPEN_API_KEY, text.trim(), 3)
+    .then((s: any) => {
+      console.log(s?.choices?.[0]?.text);
+      console.log("\n\n");
+    })
+    .catch((e) => {
+      console.error("error");
+      console.error(e);
+    });
+};
+
+legislationAddSummaries();
