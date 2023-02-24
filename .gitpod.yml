@@ -1,0 +1,7 @@
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+    - eamodio.gitlens
+    - esbenp.prettier-vscode
+    - streetsidesoftware.code-spell-checker
+    - tyriar.sort-lines
