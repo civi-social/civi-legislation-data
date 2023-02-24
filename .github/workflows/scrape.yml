@@ -1,0 +1,35 @@
+name: Save Civi Formatted Legislation as JSON
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Run daily at midnight UTC
+
+jobs:
+  save_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Save legislation data as JSON
+        env:
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+          curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          git clone https://github.com/civi-social/civi-legislation-data.git
+          cd civi-legislation-data
+          npm install
+          npm run scrape
+
+      - name: Update Nightly Release
+        uses: andelf/nightly-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: nightly
+          name: "Nightly release of legislation $$"
+          prerelease: true
+          files: |
+            ./civi-legislation-data/scraper/build/*.legislation.json
