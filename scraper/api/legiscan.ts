@@ -87,16 +87,20 @@ export type LegiscanToCiviMapFn = (
   bill: LegiscanBillById
 ) => CiviLegislationData;
 
-export const getCiviLegislationBills = async (p: {
+export const getCiviLegislationBills = async ({
+  skipCache,
+  filterMasterList,
+  legiscanToCivi,
+  locale,
+}: {
+  skipCache: boolean;
   filterMasterList: FilterMasterListFn;
   legiscanToCivi: LegiscanToCiviMapFn;
   locale: LegiscanLocales;
 }): Promise<CiviLegislationData[]> => {
-  const locale = p.locale;
-  const filterMasterList = p.filterMasterList;
-  const legiscanToCivi = p.legiscanToCivi;
   const logPrefix = `GetBills_${locale}:`;
   console.info(logPrefix, "getting bills");
+
   try {
     const sessionId = await getLatestSessionId(locale);
 
@@ -104,10 +108,15 @@ export const getCiviLegislationBills = async (p: {
     const bills = await legiscan.getMasterList(sessionId);
     const masterListFiltered = filterMasterList(bills);
 
-    // Get previous data
-    const url = civiLegislationApi.getLegislationDataUrl(locale);
-    const cachedResult = await axios.get<CiviLegislationData[]>(url);
-    const cachedLegislation = cachedResult.data;
+    let cachedLegislation: CiviLegislationData[];
+    if (skipCache) {
+      cachedLegislation = [];
+    } else {
+      // Get previous data from current release in GH
+      const url = civiLegislationApi.getLegislationDataUrl(locale);
+      const cachedResult = await axios.get<CiviLegislationData[]>(url);
+      cachedLegislation = cachedResult.data;
+    }
 
     const civiLegislationData: CiviLegislationData[] = [];
 
