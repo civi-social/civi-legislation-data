@@ -1,3 +1,6 @@
+# spell-checker: disable
+tasks:
+  - init: npm install
 vscode:
   extensions:
     - dbaeumer.vscode-eslint
