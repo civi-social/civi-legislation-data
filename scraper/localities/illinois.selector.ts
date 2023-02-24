@@ -1,4 +1,4 @@
-import { CiviLegislationData } from "../../types";
+import { CiviLegislationData } from "../../api/types";
 import type {
   LegiscanBillById,
   LegiscanMasterListBill,

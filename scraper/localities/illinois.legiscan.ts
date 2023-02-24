@@ -1,4 +1,4 @@
-import { CiviLegislationData } from "../../types";
+import { CiviLegislationData } from "../../api/types";
 import { legiscan } from "../api/legiscan";
 import * as il from "./illinois.selector";
 

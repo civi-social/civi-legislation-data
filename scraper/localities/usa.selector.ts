@@ -3,7 +3,7 @@ import type {
   LegiscanMasterListBill,
 } from "../api/legiscan.types";
 import { STATUS_MAP } from "../api/legiscan.types";
-import type { CiviLegislationData } from "../../types";
+import type { CiviLegislationData } from "../../api/types";
 
 export const filterMasterList = (bills: LegiscanMasterListBill[]) => {
   return (

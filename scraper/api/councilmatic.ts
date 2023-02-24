@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import type { CiviLegislationData } from "../../types";
+import type { CiviLegislationData } from "../../api/types";
 
 /**
  * Scrape Councilmatic site for non-routine data

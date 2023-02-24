@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "scrape": "npx ts-node scraper/run",
-    "postinstall": "tsc"
+    "postinstall": "tsc api/*.ts --outDir dist --declaration --declarationMap --sourceMap"
   },
   "main": "dist/index.js",
   "peerDependencies": {

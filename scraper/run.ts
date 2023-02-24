@@ -1,4 +1,4 @@
-import type { CiviLegislationData } from "../types";
+import type { CiviLegislationData } from "../api/types";
 import { councilmatic } from "./api/councilmatic";
 import * as il from "./localities/illinois.legiscan";
 import * as usa from "./localities/usa.legiscan";
