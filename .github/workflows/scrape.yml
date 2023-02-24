@@ -11,24 +11,19 @@ on:
         type: boolean
         description: Skip pulling from cache?
 jobs:
-  save_data:
+  update_legislation_data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Save legislation data as JSON
-        env:
-          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip_cache}}
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl
-          curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          git clone https://github.com/civi-social/civi-legislation-data.git
-          cd civi-legislation-data
-          npm install
-          npm run scrape
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: subdir/package-lock.json
+      - name: Run Scraper
+        run: npm run scrape
 
       - name: Update Nightly Release
         uses: andelf/nightly-release@v1
