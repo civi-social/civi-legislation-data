@@ -25,6 +25,9 @@ jobs:
       - name: NPM Install
         run: npm i
       - name: Run Scraper
+        env:
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          SKIP_CACHE: ${{inputs.skip_cache}}
         run: npm run scrape
 
       - name: Update Nightly Release
