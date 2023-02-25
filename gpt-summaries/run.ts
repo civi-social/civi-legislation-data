@@ -8,7 +8,7 @@ import {
   locales,
   Locales,
 } from "../api";
-import { writeJSON } from "../scraper/writeFile";
+import { writeJSON } from "../fs/write-file";
 import { postWithRetry, sleep } from "./async-utils";
 
 type OpenAiReturn = {

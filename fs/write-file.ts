@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
-import { legislationDistFolder } from "./config";
+
+export const legislationDistFolder = path.join(
+  __dirname,
+  "../",
+  "dist_legislation"
+);
 
 export const writeJSON = (name: string, json: object) => {
   if (!fs.existsSync(legislationDistFolder)) {

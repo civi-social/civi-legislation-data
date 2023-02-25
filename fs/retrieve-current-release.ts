@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { civiLegislationApi, CiviLegislationData, Locales } from "../api";
-import { writeJSON } from "./writeFile";
+import { writeJSON } from "./write-file";
 
 export const retrieveCurrentRelease = (
   cb: (locale: Locales, s: CiviLegislationData[]) => void
