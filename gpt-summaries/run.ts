@@ -1,7 +1,8 @@
 import axios from "axios";
-import fs from "fs";
+import fs, { writeFile } from "fs";
 import path from "path";
-import { CiviLegislationData } from "../api";
+import { CiviLegislationData, locales, Locales } from "../api";
+import { writeJSON } from "../scraper/writeFile";
 
 if (!process.env.OPEN_API_KEY) {
   console.error("Need to provide OPEN_API_KEY as environment var");
@@ -9,18 +10,14 @@ if (!process.env.OPEN_API_KEY) {
 }
 const OPEN_API_KEY = process.env.OPEN_API_KEY;
 
-async function summarizeText(
-  apiKey: string,
-  text: string,
-  numSentences: number
-): Promise<string> {
+async function summarizeText(apiKey: string, text: string): Promise<string> {
   const response = await axios.post(
-    "https://api.openai.com/v1/engines/davinci-codex/completions",
+    "https://api.openai.com/v1/completions",
     {
-      prompt: `Summarize this proposed legislation in simple English. Use less than 50 words. \n ${text}`,
+      model: "text-davinci-003",
+      prompt: `Summarize this for an 8th-grade student:\n\n${text}`,
       max_tokens: 60,
       temperature: 0.5,
-      n: numSentences,
       stop: ".",
     },
     {
@@ -36,31 +33,36 @@ async function summarizeText(
   return summary;
 }
 
-const legislationAddSummaries = () => {
+const legislationAddSummaries = async (locale: Locales) => {
   const jsonStr = fs.readFileSync(
-    path.join(__dirname, "../dist_legislation/illinois.legislation.json"),
+    path.join(__dirname, `../dist_legislation/${locale}.legislation.json`),
     "utf8"
   );
-  const legislation = JSON.parse(jsonStr) as CiviLegislationData[];
-  const text = legislation[0].title + "\n" + legislation[1].description;
-  console.log("====ORIGINAL====\n\n");
-  console.log(text.trim());
-  console.log("\n\n");
-  console.log("====GPT====\n");
+  const legislations = JSON.parse(jsonStr) as CiviLegislationData[];
+  const legislationWithAi = [...legislations];
+  for (let legislation of legislations) {
+    const text = legislation.title + "\n" + legislation.description;
+    // console.log("====ORIGINAL====\n\n");
+    // console.log(text.trim());
+    // console.log("\n\n");
+    // console.log("====GPT====\n");
 
-  summarizeText(OPEN_API_KEY, text.trim(), 3)
-    .then((s: any) => {
-      console.log(
-        s?.choices?.forEach((choice: any, i: any) => {
-          console.log(`choice ${i + 1} \n\n`);
-          console.log(choice.text);
-        })
-      );
-    })
-    .catch((e) => {
-      console.error("error");
-      console.error(e);
-    });
+    return summarizeText(OPEN_API_KEY, text.trim())
+      .then((s: any) => {
+        legislationWithAi[i2].summaries = {
+          gpt: s.choices[0].text.trim(),
+        };
+      })
+      .catch((e) => {
+        console.error("error");
+        console.error(e);
+      });
+  });
+
+  writeJSON(`${locale}.legislation`, legislationWithAi);
+
+  }
 };
-
-legislationAddSummaries();
+locales.forEach((locale) => {
+  legislationAddSummaries(locale);
+});

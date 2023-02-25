@@ -8,6 +8,9 @@ export interface CiviLegislationData {
   sponsors: { name: string; role: string; district: string }[];
   description?: string;
   tags?: string[];
+  summaries?: {
+    gpt: string;
+  };
 }
 
 export const locales = ["chicago", "illinois", "usa"] as const;
