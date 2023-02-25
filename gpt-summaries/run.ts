@@ -1,24 +1,24 @@
-import axios, { AxiosError, AxiosHeaders, AxiosRequestConfig } from "axios";
-import fs, { writeFile } from "fs";
+import axios from "axios";
+import fs from "fs";
 import path from "path";
-import { CiviLegislationData, locales, Locales } from "../api";
+import {
+  CiviGptLegislationData,
+  civiLegislationApi,
+  CiviLegislationData,
+  locales,
+  Locales,
+} from "../api";
 import { writeJSON } from "../scraper/writeFile";
-import axiosRetry from "axios-retry";
-
-if (!process.env.OPEN_API_KEY) {
-  console.error("Need to provide OPEN_API_KEY as environment var");
-  process.exit(1);
-}
-const OPEN_API_KEY = process.env.OPEN_API_KEY;
+import { postWithRetry, sleep } from "./async-utils";
 
 type OpenAiReturn = {
   choices: { text: string }[];
 };
 
-async function summarizeText(
+const summarizeText = async (
   apiKey: string,
   text: string
-): Promise<OpenAiReturn> {
+): Promise<OpenAiReturn> => {
   const summary = await postWithRetry<OpenAiReturn>(
     "https://api.openai.com/v1/completions",
     {
@@ -37,56 +37,79 @@ async function summarizeText(
   );
 
   return summary;
-}
-
-async function postWithRetry<T extends object>(
-  url: string,
-  body: object,
-  config: AxiosRequestConfig,
-  retries = 3
-): Promise<T> {
-  try {
-    const response = await axios.post<T>(url, body, config);
-    return response.data;
-  } catch (e: unknown) {
-    const error = e as AxiosError<T>;
-    if (error.response && error.response.status === 429 && retries > 0) {
-      const waitTime = Math.pow(2, 4 - retries) * 30000; // Exponential backoff with max wait time of 8 seconds
-      console.log(
-        `Too Many Requests. Retrying in ${waitTime / 1000} seconds...`
-      );
-      await new Promise((resolve) => setTimeout(resolve, waitTime));
-      return await postWithRetry(url, body, config, retries - 1);
-    } else {
-      throw error;
-    }
-  }
-}
+};
 
 const legislationAddSummaries = async (locale: Locales) => {
+  const cachedGpt = await getCachedGpt(locale);
   const jsonStr = fs.readFileSync(
     path.join(__dirname, `../dist_legislation/${locale}.legislation.json`),
     "utf8"
   );
   const legislations = JSON.parse(jsonStr) as CiviLegislationData[];
-  const legislationWithAi = [] as CiviLegislationData[];
+  const legislationWithAi = {} as CiviGptLegislationData;
 
   for (const legislation of legislations) {
-    const text = legislation.title + "\n" + legislation.description;
+    // use cached if it exists
+    if (cachedGpt[legislation.id] && cachedGpt[legislation.id]?.gpt_summary) {
+      console.log(
+        "using cached summarization",
+        legislation.id,
+        cachedGpt[legislation.id]?.gpt_summary
+      );
+      legislationWithAi[legislation.id] = {
+        gpt_summary: cachedGpt[legislation.id]?.gpt_summary,
+      };
+    } else {
+      console.log("summarizing legislation", legislation.id, legislation.title);
 
-    const s = await summarizeText(OPEN_API_KEY, text.trim());
+      // pass a combo of the title and the description to open ai.
+      const text = legislation.title + "\n" + legislation.description;
 
-    legislationWithAi.push({
-      ...legislation,
-      summaries: {
-        gpt: s.choices[0].text.trim(),
-      },
-    });
+      const s = await summarizeText(OPEN_API_KEY, text.trim());
+
+      // Wait some time because of open ai rate limiters
+      // https://platform.openai.com/docs/guides/rate-limits/overview
+      await sleep(2500);
+
+      // Add gpt summary
+      legislationWithAi[legislation.id] = {
+        gpt_summary: s.choices[0].text.trim(),
+      };
+    }
   }
 
-  writeJSON(`${locale}.legislation`, legislationWithAi);
+  writeJSON(`${locale}.legislation.gpt`, legislationWithAi);
 };
 
-locales.forEach((locale) => {
-  legislationAddSummaries(locale);
-});
+const getCachedGpt = async (
+  locale: Locales
+): Promise<Partial<CiviGptLegislationData>> => {
+  try {
+    // Get previous data from current release in GH
+    const url = civiLegislationApi.getGptLegislationUrl(locale);
+    const cachedResult = await axios.get<CiviGptLegislationData>(url);
+    return cachedResult.data;
+  } catch {
+    return {};
+  }
+};
+
+const runGpt = async () => {
+  try {
+    for (const locale of locales) {
+      await legislationAddSummaries(locale);
+    }
+  } catch (e) {
+    console.log("error happened, but exiting gracefully");
+    console.log(e);
+    process.exit(0);
+  }
+};
+
+if (!process.env.OPEN_API_KEY) {
+  console.error("Need to provide OPEN_API_KEY as environment var");
+  process.exit(0);
+}
+const OPEN_API_KEY = process.env.OPEN_API_KEY;
+
+runGpt();

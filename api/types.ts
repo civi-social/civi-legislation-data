@@ -13,6 +13,13 @@ export interface CiviLegislationData {
   };
 }
 
+export interface CiviGptLegislationData {
+  [bill_id: string]: {
+    gpt_summary?: string;
+    gpt_tags?: string;
+  };
+}
+
 export const locales = ["chicago", "illinois", "usa"] as const;
 
 export type Locales = (typeof locales)[number];
