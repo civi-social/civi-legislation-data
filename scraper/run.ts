@@ -2,7 +2,7 @@ import type { CiviLegislationData } from "../api/types";
 import { councilmatic } from "./api/councilmatic";
 import * as il from "./localities/illinois.legiscan";
 import * as usa from "./localities/usa.legiscan";
-import { writeJSON } from "./writeFile";
+import { writeJSON } from "../fs/write-file";
 
 const scrapeLegislation = async () => {
   const skipCache =
