@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "scripts": {
     "scrape": "npx ts-node scraper/run",
-    "postinstall": "tsc api/*.ts --outDir dist --declaration --declarationMap --sourceMap"
+    "gpt": "npx ts-node gpt-summaries/run",
+    "postinstall": "tsc api/*.ts --outDir dist_api --declaration --declarationMap --sourceMap"
   },
-  "main": "dist/index.js",
+  "main": "dist_api/index.js",
   "devDependencies": {
     "@types/node": "18.14.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
