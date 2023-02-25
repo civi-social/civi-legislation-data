@@ -51,7 +51,7 @@ async function postWithRetry<T extends object>(
   } catch (e: unknown) {
     const error = e as AxiosError<T>;
     if (error.response && error.response.status === 429 && retries > 0) {
-      const waitTime = Math.pow(2, 4 - retries) * 1000; // Exponential backoff with max wait time of 8 seconds
+      const waitTime = Math.pow(2, 4 - retries) * 30000; // Exponential backoff with max wait time of 8 seconds
       console.log(
         `Too Many Requests. Retrying in ${waitTime / 1000} seconds...`
       );
