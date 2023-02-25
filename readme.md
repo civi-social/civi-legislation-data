@@ -1,3 +1,5 @@
+# Normalized Legislation Data with GPT Summaries 
+
 - Gets active Chicago, Illionis, and USA legislation data and normalizes it as CiviLegislationData.
 - Summarizes legislation using OpenAI DaVinci GPT algorithm.
 
