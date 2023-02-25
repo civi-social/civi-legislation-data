@@ -142,7 +142,11 @@ const legislationAddSummaries = async (locale: Locales) => {
       // https://platform.openai.com/docs/guides/rate-limits/overview
       await sleep(2500);
 
-      const gpt_tags = summaryResult.choices[0].text.trim().split(",");
+      const gpt_tags = summaryResult.choices[0].text
+        .trim()
+        .split(",")
+        .map((tag) => tag.trim());
+
       console.log(gpt_tags);
 
       // Add gpt summary
