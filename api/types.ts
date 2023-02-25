@@ -16,7 +16,7 @@ export interface CiviLegislationData {
 export interface CiviGptLegislationData {
   [bill_id: string]: {
     gpt_summary?: string;
-    gpt_tags?: string;
+    gpt_tags?: string[];
   };
 }
 
