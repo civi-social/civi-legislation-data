@@ -1,5 +1,6 @@
 import { FilterMasterListFn, LegiscanToCiviMapFn } from "../api/legiscan";
 import { STATUS_MAP } from "../api/legiscan.types";
+import { legiscanFederalRepDistrictToOcd } from "../api/legiscan.utils";
 
 export const filterMasterList: FilterMasterListFn = (bills) => {
   return (
@@ -19,7 +20,7 @@ export const legiscanToCivi: LegiscanToCiviMapFn = (bill) => {
     sponsors: bill.sponsors.map((sponsor) => ({
       name: sponsor.name,
       role: sponsor.role,
-      district: sponsor.district,
+      district: legiscanFederalRepDistrictToOcd(sponsor.district),
     })),
     link: bill.state_link,
     source_id: String(bill.bill_id),
