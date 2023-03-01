@@ -1,5 +1,6 @@
 import { FilterMasterListFn, LegiscanToCiviMapFn } from "../api/legiscan";
 import { STATUS_MAP } from "../api/legiscan.types";
+import { legiscanStateRepDistrictToOcd } from "../api/legiscan.utils";
 
 /**
  * Illinois bills have either SB0000, HB0000, HJR0000, or SJR0000.
@@ -65,7 +66,7 @@ export const legiscanToCivi: LegiscanToCiviMapFn = (bill) => {
     sponsors: bill.sponsors.map((sponsor) => ({
       name: sponsor.name,
       role: sponsor.role,
-      district: sponsor.district,
+      district: legiscanStateRepDistrictToOcd("il", sponsor.district),
     })),
     link: bill.state_link,
     source_id: String(bill.bill_id),
