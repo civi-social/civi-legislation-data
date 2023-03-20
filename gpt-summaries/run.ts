@@ -22,18 +22,32 @@ const generateGptSummaries = async (locale: Locales) => {
     console.log("\n\n\n");
     console.log("summarizing legislation", legislation.id, legislation.title);
 
+    const shouldSkipCache = process.env.SKIP_GPT_CACHE === locale;
+    const cachedSummary = cachedGpt[legislation.id]?.gpt_summary;
+    const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
+    const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
+
     // generate summaries
-    if (cachedGpt[legislation.id] && cachedGpt[legislation.id]?.gpt_summary) {
+    if (!shouldSkipCache && cachedSummary) {
       console.log("using cached summarization");
       legislationWithAi[legislation.id] = {
         ...(legislationWithAi[legislation.id] || {}),
-        gpt_summary: cachedGpt[legislation.id]?.gpt_summary,
+        gpt_summary: cachedSummary,
       };
     } else {
       // pass a combo of the title and the description to open ai.
       const text = legislation.title + "\n" + legislation.description;
 
-      const gpt_summary = await summarizeText(text);
+      let gpt_summary = await summarizeText(text);
+      if (!gpt_summary) {
+        if (cachedSummary) {
+          gpt_summary = cachedSummary;
+          console.log("could not get get summary. using cache");
+        } else {
+          gpt_summary = "";
+          console.log("could not get get summary or cache.");
+        }
+      }
 
       console.log("summarized", gpt_summary);
 
@@ -45,7 +59,7 @@ const generateGptSummaries = async (locale: Locales) => {
     }
 
     // generate tags
-    if (cachedGpt[legislation.id] && cachedGpt[legislation.id]?.gpt_tags) {
+    if (!shouldSkipCache && cachedTagsExist) {
       console.log("using cached tags");
       legislationWithAi[legislation.id] = {
         ...(legislationWithAi[legislation.id] || {}),
@@ -57,7 +71,17 @@ const generateGptSummaries = async (locale: Locales) => {
 
       console.log("tagging legislation");
 
-      const gpt_tags = await categorizeText(text.trim());
+      let gpt_tags = await categorizeText(text.trim());
+
+      if (!gpt_tags) {
+        if (cachedTagsExist) {
+          gpt_tags = cachedTags;
+          console.log("could not get get summary. using cache");
+        } else {
+          gpt_tags = [];
+          console.log("could not get get summary or cache.");
+        }
+      }
 
       console.log(gpt_tags);
 
@@ -84,9 +108,6 @@ const getLegislation = async (locale: Locales) => {
 const getCachedGpt = async (
   locale: Locales
 ): Promise<Partial<CiviGptLegislationData>> => {
-  if (process.env.SKIP_GPT_CACHE === locale) {
-    return {};
-  }
   try {
     // Get previous data from current release in GH
     const url = civiLegislationApi.getGptLegislationUrl(locale);
