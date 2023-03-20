@@ -30,12 +30,9 @@ type Gpt35TurboReturn = {
   };
 };
 
-const summarizeText = async (
-  apiKey: string,
-  text: string
-): Promise<Gpt35TurboReturn> => {
-  const summary = await postWithRetry<Gpt35TurboReturn>(
-    "https://api.openai.com/v1/completions",
+const summarizeText = async (apiKey: string, text: string): Promise<string> => {
+  const res = await postWithRetry<Gpt35TurboReturn>(
+    "https://api.openai.com/v1/chat/completions",
     {
       model: "gpt-3.5-turbo",
       messages: [
@@ -46,7 +43,6 @@ const summarizeText = async (
       ],
       max_tokens: 60,
       temperature: 0.5,
-      stop: ".",
     },
     {
       headers: {
@@ -56,45 +52,47 @@ const summarizeText = async (
     }
   );
 
-  return summary;
+  const summaryText = res.choices[0].message.content.trim();
+  return summaryText;
 };
 
 const categorizeText = async (
   apiKey: string,
   text: string
-): Promise<Gpt35TurboReturn> => {
-  const prompt = `Can you categorize the following legislation? Give the response with only comma separated answers.
-  
-  ${text}
+): Promise<string[]> => {
+  const content = `Categorize this legislation. Give the response with only comma separated answers:
 
-  The category options are: 
+${text}
 
-  Economy
-  Education
-  Democracy
-  Health Care
-  Public Safety
-  Abortion
-  Immigration
-  Foreign Policy
-  States Rights
-  Civil Rights
-  Climate Change
+The only categories you should pick from are: 
+
+Economy
+Education
+Democracy
+Health Care
+Public Safety
+Transit
+Abortion
+Immigration
+Foreign Policy
+States Rights
+Civil Rights
+Climate Change
+
+If no categories match, respond with "Other".
   `;
 
   const summary = await postWithRetry<Gpt35TurboReturn>(
-    "https://api.openai.com/v1/completions",
+    "https://api.openai.com/v1/chat/completions",
     {
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "user",
-          content: `Summarize this for an 8th-grade student:\n\n${prompt}`,
+          content,
         },
       ],
       max_tokens: 60,
-      temperature: 0.5,
-      stop: ".",
     },
     {
       headers: {
@@ -104,7 +102,17 @@ const categorizeText = async (
     }
   );
 
-  return summary;
+  const gpt_tags = summary.choices[0].message.content
+    .trim()
+    .split(",")
+    .map((tag) => tag.trim());
+
+  // use other if not categorized
+  if (gpt_tags.length === 0) {
+    return ["Other"];
+  }
+
+  return gpt_tags;
 };
 
 const legislationAddSummaries = async (locale: Locales) => {
@@ -131,21 +139,19 @@ const legislationAddSummaries = async (locale: Locales) => {
       // pass a combo of the title and the description to open ai.
       const text = legislation.title + "\n" + legislation.description;
 
-      const summaryResult = await summarizeText(OPEN_API_KEY, text.trim());
-
-      const gpt_summary = summaryResult.choices[0].message.content.trim();
+      const gpt_summary = await summarizeText(OPEN_API_KEY, text.trim());
 
       console.log("summarized", gpt_summary);
-
-      // Wait some time because of open ai rate limiters
-      // https://platform.openai.com/docs/guides/rate-limits/overview
-      await sleep(2500);
 
       // Add gpt summary
       legislationWithAi[legislation.id] = {
         ...(legislationWithAi[legislation.id] || {}),
         gpt_summary,
       };
+
+      // Wait some time because of open ai rate limiters
+      // https://platform.openai.com/docs/guides/rate-limits/overview
+      await sleep(2500);
     }
 
     // get tags
@@ -161,16 +167,7 @@ const legislationAddSummaries = async (locale: Locales) => {
 
       console.log("tagging legislation");
 
-      const summaryResult = await categorizeText(OPEN_API_KEY, text.trim());
-
-      // Wait some time because of open ai rate limiters
-      // https://platform.openai.com/docs/guides/rate-limits/overview
-      await sleep(2500);
-
-      const gpt_tags = summaryResult.choices[0].message.content
-        .trim()
-        .split(",")
-        .map((tag) => tag.trim());
+      const gpt_tags = await categorizeText(OPEN_API_KEY, text.trim());
 
       console.log(gpt_tags);
 
@@ -179,6 +176,10 @@ const legislationAddSummaries = async (locale: Locales) => {
         ...(legislationWithAi[legislation.id] || {}),
         gpt_tags,
       };
+
+      // Wait some time because of open ai rate limiters
+      // https://platform.openai.com/docs/guides/rate-limits/overview
+      await sleep(2500);
     }
   }
 
