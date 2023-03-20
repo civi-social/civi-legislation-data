@@ -12,7 +12,7 @@ export const postWithRetry = async <T extends object>(
 ): Promise<T> => {
   try {
     const response = await axios.post<T>(url, body, {
-      timeout: 5000,
+      timeout: 10000,
       signal: AbortSignal.timeout(5000), // Aborts request after 5 seconds
       ...config,
     });
@@ -20,7 +20,9 @@ export const postWithRetry = async <T extends object>(
   } catch (e: unknown) {
     const error = e as AxiosError<T>;
     const tooFrequentTries = error.response && error.response.status === 429;
-    const timedOut = error.code === "ECONNABORTED";
+    const timedOut =
+      error.code === "ECONNABORTED" || error.code === "ERR_CANCELED";
+
     if ((tooFrequentTries || timedOut) && retries > 0) {
       const waitTime = Math.pow(2, 4 - retries) * 5000; // Exponential backoff with max wait time of 8 seconds
       if (tooFrequentTries) {
