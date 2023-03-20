@@ -7,9 +7,13 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip_cache:
+      skip_legislation_cache:
         type: boolean
         description: Skip pulling from cache?
+      skip_gpt_cache:
+        type: string
+        description: Force run GPT? Set using locale name.
+
 jobs:
   update_legislation_data:
     runs-on: ubuntu-latest
@@ -27,7 +31,8 @@ jobs:
       - name: Run Scraper
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip_cache}}
+          SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
+          SKIP_GPT_CACHE: ${{inputs.skip_gpt_cache}}
         run: npm run scrape
       - name: Run GPT
         env:

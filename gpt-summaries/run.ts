@@ -11,19 +11,39 @@ import {
 import { writeJSON } from "../fs/write-file";
 import { postWithRetry, sleep } from "./async-utils";
 
-type OpenAiReturn = {
-  choices: { text: string }[];
+type Gpt35TurboReturn = {
+  id: string;
+  object: string;
+  created: number;
+  choices: {
+    index: number;
+    message: {
+      role: string;
+      content: string;
+    };
+    finish_reason: string;
+  }[];
+  usage: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens: number;
+  };
 };
 
 const summarizeText = async (
   apiKey: string,
   text: string
-): Promise<OpenAiReturn> => {
-  const summary = await postWithRetry<OpenAiReturn>(
+): Promise<Gpt35TurboReturn> => {
+  const summary = await postWithRetry<Gpt35TurboReturn>(
     "https://api.openai.com/v1/completions",
     {
-      model: "text-davinci-003",
-      prompt: `Summarize this for an 8th-grade student:\n\n${text}`,
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "user",
+          content: `Summarize this for an 8th-grade student:\n\n${text}`,
+        },
+      ],
       max_tokens: 60,
       temperature: 0.5,
       stop: ".",
@@ -42,7 +62,7 @@ const summarizeText = async (
 const categorizeText = async (
   apiKey: string,
   text: string
-): Promise<OpenAiReturn> => {
+): Promise<Gpt35TurboReturn> => {
   const prompt = `Can you categorize the following legislation? Give the response with only comma separated answers.
   
   ${text}
@@ -62,11 +82,16 @@ const categorizeText = async (
   Climate Change
   `;
 
-  const summary = await postWithRetry<OpenAiReturn>(
+  const summary = await postWithRetry<Gpt35TurboReturn>(
     "https://api.openai.com/v1/completions",
     {
-      model: "text-davinci-003",
-      prompt,
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "user",
+          content: `Summarize this for an 8th-grade student:\n\n${prompt}`,
+        },
+      ],
       max_tokens: 60,
       temperature: 0.5,
       stop: ".",
@@ -108,7 +133,7 @@ const legislationAddSummaries = async (locale: Locales) => {
 
       const summaryResult = await summarizeText(OPEN_API_KEY, text.trim());
 
-      const gpt_summary = summaryResult.choices[0].text.trim();
+      const gpt_summary = summaryResult.choices[0].message.content.trim();
 
       console.log("summarized", gpt_summary);
 
@@ -142,7 +167,7 @@ const legislationAddSummaries = async (locale: Locales) => {
       // https://platform.openai.com/docs/guides/rate-limits/overview
       await sleep(2500);
 
-      const gpt_tags = summaryResult.choices[0].text
+      const gpt_tags = summaryResult.choices[0].message.content
         .trim()
         .split(",")
         .map((tag) => tag.trim());
@@ -163,6 +188,9 @@ const legislationAddSummaries = async (locale: Locales) => {
 const getCachedGpt = async (
   locale: Locales
 ): Promise<Partial<CiviGptLegislationData>> => {
+  if (process.env.SKIP_GPT_CACHE === locale) {
+    return {};
+  }
   try {
     // Get previous data from current release in GH
     const url = civiLegislationApi.getGptLegislationUrl(locale);
