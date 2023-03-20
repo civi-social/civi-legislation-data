@@ -107,11 +107,6 @@ If no categories match, respond with "Other".
     .split(",")
     .map((tag) => tag.trim());
 
-  // use other if not categorized
-  if (gpt_tags.length === 0) {
-    return ["Other"];
-  }
-
   return gpt_tags;
 };
 
