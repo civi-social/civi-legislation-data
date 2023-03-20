@@ -25,10 +25,11 @@ If no categories match, respond with "Other".
 
   const summary = await postTextCompletions(content);
 
-  const gpt_tags = summary
-    .trim()
-    .split(",")
-    .map((tag) => tag.trim());
+  const trimmed = summary.trim();
+  // gpt seems to sometimes add a period with this prompt. remove it.
+  const periodRemoved = trimmed.endsWith(".") ? trimmed.slice(0, -1) : trimmed;
+
+  const gpt_tags = periodRemoved.split(",").map((tag) => tag.trim());
 
   return gpt_tags;
 };
