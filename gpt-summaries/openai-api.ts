@@ -13,7 +13,7 @@ export const postWithRetry = async <T extends object>(
   try {
     const response = await axios.post<T>(url, body, {
       timeout: 10000,
-      signal: AbortSignal.timeout(5000), // Aborts request after 5 seconds
+      signal: AbortSignal.timeout(10000), // Aborts request after 5 seconds
       ...config,
     });
     return response.data;
