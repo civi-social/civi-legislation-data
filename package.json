@@ -4,7 +4,7 @@
   "scripts": {
     "scrape": "npx ts-node scraper/run",
     "gpt": "npx ts-node gpt-summaries/run",
-    "gpt-one": "npx ts-node gpt-summaries/run-one-bill",
+    "gpt-one": "npx ts-node gpt-summaries/gpt-one",
     "postinstall": "tsc api/*.ts --outDir dist_api --declaration --declarationMap --sourceMap"
   },
   "main": "dist_api/index.js",
