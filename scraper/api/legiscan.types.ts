@@ -1,10 +1,24 @@
 // https://api.legiscan.com/dl/LegiScan_API_User_Manual.pdf
-export const STATUS_MAP: { [k: number]: string } = {
-  1: "Intro",
-  2: "Engross",
-  3: "Enroll",
-  4: "Pass",
-  5: "Veto",
+export const STATUS_MAP: { [k: string]: string } = {
+  "1": "Introduced",
+  "2_Rep": "Passed House",
+  "2_Sen": "Passed Senate",
+  "3": "Passed House and Senate",
+  "4": "Became Law",
+  "5": "Vetoed",
+  "9": "To Committee"
+
+  /*
+  Understanding the LegiScan Status options
+  1. Introduced = Newly introduced bill
+  2. Engross = Passed sponsoring body
+       = Passed House (if House sponsored)
+       = Passed Senate (if Senate sponsored)
+  3. Enroll = Going to Governor or President
+  4. Pass = Became a Law
+  5. Vetoed = Vetoed
+  9. Refer = To Committee
+  */
 };
 
 export interface LegiscanMasterListResult {
