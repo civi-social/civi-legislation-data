@@ -161,5 +161,3 @@ async function getChicagoBills() {
 export const bunkum = {
   getChicagoBills,
 };
-
-getChicagoBills()
