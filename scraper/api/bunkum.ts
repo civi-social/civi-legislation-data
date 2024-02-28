@@ -74,18 +74,18 @@ type BillSponsor = {
 
 async function getChicagoBills() {
   console.log("Getting Chicago Bills")
-  const billsResult = await axios.get(urlForBills);
-  const bills = billsResult.rows as Bill[];
+  const billsResult = await axios.get<{rows: Bill[]}>(urlForBills);
+  const bills = billsResult.rows;
   const billIds = bills.map((bill) => bill.id);
  
   console.log("Getting Chicago Bill Sponsors")
 
-  const sponsorsResult = await axios.get(getUrlForBillSponsors(billIds));
-  const sponsors = sponsorsResult.rows as BillSponsor[];
+  const sponsorsResult = await axios.get<{rows: BillSponsor[]}>(getUrlForBillSponsors(billIds));
+  const sponsors = sponsorsResult.rows;
 
   console.log("Getting Chicago Bill Vote Events")
-  const voteEventsResult = await axios.get(getUrlForVoteEvents(billIds));
-  const votes = voteEventsResult.rows as BillVote[];
+  const voteEventsResult = await axios.get<{rows: BillVote[]}>(getUrlForVoteEvents(billIds));
+  const votes = voteEventsResult.rows;
 
   const results = bills.map((bill) => {
     // const billVote = vote.find(voteItem => voteItem.bill_id === bill.id);
