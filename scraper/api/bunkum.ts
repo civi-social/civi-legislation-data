@@ -80,7 +80,7 @@ async function getChicagoBills() {
  
   console.log("Getting Chicago Bill Sponsors")
 
-  const sponsorsResul = await axios.get(getUrlForBillSponsors(billIds));
+  const sponsorsResult = await axios.get(getUrlForBillSponsors(billIds));
   const sponsors = sponsorsResult.rows as BillSponsor[];
 
   console.log("Getting Chicago Bill Vote Events")
