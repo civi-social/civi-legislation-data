@@ -1,5 +1,5 @@
 import type { CiviLegislationData } from "../api/types";
-import { councilmatic } from "./api/councilmatic";
+import { bunkum } from "./api/bunkum";
 import * as il from "./localities/illinois.legiscan";
 import * as usa from "./localities/usa.legiscan";
 import { writeJSON } from "../fs/write-file";
@@ -14,7 +14,7 @@ const scrapeLegislation = async () => {
   }
 
   let legislation: CiviLegislationData[] = [];
-  legislation = await councilmatic.getChicagoBills();
+  legislation = await bunkum.getChicagoBills();
   writeJSON("chicago.legislation", legislation);
   legislation = await il.getBills({ skipCache });
   writeJSON("illinois.legislation", legislation);
