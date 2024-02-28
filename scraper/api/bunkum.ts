@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { isBefore, subDays } from "date-fns";
 import { CiviLegislationData } from "../../api";
 
@@ -74,18 +73,20 @@ type BillSponsor = {
 
 async function getChicagoBills() {
   console.log("Getting Chicago Bills")
-  const billsResult = await axios.get<{rows: Bill[]}>(urlForBills);
-  const bills = billsResult.data.rows;
+  const res = await fetch(urlForBills);
+  const data = await res.json();
+  const bills = data.rows as Bill[];
   const billIds = bills.map((bill) => bill.id);
  
   console.log("Getting Chicago Bill Sponsors")
-
-  const sponsorsResult = await axios.get<{rows: BillSponsor[]}>(getUrlForBillSponsors(billIds));
-  const sponsors = sponsorsResult.data.rows;
+  const sponsorRes = await fetch(getUrlForBillSponsors(billIds));
+  const sponsorsResultJson = await sponsorRes.json();
+  const sponsors = sponsorsResultJson.rows as BillSponsor[];
 
   console.log("Getting Chicago Bill Vote Events")
-  const voteEventsResult = await axios.get<{rows: BillVote[]}>(getUrlForVoteEvents(billIds));
-  const votes = voteEventsResult.data.rows;
+  const voteEventRes = await fetch(getUrlForVoteEvents(billIds));
+  const voteEventsResultJson = await voteEventRes.json();
+  const votes = voteEventsResultJson.rows as BillVote[];
 
   const results = bills.map((bill) => {
     // const billVote = vote.find(voteItem => voteItem.bill_id === bill.id);
@@ -160,3 +161,5 @@ async function getChicagoBills() {
 export const bunkum = {
   getChicagoBills,
 };
+
+getChicagoBills()
