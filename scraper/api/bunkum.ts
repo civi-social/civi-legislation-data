@@ -164,7 +164,6 @@ async function getChicagoBills() {
   });
 
   return results;
-  // console.log(results)
 }
 
 export const bunkum = {
