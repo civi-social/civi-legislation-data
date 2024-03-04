@@ -55,6 +55,9 @@ type Bill = {
   action_classification: string;
   action_date: string;
   classification: string;
+  identifier: string;
+  link: string;
+  url: string;
 };
 
 type BillVote = {
@@ -96,6 +99,9 @@ async function getChicagoBills() {
         result: voteItem.result,
         created_at: voteItem.created_at,
       }));
+      
+      // base link for all bills
+      const baseBillUrl = 'https://chicago.councilmatic.org/legislation/'
 
     // We default to unknown if as sometimes there is no action_classification or vote history.
     let status = "Unknown";
@@ -149,9 +155,11 @@ async function getChicagoBills() {
           district: "", // todo
         })),
       voteHistory,
-      link: "", // todo
       source_id: "", // todo
       classification,
+      identifier: bill.identifier,
+      link:`${baseBillUrl + bill.identifier}`, 
+      url: `${baseBillUrl + bill.identifier}`,
     } as CiviLegislationData;
   });
 
@@ -161,5 +169,3 @@ async function getChicagoBills() {
 export const bunkum = {
   getChicagoBills,
 };
-
-getChicagoBills()
