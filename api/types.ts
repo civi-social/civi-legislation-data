@@ -17,6 +17,10 @@ export interface CiviGptLegislationData {
   [bill_id: string]: {
     gpt_summary?: string;
     gpt_tags?: string[];
+    // retrieved from a google sheet for specific bills where
+    // humans feel the gpt summary wasn't sufficient
+    wiki_summary?: string;
+    wiki_tags?: string[];
   };
 }
 
