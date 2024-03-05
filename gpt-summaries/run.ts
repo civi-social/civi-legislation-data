@@ -27,6 +27,10 @@ const generateGptSummaries = async (locale: Locales) => {
     const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
     const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
 
+    axios.get("https://sheets.google/dfjkslfjdsfs&type=csv")
+    // parse the cvs to json
+    
+
     // generate summaries
     if (!shouldSkipCache && cachedSummary) {
       console.log("using cached summarization");
@@ -48,6 +52,14 @@ const generateGptSummaries = async (locale: Locales) => {
           console.log("could not get get summary or cache.");
         }
       }
+
+      if(overrideExistsForThisBill) {
+        legislationWithAi[legislation.id] = {
+          ...(legislationWithAi[legislation.id] || {}),
+          gpt_summary: cachedSummary,
+        };
+      }
+  
 
       console.log("summarized", gpt_summary);
 
