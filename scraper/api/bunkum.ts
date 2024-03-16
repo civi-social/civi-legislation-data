@@ -149,6 +149,13 @@ async function getChicagoBills() {
     ) {
       status = bill.action_classification;
     }
+    try {
+      const parsed = JSON.parse(status);
+      // todo: if there are other items, should we do something with it?
+      status = parsed[0];
+    } catch (e) {
+      // We ignore the error and assume its a normal string
+    }
 
     let classification = "";
     try {
