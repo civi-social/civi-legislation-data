@@ -27,26 +27,84 @@ const getUrlForVoteEvents = (bill_ids: string[]) => {
   `);
 };
 
-const urlForBills = createSQLUrl(`
-  SELECT b.*, ba.classification AS action_classification, ba.date AS action_date
-  FROM bill AS b
-  JOIN (
-      SELECT bill_id, classification, date
-      FROM billaction
-      WHERE (bill_id, date) IN (
-          SELECT bill_id, MAX(date) AS max_date
-          FROM billaction
-          GROUP BY bill_id
-      )
-  ) AS ba ON b.id = ba.bill_id
-  CROSS JOIN json_each(b.classification) AS c
-  WHERE json_extract(b.extras, '$.routine') = false
-    AND c.value = 'resolution'
-  ORDER BY b.updated_at DESC
-  LIMIT 50;
-`);
+const fetchBillsInChunks = async () => {
+  const chunkSize = 100;
+  let offset = 0;
+  let done = false;
+  let totalResults: Bill[] = [];
 
-// console.log(getUrlForBillSponsors("ocd-bill/79a8428f-4b3d-461c-9884-e67fc66f43c5"))
+  // starting from the first row of the bill table we get 100 results at a time
+  while (!done) {
+    const query = `
+      SELECT b.*, ba.classification AS action_classification, ba.date AS action_date
+      FROM bill AS b
+      JOIN (
+          SELECT bill_id, classification, date
+          FROM billaction
+          WHERE (bill_id, date) IN (
+              SELECT bill_id, MAX(date) AS max_date
+              FROM billaction
+              GROUP BY bill_id
+          )
+      ) AS ba ON b.id = ba.bill_id
+      CROSS JOIN json_each(b.classification) AS c
+      WHERE json_extract(b.extras, '$.routine') = false
+        AND b.updated_at >= date('now', '-6 months')
+      ORDER BY b.updated_at DESC
+      LIMIT ${chunkSize} OFFSET ${offset};
+    `;
+
+    const response = await fetch(createSQLUrl(query));
+    const data = await response.json();
+    const chunk = data.rows as Bill[];
+
+    totalResults = totalResults.concat(chunk);
+
+    // Fetch sponsors for current chunk
+    const sponsorRes = await fetch(
+      getUrlForBillSponsors(chunk.map((bill) => bill.id))
+    );
+    const sponsorsResultJson = await sponsorRes.json();
+    const sponsors = sponsorsResultJson.rows;
+
+    // Fetch vote events for current chunk
+    const voteEventRes = await fetch(
+      getUrlForVoteEvents(chunk.map((bill) => bill.id))
+    );
+    const voteEventsResultJson = await voteEventRes.json();
+    const votes = voteEventsResultJson.rows;
+
+    // Add sponsors and vote history to each bill
+    chunk.forEach((bill) => {
+      bill.sponsors = sponsors.filter(
+        (sponsor: Sponsor) => sponsor.bill_id === bill.id
+      );
+      bill.voteHistory = votes.filter((vote: Vote) => vote.bill_id === bill.id);
+    });
+
+    offset += chunkSize;
+
+    if (chunk.length < chunkSize) {
+      done = true;
+    }
+  }
+  console.log(`${totalResults.length}`);
+  return totalResults;
+};
+
+type Sponsor = {
+  name: string;
+  person_id: string | null;
+  role: string;
+  district: string;
+  bill_id: string;
+};
+
+type Vote = {
+  motion_classification: string[];
+  created_at: string;
+  bill_id: string;
+};
 
 type Bill = {
   id: string;
@@ -58,85 +116,38 @@ type Bill = {
   identifier: string;
   link: string;
   url: string;
-};
-
-type BillVote = {
-  id: string;
-  bill_id: string;
-  result: string;
-  created_at: string;
-};
-
-type BillSponsor = {
-  id: string;
-  bill_id: string;
-  name: string;
-  person_id: string;
+  status: string[]; // is stringified json
+  statusDate: string;
+  source_id: string;
+  sponsors: Sponsor[];
+  voteHistory: Vote[];
 };
 
 async function getChicagoBills() {
-  console.log("Getting Chicago Bills")
-  const res = await fetch(urlForBills);
-  const data = await res.json();
-  const bills = data.rows as Bill[];
-  const billIds = bills.map((bill) => bill.id);
- 
-  console.log("Getting Chicago Bill Sponsors")
-  const sponsorRes = await fetch(getUrlForBillSponsors(billIds));
-  const sponsorsResultJson = await sponsorRes.json();
-  const sponsors = sponsorsResultJson.rows as BillSponsor[];
+  console.log("Getting Chicago Bills");
+  const billsRes = await fetchBillsInChunks();
 
-  console.log("Getting Chicago Bill Vote Events")
-  const voteEventRes = await fetch(getUrlForVoteEvents(billIds));
-  const voteEventsResultJson = await voteEventRes.json();
-  const votes = voteEventsResultJson.rows as BillVote[];
-
-  const results = bills.map((bill) => {
-    // const billVote = vote.find(voteItem => voteItem.bill_id === bill.id);
-    const voteHistory = votes
-      .filter((vote) => vote.bill_id === bill.id)
-      .map((voteItem) => ({
-        result: voteItem.result,
-        created_at: voteItem.created_at,
-      }));
-      
-      // base link for all bills
-      const baseBillUrl = 'https://chicago.councilmatic.org/legislation/'
-
-    // We default to unknown if as sometimes there is no action_classification or vote history.
-    let status = "Unknown";
-    // Check the most recent vote
-    // todo: we should probably be smarter about this a check by the date.
-    const recentVote = voteHistory[voteHistory.length - 1];
-    // if there is a recent vote, use that result
-    if (recentVote) {
-      status = recentVote.result;
-    }
-    // if it's older than 180 days with no updates, then call it stale
-    else if (isBefore(new Date(bill.action_date), date180DaysAgo)) {
-      status = "Stale";
-    }
-    // otherwise, if there is a action_classification, use that
-    else if (
+  const results = billsRes.map((bill) => {
+    //can status be set to an array?
+    let status = ["Unknown"];
+    const recentVote = bill.voteHistory[bill.voteHistory.length - 1];
+    // setting status as value in voteHistory.motion_classification if there is one
+    if (recentVote && recentVote.motion_classification) {
+      status = recentVote.motion_classification;
+    } else if (isBefore(new Date(bill.action_date), date180DaysAgo)) {
+      status = ["Stale"];
+    } else if (
       typeof bill.action_classification === "string" &&
       bill.action_classification.length > 0
     ) {
-      status = bill.action_classification;
-    }
-    // Sometimes the status may be an array
-    try {
-      const parsed = JSON.parse(status);
-      // todo: if there are other items, should we do something with it?
-      status = parsed[0];
-    } catch (e) {
-      // We ignore the error and assume its a normal string
+      status = JSON.parse(bill.action_classification);
     }
 
     let classification = "";
     try {
       classification = JSON.parse(bill.classification)[0];
     } catch (e) {
-      // ignore error
+      // We ignore the error
     }
 
     return {
@@ -146,26 +157,30 @@ async function getChicagoBills() {
       status,
       updated_at: bill.action_date,
       statusDate: `${bill.action_date} - ${status}`,
-      sponsors: sponsors
-        .filter((billSponsor) => billSponsor.bill_id === bill.id)
-        .map((billSponsor) => ({
-          name: billSponsor.name,
-          person_id: billSponsor.person_id,
-          role: "", // todo
-          district: "", // todo
-        })),
-      voteHistory,
+      sponsors: bill.sponsors.map((sponsor) => ({
+        name: sponsor.name,
+        person_id: sponsor.person_id,
+        role: "", // todo
+        district: "", // todo
+      })),
+      voteHistory: bill.voteHistory.map((voteItem) => ({
+        motion_classification: voteItem.motion_classification,
+        created_at: voteItem.created_at,
+      })),
       source_id: "", // todo
       classification,
       identifier: bill.identifier,
-      link:`${baseBillUrl + bill.identifier}`, 
-      url: `${baseBillUrl + bill.identifier}`,
+      link: `https://chicago.councilmatic.org/legislation/${bill.identifier}`,
+      url: `https://chicago.councilmatic.org/legislation/${bill.identifier}`,
     } as CiviLegislationData;
   });
 
-  return results;
+  // return results
+  console.log(JSON.stringify(results, null, 2));
 }
 
 export const bunkum = {
   getChicagoBills,
 };
+
+getChicagoBills();

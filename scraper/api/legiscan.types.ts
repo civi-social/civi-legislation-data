@@ -160,6 +160,7 @@ export interface LegiscanBillById {
   amendments: unknown[];
   supplements: unknown[];
   calendar: unknown[];
+  identifier: string;
 }
 
 type Session = {
