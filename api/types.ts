@@ -1,5 +1,5 @@
 export interface CiviLegislationData {
-  status: string;
+  status: string[];
   statusDate: string;
   id: string;
   title: string;
@@ -13,8 +13,7 @@ export interface CiviLegislationData {
   };
 }
 
-export interface CiviGptLegislationData {
-  [bill_id: string]: {
+export interface   {
     gpt_summary?: string;
     gpt_tags?: string[];
   };

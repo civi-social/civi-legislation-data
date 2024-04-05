@@ -77,9 +77,9 @@ const fetchBillsInChunks = async () => {
     // Add sponsors and vote history to each bill
     chunk.forEach((bill) => {
       bill.sponsors = sponsors.filter(
-        (sponsor: any) => sponsor.bill_id === bill.id
+        (sponsor: Sponsor) => sponsor.bill_id === bill.id
       );
-      bill.voteHistory = votes.filter((vote: any) => vote.bill_id === bill.id);
+      bill.voteHistory = votes.filter((vote: Vote) => vote.bill_id === bill.id);
     });
 
     offset += chunkSize;
@@ -92,6 +92,20 @@ const fetchBillsInChunks = async () => {
   return totalResults;
 };
 
+type Sponsor = {
+  name: string;
+  person_id: string | null;
+  role: string;
+  district: string;
+  bill_id: string;
+};
+
+type Vote = {
+  motion_classification: string[];
+  created_at: string;
+  bill_id: string;
+};
+
 type Bill = {
   id: string;
   title: string;
@@ -102,47 +116,26 @@ type Bill = {
   identifier: string;
   link: string;
   url: string;
-  status: string;
+  status: string[]; // is stringified json
   statusDate: string;
   source_id: string;
-  sponsors: {
-    name: string;
-    person_id: string;
-    role: string;
-    district: string;
-  }[];
-  voteHistory: {
-    motion_classification: string;
-    created_at: string;
-  }[];
+  sponsors: Sponsor[];
+  voteHistory: Vote[];
 };
-
-// type BillVote = {
-//   id: string;
-//   bill_id: string;
-//   result: string;
-//   created_at: string;
-// };
-
-// type BillSponsor = {
-//   id: string;
-//   bill_id: string;
-//   name: string;
-//   person_id: string;
-// };
 
 async function getChicagoBills() {
   console.log("Getting Chicago Bills");
   const billsRes = await fetchBillsInChunks();
 
   const results = billsRes.map((bill) => {
-    let status = "Unknown";
+    //can status be set to an array?
+    let status = ["Unknown"];
     const recentVote = bill.voteHistory[bill.voteHistory.length - 1];
     // setting status as value in voteHistory.motion_classification if there is one
     if (recentVote && recentVote.motion_classification) {
-      status = JSON.parse(recentVote.motion_classification);
+      status = recentVote.motion_classification;
     } else if (isBefore(new Date(bill.action_date), date180DaysAgo)) {
-      status = "Stale";
+      status = ["Stale"];
     } else if (
       typeof bill.action_classification === "string" &&
       bill.action_classification.length > 0
@@ -171,7 +164,7 @@ async function getChicagoBills() {
         district: "", // todo
       })),
       voteHistory: bill.voteHistory.map((voteItem) => ({
-        motion_classification: JSON.parse(voteItem.motion_classification),
+        motion_classification: voteItem.motion_classification,
         created_at: voteItem.created_at,
       })),
       source_id: "", // todo
@@ -182,7 +175,8 @@ async function getChicagoBills() {
     } as CiviLegislationData;
   });
 
-  return results;
+  // return results
+  console.log(JSON.stringify(results, null, 2));
 }
 
 export const bunkum = {
