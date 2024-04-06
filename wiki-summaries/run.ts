@@ -1,9 +1,23 @@
 import axios, { AxiosError } from "axios";
-import fs from "fs";
-import path from "path";
 import { writeJSON } from "../fs/write-file";
+import { CiviWikiLegislationData } from "../api";
 
-function csvToJson(csvArray: Array<string[]>) {
+type StringKeysOfCiviGoogleSheet = keyof Omit<CiviWikiLegislationData, "tags">;
+
+// The object will have `chicago`, `illinois`, or `usa`, and the value will be CiviWikiLegislationData
+type ParsedWikiGoogleSheet = {
+  [locale: string]: CiviWikiLegislationData[];
+};
+
+/**
+ * # csvToJson
+ *  Converts the CSV to a JSON
+ *
+ * ```ts
+ * csvToJson([["COLUMN 1", "COLUMN 2"], ["Value For Column 1", "Value For Column 2"], ...])
+ * ```
+ */
+const csvToJson = (csvArray: Array<string[]>) => {
   const headers = csvArray[0];
   const result = [];
 
@@ -15,74 +29,6 @@ function csvToJson(csvArray: Array<string[]>) {
     result.push(obj);
   }
   return result;
-}
-
-const runGoogleSheet = async () => {
-  try {
-    // Your Google Sheets ID and API key
-    const spreadsheetId = "1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ";
-    const apiKey = process.env.GOOGLE_SPREADSHEET_API_KEY;
-    console.log(apiKey);
-
-    // The range of the data you want to retrieve
-    const range = "Sheet1"; // Change it according to your sheet
-
-    // Google Sheets API URL
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
-    const res = await axios.get(url);
-    const json = csvToJson(res.data.values);
-    const civiGoogleSheet = parseCiviGoogleSheetJson(json);
-    console.log(civiGoogleSheet);
-  } catch (e: unknown) {
-    handleAxiosError(e);
-  }
-};
-
-type CiviGoogleSheet = {
-  bill_id: string;
-  summary: string;
-  locale: string;
-  date: string;
-  tags: string[];
-};
-
-type StringKeysOfCiviGoogleSheet = keyof Omit<CiviGoogleSheet, "tags">;
-
-const parseCiviGoogleSheetJson = (json: { [k: string]: string }[]) => {
-  const localeDataMap: { [locale: string]: CiviGoogleSheet[] } = {};
-  json.forEach((item) => {
-    const wikiObj: CiviGoogleSheet = {
-      bill_id: "",
-      summary: "",
-      locale: "",
-      date: "",
-      tags: [],
-    };
-    Object.entries(item).forEach(([key, value]) => {
-      if (key.startsWith("Tag")) {
-        if (value !== undefined) {
-          wikiObj.tags = [...wikiObj.tags, key.replace("Tag ", "")];
-        }
-      } else {
-        wikiObj[key as StringKeysOfCiviGoogleSheet] = value;
-      }
-    });
-
-    if (!localeDataMap[wikiObj.locale]) {
-      localeDataMap[wikiObj.locale] = [];
-    }
-    localeDataMap[wikiObj.locale].push(wikiObj);
-  });
-
-  Object.entries(localeDataMap).forEach(([locale, data]) => {
-    const fileName = `${locale}.legislation.wiki`;
-    const existingData = fs.existsSync(path.join(`${fileName}.json `))
-      ? JSON.parse(fs.readFileSync(path.join(`${fileName}.json`), "utf-8"))
-      : [];
-    const updatedData = [...existingData, ...data];
-    writeJSON(fileName, updatedData);
-  });
-  return json;
 };
 
 const isAxiosError = (e: unknown): e is AxiosError => {
@@ -98,4 +44,73 @@ const handleAxiosError = (e: unknown) => {
   }
   process.exit(0);
 };
+
+/**
+ * # parseCiviGoogleSheetJson
+ * Takes the parsed CSV, and makes it ParsedWikiGoogleSheet
+ */
+const parseCiviGoogleSheetJson = (
+  // The CSV converted to JSON
+  json: { [k: string]: string }[]
+): ParsedWikiGoogleSheet => {
+  const localeDataMap: ParsedWikiGoogleSheet = {};
+  json.forEach((item) => {
+    const wikiObj: CiviWikiLegislationData = {
+      bill_id: "",
+      summary: "",
+      locale: "",
+      date: "",
+      tags: [],
+    };
+
+    // For any column we want to just make it a key, expect for columns that start with the word "Tag "
+    // The behavior expected on the Google Sheet is that any column that begins with the word "Tag" is a tag.
+    // Example: "Tag Civil Rights"
+    Object.entries(item).forEach(([key, value]) => {
+      if (key.startsWith("Tag")) {
+        if (value !== undefined) {
+          // Add those tags as an array of strings
+          wikiObj.tags = [...wikiObj.tags, key.replace("Tag ", "")];
+        }
+      } else {
+        // Any other thing, make it a key of this object.
+        wikiObj[key as StringKeysOfCiviGoogleSheet] = value;
+      }
+    });
+
+    if (!localeDataMap[wikiObj.locale]) {
+      localeDataMap[wikiObj.locale] = [];
+    }
+    localeDataMap[wikiObj.locale].push(wikiObj);
+  });
+
+  return localeDataMap;
+};
+
+const runGoogleSheet = async () => {
+  try {
+    // Your Google Sheets ID and API key
+    const spreadsheetId = "1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ";
+    const apiKey = process.env.GOOGLE_SPREADSHEET_API_KEY;
+
+    // The range of the data you want to retrieve
+    const range = "Sheet1"; // Change it according to your sheet
+
+    // Google Sheets API URL
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+    const res = await axios.get(url);
+    // Converting this C
+    const json = csvToJson(res.data.values);
+    // All things that are written to JSON should be of type CiviWikiLegislationData.
+    const civiGoogleSheet = parseCiviGoogleSheetJson(json);
+    // Append data from the previous file
+    Object.entries(civiGoogleSheet).forEach(([locale, data]) => {
+      const fileName = `${locale}.legislation.wiki`;
+      writeJSON(fileName, data);
+    });
+  } catch (e: unknown) {
+    handleAxiosError(e);
+  }
+};
+
 runGoogleSheet();

@@ -75,18 +75,18 @@ type BillSponsor = {
 };
 
 async function getChicagoBills() {
-  console.log("Getting Chicago Bills")
+  console.log("Getting Chicago Bills");
   const res = await fetch(urlForBills);
   const data = await res.json();
   const bills = data.rows as Bill[];
   const billIds = bills.map((bill) => bill.id);
- 
-  console.log("Getting Chicago Bill Sponsors")
+
+  console.log("Getting Chicago Bill Sponsors");
   const sponsorRes = await fetch(getUrlForBillSponsors(billIds));
   const sponsorsResultJson = await sponsorRes.json();
   const sponsors = sponsorsResultJson.rows as BillSponsor[];
 
-  console.log("Getting Chicago Bill Vote Events")
+  console.log("Getting Chicago Bill Vote Events");
   const voteEventRes = await fetch(getUrlForVoteEvents(billIds));
   const voteEventsResultJson = await voteEventRes.json();
   const votes = voteEventsResultJson.rows as BillVote[];
@@ -99,9 +99,9 @@ async function getChicagoBills() {
         result: voteItem.result,
         created_at: voteItem.created_at,
       }));
-      
-      // base link for all bills
-      const baseBillUrl = 'https://chicago.councilmatic.org/legislation/'
+
+    // base link for all bills
+    const baseBillUrl = "https://chicago.councilmatic.org/legislation/";
 
     // We default to unknown if as sometimes there is no action_classification or vote history.
     let status = "Unknown";
@@ -158,7 +158,7 @@ async function getChicagoBills() {
       source_id: "", // todo
       classification,
       identifier: bill.identifier,
-      link:`${baseBillUrl + bill.identifier}`, 
+      link: `${baseBillUrl + bill.identifier}`,
       url: `${baseBillUrl + bill.identifier}`,
     } as CiviLegislationData;
   });

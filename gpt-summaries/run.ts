@@ -5,6 +5,7 @@ import {
   CiviGptLegislationData,
   civiLegislationApi,
   CiviLegislationData,
+  locales,
   Locales,
 } from "../api";
 import { writeJSON } from "../fs/write-file";
@@ -116,3 +117,17 @@ const getCachedGpt = async (
     return {};
   }
 };
+
+const runGpt = async () => {
+  try {
+    for (const locale of locales) {
+      await generateGptSummaries(locale);
+    }
+  } catch (e) {
+    console.log("error happened, but exiting gracefully");
+    console.log(e);
+    process.exit(0);
+  }
+};
+
+runGpt();
