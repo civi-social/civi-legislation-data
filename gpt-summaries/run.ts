@@ -21,14 +21,6 @@ const generateGptSummaries = async (locale: Locales) => {
   let skippedBillCount = 0;
 
   for (const legislation of legislations) {
-    console.log("\n\n\n");
-    console.log("summarizing legislation", legislation.id, legislation.title);
-
-    const shouldSkipCache = process.env.SKIP_GPT_CACHE === locale;
-    const cachedSummary = cachedGpt[legislation.id]?.gpt_summary;
-    const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
-    const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
-
     // We only want to summarize resolutions for now, as there are a lot of other bills
     // that would make this expensive from an OPEN AI perspective, and also
     // a lot of these bills don't need summaries
@@ -39,6 +31,14 @@ const generateGptSummaries = async (locale: Locales) => {
       skippedBillCount++;
       continue;
     }
+
+    console.log("\n\n\n");
+    console.log("summarizing legislation", legislation.id, legislation.title);
+
+    const shouldSkipCache = process.env.SKIP_GPT_CACHE === locale;
+    const cachedSummary = cachedGpt[legislation.id]?.gpt_summary;
+    const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
+    const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
 
     // generate summaries
     if (!shouldSkipCache && cachedSummary) {
