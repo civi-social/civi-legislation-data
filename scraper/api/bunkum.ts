@@ -175,8 +175,7 @@ async function getChicagoBills() {
     } as CiviLegislationData;
   });
 
-  // return results
-  console.log(JSON.stringify(results, null, 2));
+  return results;
 }
 
 export const bunkum = {
