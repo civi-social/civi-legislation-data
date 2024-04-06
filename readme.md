@@ -55,8 +55,12 @@ should the google api key be restricted or unrestricted?
 
 8. ? # To Run 1 GPT Summary (for dev)
 
+9. OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one -- this should ensure the command only runs once.
 
-9. ---------
+
+
+
+11. ---------
 `LOCALE=usa BILL="HB5" npm run gpt-one`
 
 
