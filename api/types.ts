@@ -7,6 +7,7 @@ export interface CiviLegislationData {
   link: string;
   source_id: string;
   sponsors: { name: string; role: string; district: string }[];
+  classification?: string;
   description?: string;
   tags?: string[];
   summaries?: {

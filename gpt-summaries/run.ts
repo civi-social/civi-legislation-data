@@ -18,6 +18,8 @@ const generateGptSummaries = async (locale: Locales) => {
   // JSON to save
   const legislationWithAi = {} as CiviGptLegislationData;
 
+  let skippedOrdinanceCount = 0;
+
   for (const legislation of legislations) {
     console.log("\n\n\n");
     console.log("summarizing legislation", legislation.id, legislation.title);
@@ -26,6 +28,14 @@ const generateGptSummaries = async (locale: Locales) => {
     const cachedSummary = cachedGpt[legislation.id]?.gpt_summary;
     const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
     const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
+
+    // We don't want to summarize ordinances for now, as there are a lot of them and it
+    // could get expensive.
+    const isOrdinance = legislation.classification == "ordinance";
+    if (isOrdinance) {
+      skippedOrdinanceCount++;
+      continue;
+    }
 
     // generate summaries
     if (!shouldSkipCache && cachedSummary) {
@@ -91,6 +101,12 @@ const generateGptSummaries = async (locale: Locales) => {
         gpt_tags,
       };
     }
+  }
+
+  if (skippedOrdinanceCount > 0) {
+    console.log(
+      `Skipped running gpt on ${skippedOrdinanceCount} local ordinances to save on API costs.`
+    );
   }
 
   writeJSON(`${locale}.legislation.gpt`, legislationWithAi);

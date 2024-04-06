@@ -27,11 +27,17 @@ const getUrlForVoteEvents = (bill_ids: string[]) => {
   `);
 };
 
+/**
+ * Fetching in chunks because bunkum has API limits.
+ * Another thing to note: bunkum will slow down get requests over frequents requests.
+ */
 const fetchBillsInChunks = async () => {
-  const chunkSize = 100;
+  const chunkSize = 145;
   let offset = 0;
   let done = false;
   let totalResults: Bill[] = [];
+
+  console.log("Fetching Chicago data in chunks");
 
   // starting from the first row of the bill table we get 100 results at a time
   while (!done) {
@@ -84,11 +90,19 @@ const fetchBillsInChunks = async () => {
 
     offset += chunkSize;
 
+    console.log(
+      `Fetched ${chunkSize} bills. Total bills: ${totalResults.length}`
+    );
+
     if (chunk.length < chunkSize) {
       done = true;
     }
   }
-  console.log(`${totalResults.length}`);
+
+  console.log(
+    `Done fetching Chicago Bills. Total bills: ${totalResults.length}`
+  );
+
   return totalResults;
 };
 
@@ -181,5 +195,3 @@ async function getChicagoBills() {
 export const bunkum = {
   getChicagoBills,
 };
-
-getChicagoBills();
