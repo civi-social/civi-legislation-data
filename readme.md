@@ -48,6 +48,8 @@ should the google api key be restricted or unrestricted?
 
 6. the actual sheet https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}
 
+make sure you create a new project
+make sure you create a Google Sheets API (ensure this is true)
 
 
 7.  Check `dist_legislation` for files
