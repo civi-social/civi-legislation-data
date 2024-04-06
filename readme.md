@@ -3,6 +3,17 @@
 - Gets active Chicago, Illionis, and USA legislation data and normalizes it as CiviLegislationData.
 - Summarizes legislation using OpenAI DaVinci GPT algorithm.
 
+
+1. Download the repository
+
+
+
+2. Create a new branch
+
+
+
+
+
 # How to run
 
 - `npm install`
