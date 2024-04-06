@@ -18,7 +18,7 @@ const generateGptSummaries = async (locale: Locales) => {
   // JSON to save
   const legislationWithAi = {} as CiviGptLegislationData;
 
-  let skippedOrdinanceCount = 0;
+  let skippedBillCount = 0;
 
   for (const legislation of legislations) {
     console.log("\n\n\n");
@@ -29,11 +29,14 @@ const generateGptSummaries = async (locale: Locales) => {
     const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
     const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
 
-    // We don't want to summarize ordinances for now, as there are a lot of them and it
-    // could get expensive.
-    const isOrdinance = legislation.classification == "ordinance";
-    if (isOrdinance) {
-      skippedOrdinanceCount++;
+    // We only want to summarize resolutions for now, as there are a lot of other bills
+    // that would make this expensive from an OPEN AI perspective, and also
+    // a lot of these bills don't need summaries
+    const isNotResolution =
+      locale === "chicago" && legislation.classification !== "resolution";
+
+    if (isNotResolution) {
+      skippedBillCount++;
       continue;
     }
 
@@ -103,9 +106,9 @@ const generateGptSummaries = async (locale: Locales) => {
     }
   }
 
-  if (skippedOrdinanceCount > 0) {
+  if (skippedBillCount > 0) {
     console.log(
-      `Skipped running gpt on ${skippedOrdinanceCount} local ordinances to save on API costs.`
+      `Skipped running gpt on ${skippedBillCount} local ordinances to save on API costs.`
     );
   }
 
