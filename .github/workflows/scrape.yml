@@ -38,6 +38,10 @@ jobs:
           OPEN_API_KEY: ${{ secrets.OPEN_API_KEY }}
           SKIP_GPT_CACHE: ${{inputs.skip_gpt_cache}}
         run: npm run gpt
+      - name: Run Wiki
+        env:
+          GOOGLE_SPREADSHEET_API_KEY: ${{ secrets.GOOGLE_SPREADSHEET_API_KEY }}
+        run: npm run wiki
       - name: Update Nightly Release
         uses: andelf/nightly-release@v1
         env:
