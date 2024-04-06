@@ -58,12 +58,13 @@ make sure you create a Google Sheets API (ensure this is true)
 8. ? # To Run 1 GPT Summary (for dev)
 
 9. OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one -- this should ensure the command only runs once.
+`LOCALE=usa BILL="HB5" npm run gpt-one`
 
 
 
 
 11. ---------
-`LOCALE=usa BILL="HB5" npm run gpt-one`
 
-
-civi-legislation-data
+1. How do you ensure everything loaded properly?
+2. What do you do after everything loaded properly?
+3. what does this mean? -- civi-legislation-data
