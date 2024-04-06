@@ -36,6 +36,14 @@ civi-legislation-data
   - This should actually say OPENAI_API_KEY
   - where is this located
   - what does this do
+
+- what does this message mean??
+----------summarizing legislation ocd-bill/b7b76696-f4de-4480-87ed-575615c748c1 Amendment of Municipal Code Section 4-60-023 (48.4) to allow additional package goods licenses on portion(s) of W Berwyn Ave and W Foster Ave
+Need to provide OPEN_API_KEY as environment var
+
+
+
+
 4.  Check `dist_legislation` for files
     - what does this mean?
 
