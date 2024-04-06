@@ -60,7 +60,7 @@ export const legiscanToCivi: LegiscanToCiviMapFn = (bill) => {
     id: bill.bill_number,
     title,
     description,
-    status: STATUS_MAP[bill.status] || "",
+    status: [STATUS_MAP[bill.status]] || [],
     statusDate: bill.status_date,
     // only get first two sentences
     sponsors: bill.sponsors.map((sponsor) => ({
