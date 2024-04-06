@@ -42,19 +42,22 @@ civi-legislation-data
 Need to provide OPEN_API_KEY as environment var
 
 
-
-
-4.  Check `dist_legislation` for files
-    - what does this mean?
-
-# To Run 1 GPT Summary (for dev)
-
-`LOCALE=usa BILL="HB5" npm run gpt-one`
+should the google api key be restricted or unrestricted?
 
 5. GOOGLE_SPREADSHEET_API_KEY=value npm run wiki
 
 6. the actual sheet https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}
-   
+
+
+
+7.  Check `dist_legislation` for files
+    - what does this mean?
+
+8. ? # To Run 1 GPT Summary (for dev)
+
+
+9. ---------
+`LOCALE=usa BILL="HB5" npm run gpt-one`
 
 
 civi-legislation-data
