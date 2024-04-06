@@ -1,6 +1,6 @@
 // Typing the .legislation.json files
 export interface CiviLegislationData {
-  status: string;
+  status: string[];
   statusDate: string;
   id: string;
   title: string;
