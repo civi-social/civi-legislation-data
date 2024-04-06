@@ -59,6 +59,7 @@ make sure you create a Google Sheets API (ensure this is true)
 
 9. OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one -- this should ensure the command only runs once.
 `LOCALE=usa BILL="HB5" npm run gpt-one`
+<img width="1440" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/5fe442e9-528c-4f6b-aba9-bc2366d2fba6">
 
 
 
