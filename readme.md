@@ -1,40 +1,22 @@
-# Normalized Legislation Data with GPT Summaries 
+# Getting Started
 
-- Gets active Chicago, Illionis, and USA legislation data and normalizes it as CiviLegislationData.
-- Summarizes legislation using OpenAI DaVinci GPT algorithm.
+The civi-legislation-data repository contains the code for the backend data for our project.
 
-
-1. Download the repository
-
-
-
-2. Create a new branch
-
-
-
-
-
-# How to run
-
-- `npm install`
-- `LEGISCAN_API_KEY=insert npm run scrape`
-- `OPEN_API_KEY=insert npm run gpt` (requires npm run scrape to run first)
-- Check `dist_legislation` for files
-
-# To Run 1 GPT Summary (for dev)
-
-`LOCALE=usa BILL="HB5" npm run gpt-one`
-
-
-# start-here
-
-1. Added to GitHub organization to be able to push to each repo
-2. For backend work, go to `civi-legislation-data`
-3. For frontend work, go to `windy-civi-web`
-
-civi-legislation-data 
 
 # Getting Started
+1. Navigate to the directory you'd like the project to be stored on your computer
+2. For this example we'll in the documents section of your macbook
+3. Open your code editor and enter cd ~/Documents
+4. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4824411a-1d62-4b72-86c4-b5015685ab78)
+
+5. Alternatively you can navigate to Finder and create a new folder
+6. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/465efbda-c2fc-421d-a330-da1f5264bc5d)
+
+7. Once your terminal reads run `git clone https://github.com/civi-social/civi-legislation-data.git`  ---- this will create a clone of the repository.
+
+
+
+
 1. `npm install` - (what does this install?)
 2. `LEGISCAN_API_KEY=insert npm run scrape`
 3.   - go to legiscan and download api key
