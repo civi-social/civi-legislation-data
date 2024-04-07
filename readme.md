@@ -14,8 +14,11 @@ The civi-legislation-data repository contains the code for the backend data for 
 #clone the repo
 git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git  
 
-#step into project directory
+#navigate to project directory
 cd civi-legislation-data  
+
+lanuch your code with vscode
+code .
 
 #create a new branch
 git checkout -b new_branch_test
