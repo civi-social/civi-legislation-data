@@ -15,20 +15,45 @@ The civi-legislation-data repository contains the code for the backend data for 
 7. Once your terminal reads run `git clone https://github.com/civi-social/civi-legislation-data.git`  ---- this will create a clone of the repository.
 
 
+If the command was successful you should see the project appear in your code editor and your documents folders. 
 
 
-1. `npm install` - (what does this install?)
-2. `LEGISCAN_API_KEY=insert npm run scrape`
-3.   - go to legiscan and download api key
-     - run LEGISCAN_API_KEY=insert npm run scrape in the terminal
-  -   where is this located?
+Next run `npm install` - (what does this install?) - this installs the npm package manager to run scripts??
+
+1.  `LEGISCAN_API_KEY=insert npm run scrape`
+
+Login to Legiscan (and select the free option) to get your api key
+<img width="730" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/5e497bfb-8b2b-43d5-a975-838f04a792a5">
+
+<img width="1422" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/a713a75e-7dd4-4f39-af08-2bfac9f63ef2">
+
+Navigate to the sidebar and select either my account or Legiscan API key to create an API key.
+<img width="1434" alt="SCR-20240407-mcrz" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/6252abd4-9964-44bc-8a6b-7c77ea2e3574">
+
+Once your key is created navigate back to your code editor and run
+
+`LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` in the terminal.
+This passes an API key into the codebase that......
+Without this you will not be able to run the project.
+   where is this located?
   -   what does it do?
 
+3. OPEN AI API Key
+Navigate to https://platform.openai.com/docs/overview - and create an account to access an API key.
+<img width="1423" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/b3ff2c40-26a3-456e-9281-93fb259cc547">
 
-3. `OPEN_API_KEY=insert npm run gpt` (requires npm run scrape to run first)
+
+create a new secret key
+<img width="1431" alt="SCR-20240407-mjwa" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/d0afd95a-599c-4da3-9674-df139046f2dd">
+
+
+Once your key is created navigate back to your code editor and run
+
+`OPEN_API_KEY={YOUR_API_KEY} npm run gpt` (requires npm run scrape to run first)
+1. IMPORTANT - ENSURE CODE ONLY RUNS ONCE
+2. This passes an API key into the codebase that......
+3, Without this you will not be able to run the project.
   - This should actually say OPENAI_API_KEY
-  - where is this located
-  - what does this do
 
 - what does this message mean??
 ----------summarizing legislation ocd-bill/b7b76696-f4de-4480-87ed-575615c748c1 Amendment of Municipal Code Section 4-60-023 (48.4) to allow additional package goods licenses on portion(s) of W Berwyn Ave and W Foster Ave
