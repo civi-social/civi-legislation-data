@@ -11,8 +11,23 @@ The civi-legislation-data repository contains the code for the backend data for 
 3. Open your code editor and enter cd ~/Documents
 4. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4824411a-1d62-4b72-86c4-b5015685ab78)
 
-
+#clone the repo
 git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git  
+
+#step into project directory
+cd civi-legislation-data  
+
+#create a new branch
+git checkout -b new_branch_test
+
+confirm you're in the new branch
+git branch
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/78e759f8-0bbe-4eb5-980e-76ded2b008a9)
+
+
+Make sure to from VScode
+civi-legis![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/54fd5b93-005b-42a3-9574-152b820498d7)
+
 
 5. Alternatively you can navigate to Finder and create a new folder
 6. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/465efbda-c2fc-421d-a330-da1f5264bc5d)
