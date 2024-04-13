@@ -45,6 +45,11 @@ git branch
 4. Once your key is created navigate back to your code editor and run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` in the terminal.
    - This passes an API key into the codebase that......is used to validate that the code should have access
 
+How do you know this step finished properly? - I got this error Message....
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/5ca0bf31-fae0-474a-b979-b2b32b47faad)
+
+
+
 5. OPENAI API Key
    - Navigate to https://platform.openai.com/docs/overview - create an account to generate an API key.
    - <img width="1423" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/b3ff2c40-26a3-456e-9281-93fb259cc547">
