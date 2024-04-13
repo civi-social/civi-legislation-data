@@ -39,9 +39,7 @@ git branch
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0154a46-8781-4753-b581-0ae0afe93af7)
 
 
-<img width="1422" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/a713a75e-7dd4-4f39-af08-2bfac9f63ef2">
-
-3. Navigate to the sidebar to create an API key.
+3. Once logged in navigate to the sidebar to create an API key.
 <img width="1434" alt="SCR-20240407-mcrz" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/6252abd4-9964-44bc-8a6b-7c77ea2e3574">
 
 4. Once your key is created navigate back to your code editor and run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` in the terminal.
