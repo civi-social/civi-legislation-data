@@ -5,11 +5,15 @@ export interface CiviLegislationData {
   id: string;
   title: string;
   link: string;
+  url?: string;
   source_id: string;
   sponsors: { name: string; role: string; district: string }[];
   classification?: string;
   description?: string;
   tags?: string[];
+  updated_at?: string;
+  voteHistory?: { motion_classification: string[]; created_at: string }[];
+  identifier?: string;
   summaries?: {
     gpt: string;
   };

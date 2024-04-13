@@ -164,7 +164,7 @@ async function getChicagoBills() {
       // We ignore the error
     }
 
-    return {
+    const bills: CiviLegislationData = {
       id: bill.id,
       title: bill.title,
       tags: JSON.parse(bill.extras).topics,
@@ -186,7 +186,9 @@ async function getChicagoBills() {
       identifier: bill.identifier,
       link: `https://chicago.councilmatic.org/legislation/${bill.identifier}`,
       url: `https://chicago.councilmatic.org/legislation/${bill.identifier}`,
-    } as CiviLegislationData;
+    };
+
+    return bills;
   });
 
   return results;
