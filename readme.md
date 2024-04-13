@@ -36,7 +36,8 @@ git branch
 
 
 2. Login to Legiscan (to sign up for an api key) to get your api key
-<img width="730" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/5e497bfb-8b2b-43d5-a975-838f04a792a5">
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0154a46-8781-4753-b581-0ae0afe93af7)
+
 
 <img width="1422" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/a713a75e-7dd4-4f39-af08-2bfac9f63ef2">
 
