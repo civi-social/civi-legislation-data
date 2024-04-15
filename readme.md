@@ -9,8 +9,14 @@ The civi-legislation-data repository contains the code for the backend data for 
 
 
 ## Navigate to start
-1. Navigate to the directory you'd like the project to be stored on your computer.For this example we'll store the file in the documents section of your computer
-   `cd Documents`
+1. Open your code editor
+2. Navigate to the directory you'd like the project to be stored on your computer. For this example, we'll store the project in the documents folder 
+3. 
+
+    `cd Documents`
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/11b96be0-0728-4be2-8547-807d02007af2)
+
 
 3
 4. Open your code editor and enter cd ~/Documents
