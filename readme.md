@@ -21,12 +21,14 @@ The civi-legislation-data repository contains the code for the backend data for 
 
 ## 2. clone the repo
 In your desired folder enter
-git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git  into your terminal
+`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`into your terminal
 
 If the command was successful you should see the project appear in your code editor and the folder your placed it in documents folders. 
 
+<img width="74" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/60b4555d-f315-4b2d-ae15-75be0a23cb27">
+
 #navigate to project directory
-cd civi-legislation-data  
+`cd civi-legislation-data`
 
 lanuch your code with vscode
 code .
@@ -41,7 +43,7 @@ git branch
 
 1. Next run `npm install` -  this reads the package.json file and install the dependencies and node-modules should now appear in your file. devdependencies specified in the file
 
-<img width="74" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/60b4555d-f315-4b2d-ae15-75be0a23cb27">
+
 
 
 2. Login to Legiscan (to sign up for an api key) to get your api key
