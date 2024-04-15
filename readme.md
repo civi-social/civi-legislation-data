@@ -16,15 +16,26 @@ The civi-legislation-data repository contains the code for the backend data for 
 
 ## 2. Clone the repository
 In your desired folder enter
-`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`into your terminal
+`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`into your folder
+
 
 <img width="760" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/e64461df-e4d1-4381-b475-2f6534d5bb7a">
 
 .....
 
-If the command was successful you should see the project appear in your code editor and the folder your placed it in documents folders. 
+If the command was successful, the project should now appear in the folder you specified
 
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/deab62dc-4b51-402e-ba8d-98c9216e47e0)
 
+To launch the project directly from the terminal enter 
+
+`code .`
+
+ ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8d94962c-1f02-4dc4-885b-b25bb00d4138)
+
+or you can drag and drop the folder into your code editor. 
+
+## 3. Load dependencies
 
 #navigate to project directory
 `cd civi-legislation-data`
