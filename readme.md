@@ -9,10 +9,12 @@ The civi-legislation-data repository contains the code for the backend data for 
 
 
 ## Navigate to start
-1. Navigate to the directory you'd like the project to be stored on your computer
-2. For this example we'll in the documents section of your macbook
-3. Open your code editor and enter cd ~/Documents
-4. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4824411a-1d62-4b72-86c4-b5015685ab78)
+1. Navigate to the directory you'd like the project to be stored on your computer.For this example we'll store the file in the documents section of your computer
+   `cd Documents`
+
+3
+4. Open your code editor and enter cd ~/Documents
+5. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4824411a-1d62-4b72-86c4-b5015685ab78)
 
 #clone the repo
 git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git  
