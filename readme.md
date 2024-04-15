@@ -18,9 +18,7 @@ The civi-legislation-data repository contains the code for the backend data for 
 In your desired folder enter
 `git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`into your terminal
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8adbc596-ceb7-4a24-94da-f3ee006f9a50)
-
-
+<img width="760" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/e64461df-e4d1-4381-b475-2f6534d5bb7a">
 
 .....
 
