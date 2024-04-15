@@ -6,6 +6,9 @@ The civi-legislation-data repository contains the code for the backend data for 
 
 
 # Getting Started
+
+
+## Navigate to start
 1. Navigate to the directory you'd like the project to be stored on your computer
 2. For this example we'll in the documents section of your macbook
 3. Open your code editor and enter cd ~/Documents
