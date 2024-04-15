@@ -8,7 +8,7 @@ The civi-legislation-data repository contains the code for the backend data for 
 # Getting Started
 
 
-## Navigate to start
+## Navigate to Folder
 1. Open your code editor
 2. Navigate to the directory you'd like the project to be stored on your computer. For this example, we'll store the project in the documents folder 
 3. 
@@ -18,15 +18,10 @@ The civi-legislation-data repository contains the code for the backend data for 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/498b3d10-590a-4c3e-99e9-da5de86c7130)
 
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/11b96be0-0728-4be2-8547-807d02007af2)
 
-
-3
-4. Open your code editor and enter cd ~/Documents
-5. ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4824411a-1d62-4b72-86c4-b5015685ab78)
-
-#clone the repo
-git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git  
+## 2. clone the repo
+In your desired folder enter
+git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git  into your terminal
 
 If the command was successful you should see the project appear in your code editor and the folder your placed it in documents folders. 
 
