@@ -67,28 +67,26 @@ Sign up for an account at Legiscan.com [Legiscan](https://legiscan.com/) to obta
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/1390ece1-592b-4a65-b31a-6ac41e505334)
 
-In the terminal run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` 
+Run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` in the terminal (This passes an API key into the codebase that......is used to validate that the code should have access).
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/08b51061-3e7f-4568-8565-088b1b912341)
 
 
-This passes an API key into the codebase that......is used to validate that the code should have access
+Navigate to [OpenAI's website](https://platform.openai.com/docs/overview ) to obtain an API key.
+<img width="947" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0f5bf8e5-1778-4ba8-93e3-cc813d274c4b">
+
+### After you obtain your API Key 
+Open the terminal and run
+OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one 
 
 
-
-
-5. OPENAI API Key
-   - Navigate to https://platform.openai.com/docs/overview - create an account to generate an API key.
-   - <img width="1423" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/b3ff2c40-26a3-456e-9281-93fb259cc547">
-   - create a new secret key
-   - <img width="1431" alt="SCR-20240407-mjwa" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/d0afd95a-599c-4da3-9674-df139046f2dd">
-
-6. Once your key is created navigate back to your code editor and run `OPEN_API_KEY={YOUR_API_KEY} npm run gpt` (requires npm run scrape to run first)
+Run `OPEN_API_KEY={YOUR_API_KEY} npm run gpt` Please ensure you're performed the Legiscan step first or this step will not work. 
+requires npm run scrape to run first)
   - THIS STEP IS EXTREMELY IMPORTANT. TO Ensure your code only runs once you must run the command exactly
   - This passes an API key into the codebase that......
 
 
-9. OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one -- this should ensure the command only runs once.
+9. this should ensure the command only runs once.
 `LOCALE=usa BILL="HB5" npm run gpt-one`
 <img width="1440" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/5fe442e9-528c-4f6b-aba9-bc2366d2fba6">
 
