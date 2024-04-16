@@ -26,7 +26,7 @@ If you're using VSCode run `code .` to open the project
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/40455420-2823-42c5-95db-9e9b21e39d15)
 
-Alternatively, you can open the project from the desktop
+Alternatively, you can drag and drop the project into your code editor 
 
 <img width="954" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/dce76b3d-9a2c-4f86-ac46-13f3070bfbb3">
 
@@ -35,7 +35,7 @@ Alternatively, you can open the project from the desktop
   
 Inside the project, create a new branch by running `git checkout -b YOUR_BRANCH_NAME` - **make sure to change the branch name**.
 
-<img width="954" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0f67f687-b06d-47b0-bea7-9d15319e0c48)">
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/33e62b00-debd-4405-aba2-3c9a91833d2a)
 
 Confirm you're in the new branch by running `git branch`
 
@@ -46,35 +46,33 @@ Next, run `npm install`. This installs the dependencies for the project. You'll 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cfa6c46e-9c70-4920-a744-a8cf90f64596)
 
 
-### Get Legiscan API Key
-Sign up for an account at Legiscan.com [Legiscan](https://legiscan.com/) to obtain an API key
+## Sign up for LegiScan API Key
+Sign up for a [Legiscan account](https://legiscan.com/) to obtain an API key
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0154a46-8781-4753-b581-0ae0afe93af7)
-
-
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/e0e801c3-cef2-4df9-b6ff-a7a4327d7c3f)
 
 
-### After you obtain your API Key run 
-
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/1390ece1-592b-4a65-b31a-6ac41e505334)
-
-Run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` in the terminal (This passes an API key into the codebase that......is used to validate that the code should have access).
+After obtaining your key, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This permits you to access the API and fetches all the current bills from LegiScan.
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/08b51061-3e7f-4568-8565-088b1b912341)
 
+## Sign up for OpenAI API Key
+Before proceeding, ensure you've completed the LegiScan installation, or this step will fail.  
 
-Navigate to [OpenAI's website](https://platform.openai.com/docs/overview ) to obtain an API key.
+Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) to obtain an API key.
+
 <img width="947" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0f5bf8e5-1778-4ba8-93e3-cc813d274c4b">
 
-### After you obtain your API Key 
-Open the terminal and run
-OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one 
 
+THE NEXT STEP IS CRITICALLY IMPORTANT!
 
-Run `OPEN_API_KEY={YOUR_API_KEY} npm run gpt` Please ensure you're performed the Legiscan step first or this step will not work. 
-requires npm run scrape to run first)
-  - THIS STEP IS EXTREMELY IMPORTANT. TO Ensure your code only runs once you must run the command exactly
-  - This passes an API key into the codebase that......
+After obtaining your key, run `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` ENSURE you run the full command so that OPENAI only translates one of the bills instead of the entire list of bills which is not what we want and is very expensive. 
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
+
+If you see something like this, it means ChatGPT is translating everything - kill the process immediately!
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
 
 
 
@@ -140,3 +138,5 @@ How do you know this step finished properly? - I got this error Message....
 
 
 - <img width="1430" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/176f6535-75c6-4df4-afbc-9ccdfa3d3559">
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/1390ece1-592b-4a65-b31a-6ac41e505334)
