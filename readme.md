@@ -7,20 +7,27 @@ In the terminal - navigate to the folder where you'd like this project stored. F
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/bc3d0e9f-0317-41b6-8c93-0ee0fd482cc7)
 
 In the terminal enter
-`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`(this makes a clone of the repo),
+`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`to clone the repo.
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cffd1fe7-625c-414d-8545-3a8094595dde)
 
-The project should now appear in the folder you specified
+You should now see project on your computer
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/deab62dc-4b51-402e-ba8d-98c9216e47e0)
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/01fc8345-85fc-4074-a058-a4cde6aed908)
 
-To launch the project directly either 
+
+
+Run `cd civi-legislation-data` to navigate into the repo
+
+
+Enter `code .` in the terminal to open or
+
+
 
 1. Launch the project from the terminal using
  
 3. Inside the new project navigate to the root directory
-`cd civi-legislation-data``code .`
+
 
  ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8d94962c-1f02-4dc4-885b-b25bb00d4138)
 
