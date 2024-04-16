@@ -112,7 +112,7 @@ Congrats you're now ready to contribute!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Note
+## Note
 To visit the Google sheet where manual updates are occurring [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/7ae52ae2-12e6-46a8-a8ef-f0e4b503e1f9)
