@@ -1,24 +1,20 @@
 # Getting Started
 
-The civi-legislation-data repository contains the code for the backend data for our project.
+How to get started with the backend repo for the WindyCivi social projects
 
-1. Open your code editor
-2. Navigate to the directory you'd like the project to be stored on your computer. For this example, we'll store the project in the documents folder 
-3. `cd Documents`
-
+1. Use the terminal to navigate to the folder where you'd like this project stored. We'll store the project in the **documents** folder for demonstration
+ 1. Run cd documents
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/498b3d10-590a-4c3e-99e9-da5de86c7130)
 
 
 ## 2. Clone the repository
-In your desired folder enter
+In the documents folder enter
 `git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`into your folder
 
 
 <img width="760" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/e64461df-e4d1-4381-b475-2f6534d5bb7a">
 
-.....
-
-If the command was successful, the project should now appear in the folder you specified
+The project should now appear in the folder you specified
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/deab62dc-4b51-402e-ba8d-98c9216e47e0)
 
