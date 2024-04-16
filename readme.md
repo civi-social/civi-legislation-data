@@ -1,6 +1,6 @@
 # Getting Started
 
-This document provides an overview of how to get started with the backend repository.
+This document provides an overview of how to get started with Windy Civi's backend repository.
 
 In the terminal - navigate to the folder where you'd like this project stored. For the purposes of demonstration, we'll store this project in the **documents** folder by running `cd documents`. 
 
