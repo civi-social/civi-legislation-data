@@ -91,13 +91,7 @@ Enable APIs and services
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0ac39e1-2635-4f09-92c0-763ac54bb411)
 
   
-Find the Google Sheets API and click enable 
-  
-     
-<img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
-  
-    
-Create your API credentials (note: It's okay for the key to be left as unrestricted)
+Find the Google Sheets API and click enable, and then create your API credentials (note: It's okay for the key to be left as unrestricted)
 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
@@ -111,10 +105,14 @@ If successful, you should now see the `dist_legislation` folder
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/f14dafe3-0252-49dd-a85d-eb61c334a1e8)
 
+
+Congrats you're now ready to contribute!
+
+
 **Note**
-To view the Google sheet [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
+To visit the Google sheet [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/7ae52ae2-12e6-46a8-a8ef-f0e4b503e1f9)
 
 
-Congrats you're now ready to contribute!
+
