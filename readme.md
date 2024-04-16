@@ -2,7 +2,9 @@
 
 This document provides an overview of how to get started with Windy Civi's backend repository.
 
-In the terminal - navigate to the folder where you'd like this project stored. For the purposes of demonstration, we'll store this project in the **documents** folder by running `cd documents`. 
+## Start here
+
+Open a new terminal and navigate to the folder where you'd like to store this project. For this example, we'll store the project in the **documents** folder by running `cd documents`. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/bc3d0e9f-0317-41b6-8c93-0ee0fd482cc7)
 
@@ -33,7 +35,7 @@ Alternatively, you can drag and drop the project into your code editor
   &nbsp;
   &nbsp;
   
-Inside the project, create a new branch by running `git checkout -b YOUR_BRANCH_NAME` - **make sure to change the branch name**.
+Inside the project, create a new branch by running `git checkout -b YOUR_BRANCH_NAME` - ** make sure to change the branch name after copying the command**
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/33e62b00-debd-4405-aba2-3c9a91833d2a)
 
@@ -52,12 +54,12 @@ Sign up for a [Legiscan account](https://legiscan.com/) to obtain an API key
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/e0e801c3-cef2-4df9-b6ff-a7a4327d7c3f)
 
 
-After obtaining your key, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This fetches all the current bills from LegiScan.
+After you've created an API key, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This fetches all the current bills from LegiScan.
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/08b51061-3e7f-4568-8565-088b1b912341)
 
 ## Sign up for OpenAI API Key
-Before proceeding, ensure you've completed the LegiScan installation, or this step will fail.  
+Before proceeding, ensure you've completed the LegiScan installation step above, or this step will fail.  
 
 Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) and create a new secret key.
 
@@ -66,7 +68,7 @@ Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) and 
 
 THE NEXT STEP IS CRITICALLY IMPORTANT!
 
-After you've obtained your secret key, run the EXACT command below (ensuring to replace `your-api-key`) `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
+After you've obtained your secret key, run the EXACT command of `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` (ensuring to replace `your-api-key` with your actual API key)  This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
 
@@ -84,7 +86,7 @@ Once your project is active select "APIs and Services"
   
   
   
-Enable APIs and services 
+Enable the APIs and services 
 
 
       
@@ -110,8 +112,8 @@ Congrats you're now ready to contribute!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Note:**
-To visit the Google sheet [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
+### Note
+To visit the Google sheet where manual updates are occurring [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/7ae52ae2-12e6-46a8-a8ef-f0e4b503e1f9)
 
