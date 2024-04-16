@@ -2,8 +2,6 @@
 
 This document provides an overview of how to get started with the backend repository.
 
-## Start here
-
 Open a new terminal and navigate to the folder where you'd like to store this project. For this example, we'll store the project in the **documents** folder by running `cd documents`. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/bc3d0e9f-0317-41b6-8c93-0ee0fd482cc7)
