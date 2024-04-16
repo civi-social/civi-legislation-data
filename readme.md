@@ -90,17 +90,17 @@ requires npm run scrape to run first)
 ## Google Sheets API  Key
 Navigate to the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fwelcome%2Fnew%3ForganizationId%3D0&organizationId=0) and create a new project
 
-1. Navigate to API's and Services
+1. Create a new projects
+2. Once your project is active select "APIs and Services".
 <img width="1433" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f9616b76-29fc-43bc-a59c-44bcd3e7c177">
    
+Enable APIs and services
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/ff50ce39-7407-411a-9a7b-db08abb7cfd8)
 
-2. Enable APIs and services
-<img width="1435" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/9426c940-84d5-4204-a682-a099074c54df">
-
-3. Select the Google Sheets API and click "enable"
+Select the Google Sheets API and click "enable"
 <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
 
-4. Create credentials and generate a new API key 
+Create credentials and generate a new API key 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
 
