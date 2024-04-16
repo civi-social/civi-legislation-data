@@ -22,18 +22,20 @@ Navigate into the project folder by running `cd civi-legislation-data`
 <img width="934" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f6a0c749-204e-4b54-b12f-0d3fcc90fd3d">
 
 
-Once in the project directory run `code .` (for VScode users) to open the project
+If you're using VSCode run `code .` to open the project
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/40455420-2823-42c5-95db-9e9b21e39d15)
 
-Alternatively, you can open the project from the GUI
+Alternatively, you can open the project from the desktop
 
 <img width="954" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/dce76b3d-9a2c-4f86-ac46-13f3070bfbb3">
 
+  &nbsp;
+  &nbsp;
+  
+Inside the project, create a new branch by running `git checkout -b YOUR_BRANCH_NAME` - **make sure to change the branch name**.
 
-Inside the project, create a new branch by running `git checkout -b new_branch_test`
-
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/0f67f687-b06d-47b0-bea7-9d15319e0c48)
+<img width="954" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0f67f687-b06d-47b0-bea7-9d15319e0c48)">
 
 Confirm you're in the new branch by running `git branch`
 
