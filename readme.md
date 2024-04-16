@@ -52,44 +52,40 @@ Sign up for a [Legiscan account](https://legiscan.com/) to obtain an API key
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/e0e801c3-cef2-4df9-b6ff-a7a4327d7c3f)
 
 
-After obtaining your key, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This permits you to access the API and fetches all the current bills from LegiScan.
+After obtaining your key, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This fetches all the current bills from LegiScan.
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/08b51061-3e7f-4568-8565-088b1b912341)
 
 ## Sign up for OpenAI API Key
 Before proceeding, ensure you've completed the LegiScan installation, or this step will fail.  
 
-Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) to obtain an API key.
+Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) and create a new secret key.
 
 <img width="947" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0f5bf8e5-1778-4ba8-93e3-cc813d274c4b">
 
 
 THE NEXT STEP IS CRITICALLY IMPORTANT!
 
-After obtaining your key, run `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` ENSURE you run the full command so that OPENAI only translates one of the bills instead of the entire list of bills which is not what we want and is very expensive. 
+After you've obtained your secret key, run the EXACT command below (ensuring to replace `your-api-key`) `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
 
-If you see something like this, it means ChatGPT is translating everything - kill the process immediately!
+If you see a ton of output in the terminal it likely means ChatGPT is translating everything - kill the process immediately!
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
-
-
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/318316f5-cf02-45ed-b542-b03a1f349d99)
 
 ## Google Sheets API  Key
-Navigate to the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fwelcome%2Fnew%3ForganizationId%3D0&organizationId=0) and create a new project
+Create a new project in the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fwelcome%2Fnew%3ForganizationId%3D0&organizationId=0) 
 
-1. Create a new projects
-2. Once your project is active select "APIs and Services".
-<img width="1433" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f9616b76-29fc-43bc-a59c-44bcd3e7c177">
-   
-## Enable APIs and services
-1. Click on enable APIs and services in the navbar
+Once your project is active select "APIs and Services".
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/2284f764-ad94-47d9-99cb-62ce41be5b8b)
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/ff50ce39-7407-411a-9a7b-db08abb7cfd8)
+Enable APIs and services in the navbar
 
-## Enable Google Sheets API
-1. Navigate to the Google Sheets API and click enable 
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0ac39e1-2635-4f09-92c0-763ac54bb411)
+
+
+Navigate to the Google Sheets API and click enable 
    
 <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
 
