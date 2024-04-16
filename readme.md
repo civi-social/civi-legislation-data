@@ -63,8 +63,15 @@ Sign up for an account at Legiscan.com [Legiscan](https://legiscan.com/) to obta
 
 
 
-### Once you have your API Key
+### After you obtain your API Key run 
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/1390ece1-592b-4a65-b31a-6ac41e505334)
+
 In the terminal run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` 
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/08b51061-3e7f-4568-8565-088b1b912341)
+
+
 This passes an API key into the codebase that......is used to validate that the code should have access
 
 
