@@ -81,12 +81,13 @@ Once your project is active select "APIs and Services"
 
   
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4fcdeafe-39ba-4d3a-8294-cda112e40d04)
+  
+  
+  
+Enable APIs and services 
 
 
-  
-Clcik enable APIs and services 
-  
-  
+      
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0ac39e1-2635-4f09-92c0-763ac54bb411)
 
   
@@ -94,52 +95,26 @@ Find the Google Sheets API and click enable
   
      
 <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
-
-
+  
     
-1. Click **credentials** in the sidebar
-2. Select **create credentials** in the navbar
-3. Select API Key from the dropdown menu (note: It's okay if the key is left as unrestricted)
+Create your API credentials (note: It's okay for the key to be left as unrestricted)
 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
 
 Once you've obtained your API key navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
 
-
-<img width="709" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0b636768-0832-4b1f-bb52-a58b0a5c66e1">
-
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/3a5c1976-5cfb-4c2b-8950-5d0bb76f3684)
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/e9c4c2ce-885b-478d-8ce3-7e1d3306deff)
 
 
-If successful, you should see the `dist_legislation` folder in your files for files in your terminal
+If successful, you should now see the `dist_legislation` folder
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/f14dafe3-0252-49dd-a85d-eb61c334a1e8)
 
+**Note**
+To view the Google sheet [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
 
-The Google sheet where manual adjustments are being tracked is [here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}). 
-
-To access it, make sure you add your API Key to the end of the URL.
-
-https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}
-
-![Uploading image.png…]()
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/7ae52ae2-12e6-46a8-a8ef-f0e4b503e1f9)
 
 
 Congrats you're now ready to contribute!
-
-
-
-
-
-You can create an API key from the **My account** or **LegiscanAPI** key links in the sidebar
-<img width="1434" alt="SCR-20240407-mcrz" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/6252abd4-9964-44bc-8a6b-7c77ea2e3574">
-
-
-How do you know this step finished properly? - I got this error Message....
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/5ca0bf31-fae0-474a-b979-b2b32b47faad)
-
-
-- <img width="1430" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/176f6535-75c6-4df4-afbc-9ccdfa3d3559">
-
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/1390ece1-592b-4a65-b31a-6ac41e505334)
