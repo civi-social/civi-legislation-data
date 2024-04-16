@@ -11,16 +11,24 @@ In the terminal enter
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cffd1fe7-625c-414d-8545-3a8094595dde)
 
-You should now see project on your computer
+You should now see the project listed in the folder you specified
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/01fc8345-85fc-4074-a058-a4cde6aed908)
 
 
 
-Run `cd civi-legislation-data` to navigate into the repo
+Navigate into the project folder by running `cd civi-legislation-data`
+
+<img width="934" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f6a0c749-204e-4b54-b12f-0d3fcc90fd3d">
 
 
-Enter `code .` in the terminal to open or
+Once in the project directory run `code .` in the terminal to open the project
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8d94962c-1f02-4dc4-885b-b25bb00d4138)
+
+
+
+
 
 
 
@@ -29,7 +37,7 @@ Enter `code .` in the terminal to open or
 3. Inside the new project navigate to the root directory
 
 
- ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8d94962c-1f02-4dc4-885b-b25bb00d4138)
+
 
 2. Drag and drop the folder into your code editor. 
 
