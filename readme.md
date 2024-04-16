@@ -6,11 +6,10 @@ In the terminal - navigate to the folder where you'd like this project stored. F
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/bc3d0e9f-0317-41b6-8c93-0ee0fd482cc7)
 
-In the documents folder enter
-`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`in the terminal
+In the terminal enter
+`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`(this makes a clone of the repo),
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cffd1fe7-625c-414d-8545-3a8094595dde)
-
 
 The project should now appear in the folder you specified
 
