@@ -47,17 +47,18 @@ To launch the project directly either
 
 2. confirm you're in the new branch by running `git branch`
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/78e759f8-0bbe-4eb5-980e-76ded2b008a9)
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/fa04e36a-115d-4633-956c-e9150419dc3f)
 
-3. Next, in the terminal run `npm install` -  this reads the package.json file and install the dependencies and node-modules should now appear in your file. devdependencies specified in the file
+
+3. Next, in the terminal run `npm install` -  if this was successful the node-modules folder should now appear in your folder.
 
 <img width="74" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/60b4555d-f315-4b2d-ae15-75be0a23cb27">
 
-4. Login to Legiscan (to sign up for an api key) to get your api key
+Next, Login to Legiscan to sign up for an API key
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0154a46-8781-4753-b581-0ae0afe93af7)
 
 
-3. Once logged in navigate to the sidebar to create an API key.
+You can  logged in navigate to the sidebar to create an API key.
 <img width="1434" alt="SCR-20240407-mcrz" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/6252abd4-9964-44bc-8a6b-7c77ea2e3574">
 
 4. Once your key is created navigate back to your code editor and run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` in the terminal.
