@@ -113,7 +113,7 @@ Congrats you're now ready to contribute!
 ## Note
 To visit the Google sheet of manual interpretations [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}).
 
-Make sure you add your API key to the end of the URL.  
+Make sure you add your API key to the end of the URL (see below)
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/7ae52ae2-12e6-46a8-a8ef-f0e4b503e1f9)
 
