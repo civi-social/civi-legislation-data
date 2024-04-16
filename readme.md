@@ -95,16 +95,21 @@ Navigate to the [Google Cloud Console](https://console.cloud.google.com/projectc
 <img width="1433" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f9616b76-29fc-43bc-a59c-44bcd3e7c177">
    
 ## Enable APIs and services
+1. Click on enable APIs and services in the navbar
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/ff50ce39-7407-411a-9a7b-db08abb7cfd8)
 
-## Select the Google Sheets API and click "enable"
+## Enable Google Sheets API
+1. Navigate to the Google Sheets API and click enable 
+   
 <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
 
 ## Create credentials and generate a new API key 
+1. Click **credentials** in the sidebar
+2. Select **create credentials** in the navbar
+3. Select API Key from the dropdown menu
+
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
-
-
 
 
 Once you've obtained your API Navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
@@ -112,10 +117,17 @@ Once you've obtained your API Navigate back to your terminal and run `GOOGLE_SPR
 It's okay if the key is left as unrestricted
 <img width="709" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0b636768-0832-4b1f-bb52-a58b0a5c66e1">
 
-If successful, you should see the `dist_legislation` folder in your files for files in your terminal
-The actual Google sheet where manual adjustments are being tracked is [here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}). 
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/3a5c1976-5cfb-4c2b-8950-5d0bb76f3684)
 
-Make sure you add your API Key to the end of the URL when attempting to access 
+
+If successful, you should see the `dist_legislation` folder in your files for files in your terminal
+
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/f14dafe3-0252-49dd-a85d-eb61c334a1e8)
+
+
+The Google sheet where manual adjustments are being tracked is [here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}). 
+
+To access it, make sure you add your API Key to the end of the URL.
 
 https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}
 
@@ -123,9 +135,6 @@ https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37Jl
 
 
 Congrats you're now ready to contribute!
-
-
-
 
 
 
