@@ -80,28 +80,33 @@ Create a new project in the [Google Cloud Console](https://console.cloud.google.
 Once your project is active select "APIs and Services"
 
   
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/2284f764-ad94-47d9-99cb-62ce41be5b8b)
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/4fcdeafe-39ba-4d3a-8294-cda112e40d04)
 
-Enable APIs and services in the navbar
 
+  
+Clcik enable APIs and services 
+  
+  
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0ac39e1-2635-4f09-92c0-763ac54bb411)
 
-
-Navigate to the Google Sheets API and click enable 
-   
+  
+Find the Google Sheets API and click enable 
+  
+     
 <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
 
-## Create credentials and generate a new API key 
+
+    
 1. Click **credentials** in the sidebar
 2. Select **create credentials** in the navbar
-3. Select API Key from the dropdown menu
+3. Select API Key from the dropdown menu (note: It's okay if the key is left as unrestricted)
 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
 
-Once you've obtained your API Navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
+Once you've obtained your API key navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
 
-It's okay if the key is left as unrestricted
+
 <img width="709" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0b636768-0832-4b1f-bb52-a58b0a5c66e1">
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/3a5c1976-5cfb-4c2b-8950-5d0bb76f3684)
