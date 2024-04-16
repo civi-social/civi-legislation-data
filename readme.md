@@ -27,24 +27,21 @@ If the command was successful, the project should now appear in the folder you s
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/deab62dc-4b51-402e-ba8d-98c9216e47e0)
 
-To launch the project directly from the terminal enter 
+To launch the project directly either 
 
-`code .`
+1. Launch the project from the terminal using
+ 
+3. Inside the new project navigate to the root directory
+`cd civi-legislation-data``code .`
 
  ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8d94962c-1f02-4dc4-885b-b25bb00d4138)
 
-or you can drag and drop the folder into your code editor. 
+2. Drag and drop the folder into your code editor. 
 
 ## 3. Load dependencies
 
-#navigate to project directory
-`cd civi-legislation-data`
-
-lanuch your code with vscode
-code .
-
-#create a new branch
-git checkout -b new_branch_test
+1. Inside the root directory -> create a new branch
+`git checkout -b new_branch_test`
 
 confirm you're in the new branch
 git branch
