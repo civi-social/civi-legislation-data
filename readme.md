@@ -74,10 +74,10 @@ If you see a ton of output in the terminal it likely means ChatGPT is translatin
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/318316f5-cf02-45ed-b542-b03a1f349d99)
 
-## Google Sheets API  Key
+## Register a Google Sheets API key
 Create a new project in the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fwelcome%2Fnew%3ForganizationId%3D0&organizationId=0) 
 
-Once your project is active select "APIs and Services".
+Once your project is active select "APIs and Services".  
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/2284f764-ad94-47d9-99cb-62ce41be5b8b)
 
 Enable APIs and services in the navbar
