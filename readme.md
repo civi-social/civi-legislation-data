@@ -40,12 +40,14 @@ To launch the project directly either
 
 ## 3. Load dependencies
 
-1. Inside the root directory -> create a new branch
+1. Inside the root directory, create a new branch
 `git checkout -b new_branch_test`
 
-confirm you're in the new branch
-git branch
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/0f67f687-b06d-47b0-bea7-9d15319e0c48)
+
+2. confirm you're in the new branch by running `git branch`
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/78e759f8-0bbe-4eb5-980e-76ded2b008a9)
+
 
 
 1. Next run `npm install` -  this reads the package.json file and install the dependencies and node-modules should now appear in your file. devdependencies specified in the file
