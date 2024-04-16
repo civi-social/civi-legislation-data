@@ -2,7 +2,7 @@
 
 This document provides a brief overview of how to get started with WindyCivi's backend repo.
 
-In the terminal - navigate to the folder where you'd like this project stored. For the purposes of demonstration, we'll store this project in the **documents** folder by running cd documents. 
+In the terminal - navigate to the folder where you'd like this project stored. For the purposes of demonstration, we'll store this project in the **documents** folder by running `cd documents`. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/bc3d0e9f-0317-41b6-8c93-0ee0fd482cc7)
 
