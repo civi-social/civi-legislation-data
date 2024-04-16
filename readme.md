@@ -1,6 +1,6 @@
 # Getting Started
 
-This document provides an overview of how to get started with Windy Civi's backend repository.
+This document provides an overview of how to get started with the backend repository.
 
 ## Start here
 
