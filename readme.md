@@ -86,33 +86,39 @@ requires npm run scrape to run first)
   - This passes an API key into the codebase that......
 
 
-9. this should ensure the command only runs once.
-`LOCALE=usa BILL="HB5" npm run gpt-one`
-<img width="1440" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/5fe442e9-528c-4f6b-aba9-bc2366d2fba6">
 
+## Google Sheets API  Key
+Navigate to the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fwelcome%2Fnew%3ForganizationId%3D0&organizationId=0) and create a new project
 
-7. Google Sheets API  Key
-   - Navigate to https://console.cloud.google.com/projectcreate?previousPage=%2Fwelcome%2Fnew%3ForganizationId%3D0&organizationId=0 and create a new project
-   - go to the api section
-   - <img width="1433" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f9616b76-29fc-43bc-a59c-44bcd3e7c177">
-   - navigate to enable apis and services
-   - <img width="1435" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/9426c940-84d5-4204-a682-a099074c54df">
-- Navigate to the Google sheets api and click enable
-- <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
-- Click create credentials and generate new key
-- <img width="1430" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/176f6535-75c6-4df4-afbc-9ccdfa3d3559">
+1. Navigate to API's and Services
+<img width="1433" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f9616b76-29fc-43bc-a59c-44bcd3e7c177">
+   
+
+2. Enable APIs and services
+<img width="1435" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/9426c940-84d5-4204-a682-a099074c54df">
+
+3. Select the Google Sheets API and click "enable"
+<img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
+
+4. Create credentials and generate a new API key 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
-Your Google API key generate and can be left as unrestricted
+
+
+
+Once you've obtained your API Navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
+
+It's okay if the key is left as unrestricted
 <img width="709" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/0b636768-0832-4b1f-bb52-a58b0a5c66e1">
 
-Navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
+If successful, you should see the `dist_legislation` folder in your files for files in your terminal
+The actual Google sheet where manual adjustments are being tracked is [here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}). 
 
-If successful, you should see Check `dist_legislation` for files in your terminal
-    - the actual sheet https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}
+Make sure you add your API Key to the end of the URL when attempting to access 
 
+https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}
 
-
+![Uploading image.png…]()
 
 
 Congrats you're now ready to contribute!
@@ -131,3 +137,5 @@ You can create an API key from the **My account** or **LegiscanAPI** key links i
 How do you know this step finished properly? - I got this error Message....
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/5ca0bf31-fae0-474a-b979-b2b32b47faad)
 
+
+- <img width="1430" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/176f6535-75c6-4df4-afbc-9ccdfa3d3559">
