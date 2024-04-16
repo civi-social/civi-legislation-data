@@ -91,7 +91,7 @@ Enable APIs and services
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0ac39e1-2635-4f09-92c0-763ac54bb411)
 
   
-Find the Google Sheets API and click enable, and then create your API credentials (note: It's okay for the key to be left as unrestricted)
+Enable the Google Sheets API, then create your API credentials (note: It's okay for the key to be left as unrestricted)
 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
