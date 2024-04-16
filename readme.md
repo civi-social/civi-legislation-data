@@ -22,38 +22,24 @@ Navigate into the project folder by running `cd civi-legislation-data`
 <img width="934" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f6a0c749-204e-4b54-b12f-0d3fcc90fd3d">
 
 
-Once in the project directory run `code .` in the terminal to open the project
+Once in the project directory run `code .` (for VScode users) to open the project
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/8d94962c-1f02-4dc4-885b-b25bb00d4138)
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/40455420-2823-42c5-95db-9e9b21e39d15)
 
+Alternatively, you can open the project from the GUI
 
-
-
-
-
-
-1. Launch the project from the terminal using
- 
-3. Inside the new project navigate to the root directory
+<img width="954" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/dce76b3d-9a2c-4f86-ac46-13f3070bfbb3">
 
 
-
-
-2. Drag and drop the folder into your code editor. 
-
-## 3. Load dependencies
-
-1. Inside the root directory, create a new branch
-`git checkout -b new_branch_test`
+Inside the project, create a new branch by running `git checkout -b new_branch_test`
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/0f67f687-b06d-47b0-bea7-9d15319e0c48)
 
-2. confirm you're in the new branch by running `git branch`
+Confirm you're in the new branch by running `git branch`
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/fa04e36a-115d-4633-956c-e9150419dc3f)
 
-
-3. Next, in the terminal run `npm install` -  if this was successful the node-modules folder should now appear in your folder.
+Next, run `npm install`. This installs the dependencies for the project. You'll know this command was successful if the node-modules folder is now visible
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cfa6c46e-9c70-4920-a744-a8cf90f64596)
 
