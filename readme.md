@@ -1,19 +1,16 @@
 # Getting Started
 
-This document provides a brief overview of how to get started with WindyCivi's backend repo.
+This document provides an overview of how to get started with the backend repository.
 
 In the terminal - navigate to the folder where you'd like this project stored. For the purposes of demonstration, we'll store this project in the **documents** folder by running `cd documents`. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/bc3d0e9f-0317-41b6-8c93-0ee0fd482cc7)
 
-
-
-## 2. Clone the repository
 In the documents folder enter
-`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`into your folder
+`git clone -b update-readme-with-codebase-access https://github.com/civi-social/civi-legislation-data.git`in the terminal
 
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cffd1fe7-625c-414d-8545-3a8094595dde)
 
-<img width="760" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/e64461df-e4d1-4381-b475-2f6534d5bb7a">
 
 The project should now appear in the folder you specified
 
