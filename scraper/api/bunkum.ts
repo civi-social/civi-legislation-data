@@ -29,13 +29,13 @@ const getUrlForVoteEvents = (bill_ids: string[]) => {
 
 /**
  * Fetching in chunks because bunkum has API limits.
- * Another thing to note: bunkum will slow down get requests over frequents requests.
+ * Another thing to note: bunkum will slow down get requests over frequent requests.
  */
 const fetchBillsInChunks = async () => {
   const chunkSize = 145;
   let offset = 0;
   let done = false;
-  let totalResults: Bill[] = [];
+  const uniqueBills: Record<string, Bill> = {};
 
   console.log("Fetching Chicago data in chunks");
 
@@ -64,7 +64,10 @@ const fetchBillsInChunks = async () => {
     const data = await response.json();
     const chunk = data.rows as Bill[];
 
-    totalResults = totalResults.concat(chunk);
+    // store each bill in uniqueBills, overwriting existing bills with the same id
+    chunk.forEach((bill) => {
+      uniqueBills[bill.id] = bill;
+    });
 
     // Fetch sponsors for current chunk
     const sponsorRes = await fetch(
@@ -91,7 +94,9 @@ const fetchBillsInChunks = async () => {
     offset += chunkSize;
 
     console.log(
-      `Fetched ${chunkSize} bills. Total bills: ${totalResults.length}`
+      `Fetched ${chunkSize} bills. Total unique bills: ${
+        Object.keys(uniqueBills).length
+      }`
     );
 
     if (chunk.length < chunkSize) {
@@ -100,10 +105,12 @@ const fetchBillsInChunks = async () => {
   }
 
   console.log(
-    `Done fetching Chicago Bills. Total bills: ${totalResults.length}`
+    `Done fetching Chicago Bills. Total bills: ${
+      Object.keys(uniqueBills).length
+    }`
   );
 
-  return totalResults;
+  return Object.values(uniqueBills);
 };
 
 type Sponsor = {
@@ -164,7 +171,7 @@ async function getChicagoBills() {
       // We ignore the error
     }
 
-    return {
+    const bills: CiviLegislationData = {
       id: bill.id,
       title: bill.title,
       tags: JSON.parse(bill.extras).topics,
@@ -186,7 +193,8 @@ async function getChicagoBills() {
       identifier: bill.identifier,
       link: `https://chicago.councilmatic.org/legislation/${bill.identifier}`,
       url: `https://chicago.councilmatic.org/legislation/${bill.identifier}`,
-    } as CiviLegislationData;
+    };
+    return bills;
   });
 
   return results;
