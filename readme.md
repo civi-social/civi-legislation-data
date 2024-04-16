@@ -33,7 +33,7 @@ Alternatively, you can drag and drop the project into your code editor
   &nbsp;
   &nbsp;
   
-Inside the project, create a new branch by running `git checkout -b YOUR_BRANCH_NAME` - ** make sure to change the branch name after copying the command**
+Inside the project, create a new branch by running `git checkout -b YOUR_BRANCH_NAME` - ** make sure to change the branch name from `YOUR_BRANCH_NAME` to something you understand.
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/33e62b00-debd-4405-aba2-3c9a91833d2a)
 
@@ -52,7 +52,7 @@ Sign up for a [Legiscan account](https://legiscan.com/) to obtain an API key
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/e0e801c3-cef2-4df9-b6ff-a7a4327d7c3f)
 
 
-After you've created an API key, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This fetches all the current bills from LegiScan.
+Once your API key is generated, run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape`. This fetches all the current bills from LegiScan.
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/08b51061-3e7f-4568-8565-088b1b912341)
 
@@ -66,7 +66,7 @@ Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) and 
 
 THE NEXT STEP IS CRITICALLY IMPORTANT!
 
-After you've obtained your secret key, run the EXACT command of `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` (ensuring to replace `your-api-key` with your actual API key)  This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
+After you've obtained your secret key, run `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` (ensuring to replace `your-api-key` with your actual API key)  This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
 
@@ -84,7 +84,7 @@ Once your project is active select "APIs and Services"
   
   
   
-Enable the APIs and services 
+Enable APIs and services 
 
 
       
@@ -96,7 +96,7 @@ Enable the Google Sheets API, then create your API credentials (note: It's okay 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
 
-Once you've obtained your API key navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki`
+Once you've obtained your API key navigate back to your terminal and run `GOOGLE_SPREADSHEET_API_KEY={YOUR_API_KEY} npm run wiki` (ensuring to replace `YOUR_API_KEY` with your actual API key) 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/e9c4c2ce-885b-478d-8ce3-7e1d3306deff)
 
@@ -111,7 +111,7 @@ Congrats you're now ready to contribute!
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Note
-To visit the Google sheet where manual updates are occurring [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
+To visit the Google sheet of manual interpretations [go here](https://sheets.googleapis.com/v4/spreadsheets/1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ/values/${range}?key=${apiKey}) make sure you add your API key to the end of the URL.  
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/7ae52ae2-12e6-46a8-a8ef-f0e4b503e1f9)
 
