@@ -46,15 +46,14 @@ To launch the project directly either
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/0f67f687-b06d-47b0-bea7-9d15319e0c48)
 
 2. confirm you're in the new branch by running `git branch`
+
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/78e759f8-0bbe-4eb5-980e-76ded2b008a9)
 
-
-
-1. Next run `npm install` -  this reads the package.json file and install the dependencies and node-modules should now appear in your file. devdependencies specified in the file
+3. Next, in the terminal run `npm install` -  this reads the package.json file and install the dependencies and node-modules should now appear in your file. devdependencies specified in the file
 
 <img width="74" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/60b4555d-f315-4b2d-ae15-75be0a23cb27">
 
-2. Login to Legiscan (to sign up for an api key) to get your api key
+4. Login to Legiscan (to sign up for an api key) to get your api key
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0154a46-8781-4753-b581-0ae0afe93af7)
 
 
