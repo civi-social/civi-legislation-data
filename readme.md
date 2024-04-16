@@ -2,7 +2,6 @@
 
 The civi-legislation-data repository contains the code for the backend data for our project.
 
-## Navigate to Folder
 1. Open your code editor
 2. Navigate to the directory you'd like the project to be stored on your computer. For this example, we'll store the project in the documents folder 
 3. `cd Documents`
