@@ -52,20 +52,21 @@ To launch the project directly either
 
 3. Next, in the terminal run `npm install` -  if this was successful the node-modules folder should now appear in your folder.
 
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/d08cf507-ec58-4584-aeb6-0f45618e6458)
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/cfa6c46e-9c70-4920-a744-a8cf90f64596)
+
 
 ### Get Legiscan API Key
-Next, Login to Legiscan to sign up for an API key
+Sign up for an account at Legiscan.com [Legiscan](https://legiscan.com/) to obtain an API key
+
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c0154a46-8781-4753-b581-0ae0afe93af7)
 
-You can create an API key from the **My account** or **LegiscanAPI** key links in the sidebar
-<img width="1434" alt="SCR-20240407-mcrz" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/6252abd4-9964-44bc-8a6b-7c77ea2e3574">
 
-Navigate back to terminal and run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` 
+
+
+### Once you have your API Key
+In the terminal run `LEGISCAN_API_KEY={YOUR_API_KEY} npm run scrape` 
 This passes an API key into the codebase that......is used to validate that the code should have access
 
-How do you know this step finished properly? - I got this error Message....
-![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/5ca0bf31-fae0-474a-b979-b2b32b47faad)
 
 
 
@@ -111,4 +112,17 @@ If successful, you should see Check `dist_legislation` for files in your termina
 
 Congrats you're now ready to contribute!
 
+
+
+
+
+
+
+
+You can create an API key from the **My account** or **LegiscanAPI** key links in the sidebar
+<img width="1434" alt="SCR-20240407-mcrz" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/6252abd4-9964-44bc-8a6b-7c77ea2e3574">
+
+
+How do you know this step finished properly? - I got this error Message....
+![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/5ca0bf31-fae0-474a-b979-b2b32b47faad)
 
