@@ -94,13 +94,14 @@ Navigate to the [Google Cloud Console](https://console.cloud.google.com/projectc
 2. Once your project is active select "APIs and Services".
 <img width="1433" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/f9616b76-29fc-43bc-a59c-44bcd3e7c177">
    
-Enable APIs and services
+## Enable APIs and services
+
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/ff50ce39-7407-411a-9a7b-db08abb7cfd8)
 
-Select the Google Sheets API and click "enable"
+## Select the Google Sheets API and click "enable"
 <img width="914" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/61845c04-c58e-4328-98de-8d8bea9d8f0e">
 
-Create credentials and generate a new API key 
+## Create credentials and generate a new API key 
 <img width="1420" alt="image" src="https://github.com/civi-social/civi-legislation-data/assets/91917755/ad824619-23f2-4930-a956-1c7b135030a8">
 
 
