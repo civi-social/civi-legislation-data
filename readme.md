@@ -66,7 +66,7 @@ Sign up for an [OpenAI account](https://platform.openai.com/docs/overview ) and 
 
 THE NEXT STEP IS CRITICALLY IMPORTANT!
 
-After you've obtained your secret key, run `OPEN_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` (ensuring to replace `your-api-key` with your actual API key)  This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
+After you've obtained your secret key, run `OPENAI_API_KEY=your-api-key LOCALE=usa BILL="HB5" npm run gpt-one` (ensuring to replace `your-api-key` with your actual API key)  This is critically important to ensure that OPENAI only translates one of the bills instead of the entire list of bills which is expensive. 
 
 ![image](https://github.com/civi-social/civi-legislation-data/assets/91917755/c7613854-3abb-437c-a544-dd8dbe9878b6)
 

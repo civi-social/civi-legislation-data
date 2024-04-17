@@ -61,9 +61,9 @@ type Gpt35TurboReturn = {
 };
 
 export const postTextCompletions = async (content: string) => {
-  const OPEN_API_KEY = process.env.OPEN_API_KEY;
-  if (!process.env.OPEN_API_KEY) {
-    console.error("Need to provide OPEN_API_KEY as environment var");
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  if (!process.env.OPENAI_API_KEY) {
+    console.error("Need to provide OPENAI_API_KEY as environment var");
     process.exit(0);
   }
   try {
@@ -82,7 +82,7 @@ export const postTextCompletions = async (content: string) => {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${OPEN_API_KEY}`,
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
         },
       }
     );
