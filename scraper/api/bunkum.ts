@@ -42,20 +42,20 @@ const fetchBillsInChunks = async () => {
   // starting from the first row of the bill table we get 100 results at a time
   while (!done) {
     const query = `
-      SELECT b.*, ba.classification AS action_classification, ba.date AS action_date
+      SELECT b.*, 
+        ( SELECT json_group_array(
+            json_object(
+              'date', date, 
+              'classification', json_extract(classification, '$[0]')
+            )
+          ) as actions 
+          FROM billaction as ba 
+          WHERE ba.bill_id == b.id 
+          ORDER BY 'order'
+        ) as actions
       FROM bill AS b
-      JOIN (
-          SELECT bill_id, classification, date
-          FROM billaction
-          WHERE (bill_id, date) IN (
-              SELECT bill_id, MAX(date) AS max_date
-              FROM billaction
-              GROUP BY bill_id
-          )
-      ) AS ba ON b.id = ba.bill_id
-      CROSS JOIN json_each(b.classification) AS c
       WHERE json_extract(b.extras, '$.routine') = false
-        AND b.updated_at >= date('now', '-6 months')
+      AND b.updated_at >= date('now', '-6 months')
       ORDER BY b.updated_at DESC
       LIMIT ${chunkSize} OFFSET ${offset};
     `;
