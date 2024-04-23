@@ -42,20 +42,20 @@ const fetchBillsInChunks = async () => {
   // starting from the first row of the bill table we get 100 results at a time
   while (!done) {
     const query = `
-      SELECT b.*, ba.classification AS action_classification, ba.date AS action_date
+      SELECT b.*, 
+        ( SELECT json_group_array(
+            json_object(
+              'date', date, 
+              'classification', json_extract(classification, '$[0]')
+            )
+          ) as actions 
+          FROM billaction as ba 
+          WHERE ba.bill_id == b.id 
+          ORDER BY 'order'
+        ) as actions
       FROM bill AS b
-      JOIN (
-          SELECT bill_id, classification, date
-          FROM billaction
-          WHERE (bill_id, date) IN (
-              SELECT bill_id, MAX(date) AS max_date
-              FROM billaction
-              GROUP BY bill_id
-          )
-      ) AS ba ON b.id = ba.bill_id
-      CROSS JOIN json_each(b.classification) AS c
       WHERE json_extract(b.extras, '$.routine') = false
-        AND b.updated_at >= date('now', '-6 months')
+      AND b.updated_at >= date('now', '-6 months')
       ORDER BY b.updated_at DESC
       LIMIT ${chunkSize} OFFSET ${offset};
     `;
@@ -124,8 +124,7 @@ type Bill = {
   id: string;
   title: string;
   extras: string; // is stringified json
-  action_classification: string;
-  action_date: string;
+  actions: string;
   classification: string;
   identifier: string;
   link: string;
@@ -144,17 +143,20 @@ async function getChicagoBills() {
   const results = billsRes.map((bill) => {
     //can status be set to an array?
     let status = ["Unknown"];
+    const actions = JSON.parse(bill.actions)
+    const last_action = actions.at(-1)
+    const action_date = last_action.date
     const recentVote = bill.voteHistory[bill.voteHistory.length - 1];
     // setting status as value in voteHistory.motion_classification if there is one
     if (recentVote && recentVote.motion_classification) {
       status = recentVote.motion_classification;
-    } else if (isBefore(new Date(bill.action_date), date180DaysAgo)) {
+    } else if (isBefore(new Date(action_date), date180DaysAgo)) {
       status = ["Stale"];
     } else if (
-      typeof bill.action_classification === "string" &&
-      bill.action_classification.length > 0
+      typeof last_action.classification === "string" &&
+      last_action.classification.length > 0
     ) {
-      status = JSON.parse(bill.action_classification);
+      status = last_action.classification;
     }
 
     let classification = "";
@@ -169,8 +171,8 @@ async function getChicagoBills() {
       title: bill.title,
       tags: JSON.parse(bill.extras).topics,
       status,
-      updated_at: bill.action_date,
-      statusDate: `${bill.action_date} - ${status}`,
+      updated_at: action_date,
+      statusDate: `${action_date} - ${status}`,
       sponsors: bill.sponsors.map((sponsor) => ({
         name: sponsor.name,
         person_id: sponsor.person_id,
