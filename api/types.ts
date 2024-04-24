@@ -22,8 +22,8 @@ export interface CiviLegislationData {
 // Type for the .gpt.json files
 export interface CiviGptLegislationData {
   [bill_id: string]: {
-    gpt_summary?: string;
-    gpt_tags?: string[];
+    gpt_summary: string;
+    gpt_tags: string[];
   };
 }
 

@@ -29,6 +29,10 @@ const generateGptSummaries = async (locale: Locales) => {
 
     if (isNotResolution) {
       skippedBillCount++;
+      legislationWithAi[legislation.id] = {
+        gpt_summary: "",
+        gpt_tags: [],
+      };
       continue;
     }
 
@@ -76,7 +80,7 @@ const generateGptSummaries = async (locale: Locales) => {
       console.log("using cached tags");
       legislationWithAi[legislation.id] = {
         ...(legislationWithAi[legislation.id] || {}),
-        gpt_tags: cachedGpt[legislation.id]?.gpt_tags,
+        gpt_tags: cachedGpt[legislation.id]?.gpt_tags || [],
       };
     } else {
       // pass a combo of the title and the description to open ai.
