@@ -3,6 +3,8 @@ import { CiviLegislationData } from "../../api";
 
 const date180DaysAgo = subDays(new Date(), 180);
 
+// Datamade and Bunkum Share the same URL params as database
+// const DB_URL = "https://puddle.bunkum.us/chicago_council-dd53412.json?sql=";
 const DB_URL = "https://puddle.datamade.us/chicago_council-dd53412.json?sql=";
 
 const createSQLUrl = (sql: string) => {
