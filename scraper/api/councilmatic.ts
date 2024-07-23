@@ -3,7 +3,7 @@ import { CiviLegislationData } from "../../api";
 
 const date180DaysAgo = subDays(new Date(), 180);
 
-const DB_URL = "https://puddle.bunkum.us/chicago_council-f475729.json?sql=";
+const DB_URL = "https://puddle.datamade.us/chicago_council-dd53412.json?sql=";
 
 const createSQLUrl = (sql: string) => {
   return `${DB_URL}${encodeURIComponent(sql)}`;
@@ -32,7 +32,7 @@ const getUrlForVoteEvents = (bill_ids: string[]) => {
  * Another thing to note: bunkum will slow down get requests over frequents requests.
  */
 const fetchBillsInChunks = async () => {
-  const chunkSize = 145;
+  const chunkSize = 130;
   let offset = 0;
   let done = false;
   let totalResults: Bill[] = [];
@@ -61,6 +61,7 @@ const fetchBillsInChunks = async () => {
     `;
 
     const response = await fetch(createSQLUrl(query));
+
     const data = await response.json();
     const chunk = data.rows as Bill[];
 
@@ -70,7 +71,16 @@ const fetchBillsInChunks = async () => {
     const sponsorRes = await fetch(
       getUrlForBillSponsors(chunk.map((bill) => bill.id))
     );
-    const sponsorsResultJson = await sponsorRes.json();
+
+    let sponsorsResultJson: any = {};
+    try {
+      sponsorsResultJson = await sponsorRes.json();
+    } catch (e) {
+      console.error("Error fetching sponsors", e);
+      console.log("ResponseText", sponsorRes.text());
+      process.exit(1);
+    }
+
     const sponsors = sponsorsResultJson.rows;
 
     // Fetch vote events for current chunk
@@ -138,14 +148,13 @@ type Bill = {
 
 async function getChicagoBills() {
   console.log("Getting Chicago Bills");
-  const billsRes = await fetchBillsInChunks();
-
+  const billsRes = (await fetchBillsInChunks()) || [];
   const results = billsRes.map((bill) => {
     //can status be set to an array?
     let status = ["Unknown"];
-    const actions = JSON.parse(bill.actions)
-    const last_action = actions.at(-1)
-    const action_date = last_action.date
+    const actions = JSON.parse(bill.actions);
+    const last_action = actions.at(-1);
+    const action_date = last_action.date;
     const recentVote = bill.voteHistory[bill.voteHistory.length - 1];
     // setting status as value in voteHistory.motion_classification if there is one
     if (recentVote && recentVote.motion_classification) {
@@ -196,6 +205,6 @@ async function getChicagoBills() {
   return results;
 }
 
-export const bunkum = {
+export const councilmatic = {
   getChicagoBills,
 };
