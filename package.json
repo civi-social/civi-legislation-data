@@ -2,7 +2,8 @@
   "name": "@civi/legislation-data",
   "version": "0.1.0",
   "scripts": {
-    "scrape": "npx ts-node scraper/run",
+    "pull-legiscan": "npx ts-node scraper/run-legiscan",
+    "pull-councilmatic": "npx ts-node scraper/run-councilmatic",
     "gpt": "npx ts-node gpt-summaries/run",
     "wiki": "npx ts-node wiki-summaries/run",
     "gpt-one": "npx ts-node gpt-summaries/gpt-one",
