@@ -120,12 +120,31 @@ const generateGptSummaries = async (locale: Locales) => {
 };
 
 const getLegislation = async (locale: Locales) => {
+  try {
   const jsonStr = fs.readFileSync(
     path.join(__dirname, `../dist_legislation/${locale}.legislation.json`),
     "utf8"
   );
   const legislations = JSON.parse(jsonStr) as CiviLegislationData[];
   return legislations;
+  } catch (e) {
+    console.log("local filesystem legislation data not found")
+  }
+
+  return getCachedLegislation(locale)
+};
+
+const getCachedLegislation = async (
+  locale: Locales
+): Promise<Partial<CiviLegislationData[]>> => {
+  try {
+    // Get previous data from current release in GH
+    const url = civiLegislationApi.getLegislationDataUrl(locale);
+    const cachedResult = await axios.get<CiviLegislationData[]>(url);
+    return cachedResult.data;
+  } catch {
+    return {};
+  }
 };
 
 const getCachedGpt = async (
