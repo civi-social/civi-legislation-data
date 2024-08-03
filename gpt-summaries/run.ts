@@ -143,7 +143,7 @@ const getCachedLegislation = async (
     const cachedResult = await axios.get<CiviLegislationData[]>(url);
     return cachedResult.data;
   } catch {
-    return {};
+    return [];
   }
 };
 
