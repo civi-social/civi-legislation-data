@@ -2,7 +2,7 @@ name: Save Summaries as JSON
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Run daily at midnight UTC
+    - cron: "0 4 * * *" # Run daily at midnight UTC
 
   # Allow manual running from Github Actions tab
   workflow_dispatch:
