@@ -42,13 +42,11 @@ jobs:
         env:
           GOOGLE_SPREADSHEET_API_KEY: ${{ secrets.GOOGLE_SPREADSHEET_API_KEY }}
         run: npm run wiki
-      - name: Update Nightly Release
-        uses: andelf/nightly-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: IsaacShelton/update-existing-release@v1.3.4
         with:
-          tag_name: nightly
-          name: "Nightly release of legislation $$"
-          prerelease: false
+          token: ${{secrets.GITHUB_TOKEN}}
+          release: "Nightly"
+          tag: "nightly"
+          replace: false
           files: |
             ./dist_legislation/*.json
