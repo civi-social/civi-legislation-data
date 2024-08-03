@@ -33,7 +33,8 @@ jobs:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
         run: npm run pull-legiscan
-      - uses: IsaacShelton/update-existing-release@v1.3.4
+      - name: Update Nightly Release
+        uses: IsaacShelton/update-existing-release@v1.3.4
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           release: "Nightly"
