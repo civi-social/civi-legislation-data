@@ -10,10 +10,6 @@ on:
       skip_legislation_cache:
         type: boolean
         description: Skip pulling from cache?
-      skip_gpt_cache:
-        type: string
-        description: Force run GPT? Set using locale name.
-
 jobs:
   update_chicago_legislation_data:
     runs-on: ubuntu-latest
@@ -32,3 +28,11 @@ jobs:
         env:
           SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
         run: npm run pull-councilmatic
+      - uses: IsaacShelton/update-existing-release@v1.3.4
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          release: "Nightly"
+          tag: "nightly"
+          replace: false
+          files: |
+            ./dist_legislation/*.json
