@@ -14,8 +14,6 @@ const scrapeLegislation = async () => {
   }
 
   let legislation: CiviLegislationData[] = [];
-  legislation = await councilmatic.getChicagoBills();
-  writeJSON("chicago.legislation", legislation);
   legislation = await il.getBills({ skipCache });
   writeJSON("illinois.legislation", legislation);
   legislation = await usa.getBills({ skipCache });
