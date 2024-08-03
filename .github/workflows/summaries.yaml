@@ -1,0 +1,44 @@
+name: Save Summaries as JSON
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Run daily at midnight UTC
+
+  # Allow manual running from Github Actions tab
+  workflow_dispatch:
+    inputs:
+      skip_gpt_cache:
+        type: string
+        description: Force run GPT? Set using locale name.
+
+jobs:
+  update_summaries:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+      - name: NPM Install
+        run: npm i
+      - name: Run GPT
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SKIP_GPT_CACHE: ${{inputs.skip_gpt_cache}}
+        run: npm run gpt
+      - name: Run Wiki
+        env:
+          GOOGLE_SPREADSHEET_API_KEY: ${{ secrets.GOOGLE_SPREADSHEET_API_KEY }}
+        run: npm run wiki
+      - uses: IsaacShelton/update-existing-release@v1.3.4
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          release: "Nightly"
+          tag: "nightly"
+          replace: false
+          files: |
+            ./dist_legislation/*.json
