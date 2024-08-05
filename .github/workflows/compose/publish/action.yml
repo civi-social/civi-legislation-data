@@ -11,12 +11,12 @@ runs:
   using: "composite"
   steps:
     - name: List Files On Dry Run
-      if: ${{ inputs.dry-run == true }}
+      # if: ${{ inputs.dry-run == true }}
       shell: bash
       run: echo "Available files" && ls -l ./dist_legislation
     - name: Update Nightly Release
       uses: andelf/nightly-release@v1
-      if: ${{ inputs.dry-run == false }}
+      # if: ${{ inputs.dry-run == false }}
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       with:
