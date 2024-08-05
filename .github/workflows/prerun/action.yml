@@ -1,0 +1,17 @@
+name: Pre run
+description: "NPM Install and retrieve current release"
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+    - name: NPM Install
+      run: npm i
+    - name: Retrieve Current Release
+      run: npm run retrieve-current-release
