@@ -1,4 +1,4 @@
-name: Update State & Federal Legislation
+name: Update USA Legislation
 
 on:
   schedule:
@@ -12,19 +12,13 @@ on:
         description: Skip Cache - Force update all legislation?
 
 jobs:
-  update_state_federal_legislation:
+  update_usa_legislation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Pre Run
         uses: ./.github/workflows/compose/pre-run
 
-      - name: Update Illinois
-        env:
-          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip_cache}}
-          LOCALE: "illinois"
-        run: npm run scrape
       - name: Update USA
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
