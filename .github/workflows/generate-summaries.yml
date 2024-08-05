@@ -7,13 +7,13 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip-cache:
+      skip_cache:
         type: string
         description: Skip Cache - Force update all summaries?
       locale:
         type: string
         description: Run only on 1 locale
-      dry-run:
+      dry_run:
         type: boolean
         description: Dry Run - Don't publish release?
 
@@ -27,7 +27,7 @@ jobs:
       - name: Run GPT
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip-cache}}
+          SKIP_CACHE: ${{inputs.skip_cache}}
           LOCALE: ${{inputs.locale}}
         run: npm run gpt
       - name: Run Wiki
@@ -37,5 +37,5 @@ jobs:
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:
-          dry-run: ${{inputs.dry-run}}
+          dry_run: ${{inputs.dry_run}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
