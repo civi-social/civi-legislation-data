@@ -10,6 +10,8 @@ runs:
         cache: "npm"
         cache-dependency-path: package-lock.json
     - name: NPM Install
+      shell: bash
       run: npm i
     - name: Retrieve Current Release
+      shell: bash
       run: npm run retrieve-current-release
