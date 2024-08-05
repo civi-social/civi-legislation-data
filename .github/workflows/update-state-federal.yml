@@ -12,7 +12,6 @@ on:
         description: Skip Cache - Force update all legislation?
       dry_run:
         type: boolean
-        default: false
         description: Dry Run - Don't publish release?
 
 jobs:
