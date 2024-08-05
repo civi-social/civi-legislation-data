@@ -10,6 +10,9 @@ on:
       skip_cache:
         type: boolean
         description: Skip pulling from cache?
+      dry-run:
+        type: boolean
+        description: Don't publish release?
 
 jobs:
   update_state_federal_legislation_data:
@@ -23,13 +26,7 @@ jobs:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
         run: npm run pull-legiscan
-      # - name: Update Nightly Release
-      #   uses: andelf/nightly-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: nightly
-      #     name: "Nightly release of legislation $$"
-      #     prerelease: false
-      #     files: |
-      #       ./dist_legislation/*.json
+      - name: Publish
+        uses: ./.github/workflows/compose/publish
+        with:
+          dry-run: ${{inputs.dry_run}}
