@@ -31,6 +31,7 @@ jobs:
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
+        run: npm run pull-legiscan
       - name: Update Nightly Release
         uses: andelf/nightly-release@v1
         env:
