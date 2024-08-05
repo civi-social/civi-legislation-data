@@ -1,6 +1,8 @@
 import axios, { AxiosError } from "axios";
 import { writeJSON } from "../fs/write-file";
 import { CiviWikiLegislationData } from "../api";
+import { getGoogleSheetAPIKey } from "../config/env";
+import { SHEET, SPREADSHEET_ID } from "./constants";
 
 type StringKeysOfCiviGoogleSheet = keyof Omit<CiviWikiLegislationData, "tags">;
 
@@ -90,14 +92,12 @@ const parseCiviGoogleSheetJson = (
 const runGoogleSheet = async () => {
   try {
     // Your Google Sheets ID and API key
-    const spreadsheetId = "1dEHnMY7KZ2kyQL5lraMNMerTdp3TP37JlF63eJMSXZQ";
-    const apiKey = process.env.GOOGLE_SPREADSHEET_API_KEY;
-
-    // The range of the data you want to retrieve
-    const range = "Sheet1"; // Change it according to your sheet
-
+    const spreadsheetId = SPREADSHEET_ID;
+    const range = SHEET; // The range of the sheet you want to get
+    const apiKey = getGoogleSheetAPIKey();
     // Google Sheets API URL
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
     const res = await axios.get(url);
     // Converting this C
     const json = csvToJson(res.data.values);

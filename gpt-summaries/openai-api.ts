@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import { getOpenAIAPIKey } from "../config/env";
 
 export const sleep = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -61,11 +62,7 @@ type Gpt35TurboReturn = {
 };
 
 export const postTextCompletions = async (content: string) => {
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-  if (!process.env.OPENAI_API_KEY) {
-    console.error("Need to provide OPENAI_API_KEY as environment var");
-    process.exit(0);
-  }
+  const OPENAI_API_KEY = getOpenAIAPIKey();
   try {
     const summary = await postWithRetry<Gpt35TurboReturn>(
       "https://api.openai.com/v1/chat/completions",
