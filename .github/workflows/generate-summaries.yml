@@ -11,7 +11,7 @@ on:
         type: string
         description: Run only on 1 locale
       skip_cache:
-        type: string
+        type: boolean
         description: Skip Cache - Force update all summaries?
 
 jobs:
