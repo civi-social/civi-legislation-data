@@ -1,9 +1,6 @@
 name: Publish Release
 description: "Publish current release"
 inputs:
-  dry-run:
-    description: "Don't publish release"
-    default: false
   GITHUB_TOKEN:
     description: "Github Token"
     required: true
@@ -11,12 +8,10 @@ runs:
   using: "composite"
   steps:
     - name: List Files On Dry Run
-      if: ${{ inputs.dry-run == true }}
       shell: bash
-      run: ls -l ./dist_legislation/*.json
+      run: echo "Available files" && ls ./dist_legislation
     - name: Update Nightly Release
       uses: andelf/nightly-release@v1
-      if: ${{ inputs.dry-run == false }}
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       with:

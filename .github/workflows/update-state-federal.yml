@@ -7,13 +7,9 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip-cache:
+      skip_cache:
         type: boolean
         description: Skip Cache - Force update all legislation?
-      dry-run:
-        type: boolean
-        default: false
-        description: Dry Run - Don't publish release?
 
 jobs:
   update_state_federal_legislation:
@@ -22,20 +18,21 @@ jobs:
       - uses: actions/checkout@v4
       - name: Pre Run
         uses: ./.github/workflows/compose/pre-run
+
       - name: Update Illinois
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip-cache}}
+          SKIP_CACHE: ${{inputs.skip_cache}}
           LOCALE: "illinois"
         run: npm run scrape
       - name: Update USA
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip-cache}}
+          SKIP_CACHE: ${{inputs.skip_cache}}
           LOCALE: "usa"
         run: npm run scrape
+
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:
-          dry-run: ${{inputs.dry-run}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
