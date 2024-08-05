@@ -16,4 +16,4 @@ runs:
     # current release so that we update the release, we have all the files.
     - name: Retrieve Current Release
       shell: bash
-      run: npm run retrieve-current-release
+      run: npm run get-cache
