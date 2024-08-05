@@ -2,12 +2,10 @@
   "name": "@civi/legislation-data",
   "version": "0.1.0",
   "scripts": {
+    "get-cache": "npx ts-node cache-grabber/run",
     "scrape": "npx ts-node scraper/run",
-    "pull-legiscan": "npx ts-node scraper/run-legiscan",
-    "pull-councilmatic": "npx ts-node scraper/run-councilmatic",
     "gpt": "npx ts-node gpt-summaries/run",
     "wiki": "npx ts-node wiki-summaries/run",
-    "gpt-one": "npx ts-node gpt-summaries/gpt-one",
     "postinstall": "tsc api/*.ts --outDir dist_api --declaration --declarationMap --sourceMap"
   },
   "main": "dist_api/index.js",

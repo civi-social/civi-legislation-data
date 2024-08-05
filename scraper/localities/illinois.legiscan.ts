@@ -1,5 +1,5 @@
 import { CiviLegislationData } from "../../api/types";
-import { getCiviLegislationBills } from "../api/legiscan";
+import { getCiviLegislationBills } from "../sources/legiscan";
 import { filterMasterList, legiscanToCivi } from "./illinois.selector";
 
 export const getBills = async ({

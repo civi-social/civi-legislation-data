@@ -1,25 +1,17 @@
-import type { CiviLegislationData } from "../api/types";
-import { councilmatic } from "./api/councilmatic";
-import * as il from "./localities/illinois.legiscan";
-import * as usa from "./localities/usa.legiscan";
-import { writeJSON } from "../fs/write-file";
+import { forEachLocale } from "../api/utils";
+import { getLocale, getShouldSkipCache } from "../config/env";
+import { writeLegislationJSON } from "../fs/write-file";
+import { api } from "./api";
 
 const scrapeLegislation = async () => {
-  const skipCache =
-    process.env.SKIP_LEGISLATION_CACHE === "true" ||
-    process.env.SKIP_LEGISLATION_CACHE === "1";
+  const skipCache = getShouldSkipCache();
+  const locale = getLocale();
 
-  if (skipCache) {
-    console.info("skipping cached data.");
-  }
-
-  let legislation: CiviLegislationData[] = [];
-  legislation = await councilmatic.getChicagoBills();
-  writeJSON("chicago.legislation", legislation);
-  legislation = await il.getBills({ skipCache });
-  writeJSON("illinois.legislation", legislation);
-  legislation = await usa.getBills({ skipCache });
-  writeJSON("usa.legislation", legislation);
+  forEachLocale(async (locale) => {
+    console.info("scraping for locale:", locale);
+    const legislation = await api[locale]({ skipCache });
+    writeLegislationJSON(locale, legislation);
+  }, locale);
 };
 
 scrapeLegislation();

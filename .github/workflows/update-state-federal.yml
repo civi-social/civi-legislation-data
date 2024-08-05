@@ -1,39 +1,39 @@
-name: Generate Summaries
+name: Update State & Federal Legislation
 
 on:
-  # schedule:
-  #  - cron: "0 4 * * *" # Run daily at midnight UTC
+  #  schedule:
+  #    - cron: "0 0 * * *" # Run daily at midnight UTC
 
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
       skip-cache:
-        type: string
-        description: Skip Cache - Force update all summaries?
-      locale:
-        type: string
-        description: Run only on 1 locale
+        type: boolean
+        description: Skip Cache - Force update all legislation?
       dry-run:
         type: boolean
         default: false
         description: Dry Run - Don't publish release?
+
 jobs:
-  update_summaries:
+  update_state_federal_legislation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Pre Run
         uses: ./.github/workflows/compose/pre-run
-      - name: Run GPT
+      - name: Update Illinois
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_CACHE: ${{inputs.skip-cache}}
-          LOCALE: ${{inputs.locale}}
-        run: npm run gpt
-      - name: Run Wiki
+          LOCALE: "illinois"
+        run: npm run scrape
+      - name: Update USA
         env:
-          GOOGLE_SPREADSHEET_API_KEY: ${{ secrets.GOOGLE_SPREADSHEET_API_KEY }}
-        run: npm run wiki
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          SKIP_CACHE: ${{inputs.skip-cache}}
+          LOCALE: "usa"
+        run: npm run scrape
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:

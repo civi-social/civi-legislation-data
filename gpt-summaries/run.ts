@@ -1,19 +1,21 @@
-import axios from "axios";
-import fs from "fs";
-import path from "path";
-import {
-  CiviGptLegislationData,
-  civiLegislationApi,
-  CiviLegislationData,
-  locales,
-  Locales,
-} from "../api";
-import { writeJSON } from "../fs/write-file";
+import { CiviGptLegislationData, Locales } from "../api";
+import { forEachLocale } from "../api/utils";
+import { getCachedGpt, getCachedLegislation } from "../cache-grabber/get";
+import { getLocale, getShouldSkipCache } from "../config/env";
+import { writeGptJSON } from "../fs/write-file";
 import { categorizeText, summarizeText } from "./prompts";
 
-const generateGptSummaries = async (locale: Locales) => {
+const generateGptSummaries = async (locale: Locales, billId?: string) => {
   const cachedGpt = await getCachedGpt(locale);
-  const legislations = await getLegislation(locale);
+  let legislations = await getCachedLegislation(locale);
+
+  // To run on a single bill
+  if (billId) {
+    legislations = legislations.filter((bill) => bill.id === billId);
+    if (legislations.length === 0) {
+      throw new Error("legislation not found");
+    }
+  }
 
   // JSON to save
   const legislationWithAi = {} as CiviGptLegislationData;
@@ -39,7 +41,7 @@ const generateGptSummaries = async (locale: Locales) => {
     console.log("\n\n\n");
     console.log("summarizing legislation", legislation.id, legislation.title);
 
-    const shouldSkipCache = process.env.SKIP_GPT_CACHE === locale;
+    const shouldSkipCache = getShouldSkipCache();
     const cachedSummary = cachedGpt[legislation.id]?.gpt_summary;
     const cachedTags = cachedGpt[legislation.id]?.gpt_tags;
     const cachedTagsExist = Array.isArray(cachedTags) && cachedTags.length > 0;
@@ -116,55 +118,16 @@ const generateGptSummaries = async (locale: Locales) => {
     );
   }
 
-  writeJSON(`${locale}.legislation.gpt`, legislationWithAi);
-};
-
-const getLegislation = async (locale: Locales) => {
-  try {
-  const jsonStr = fs.readFileSync(
-    path.join(__dirname, `../dist_legislation/${locale}.legislation.json`),
-    "utf8"
-  );
-  const legislations = JSON.parse(jsonStr) as CiviLegislationData[];
-  return legislations;
-  } catch (e) {
-    console.log("local filesystem legislation data not found")
-  }
-
-  return getCachedLegislation(locale)
-};
-
-const getCachedLegislation = async (
-  locale: Locales
-): Promise<Partial<CiviLegislationData[]>> => {
-  try {
-    // Get previous data from current release in GH
-    const url = civiLegislationApi.getLegislationDataUrl(locale);
-    const cachedResult = await axios.get<CiviLegislationData[]>(url);
-    return cachedResult.data;
-  } catch {
-    return [];
-  }
-};
-
-const getCachedGpt = async (
-  locale: Locales
-): Promise<Partial<CiviGptLegislationData>> => {
-  try {
-    // Get previous data from current release in GH
-    const url = civiLegislationApi.getGptLegislationUrl(locale);
-    const cachedResult = await axios.get<CiviGptLegislationData>(url);
-    return cachedResult.data;
-  } catch {
-    return {};
-  }
+  writeGptJSON(locale, legislationWithAi);
 };
 
 const runGpt = async () => {
   try {
-    for (const locale of locales) {
+    const locale = getLocale();
+    forEachLocale(async (locale) => {
+      console.info("running gpt for locale:", locale);
       await generateGptSummaries(locale);
-    }
+    }, locale);
   } catch (e) {
     console.log("error happened, but exiting gracefully");
     console.log(e);

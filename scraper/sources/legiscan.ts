@@ -1,6 +1,6 @@
 import axios from "axios";
-import { civiLegislationApi, CiviLegislationData, Locales } from "../../api";
-import { LEGISCAN_API_KEY } from "../config";
+import { CiviLegislationData, Locales } from "../../api";
+import { getLegiscanAPIKey } from "../../config/env";
 import {
   GetBillByIdResponse,
   GetSessionResult,
@@ -8,12 +8,14 @@ import {
   LegiscanMasterListBill,
   LegiscanMasterListResult,
 } from "./legiscan.types";
+import { getCachedLegislation } from "../../cache-grabber/get";
 
 type LegiscanLocales = Exclude<Locales, "chicago">;
 
 const getMasterList = async (
   sessionId: string
 ): Promise<LegiscanMasterListBill[]> => {
+  const LEGISCAN_API_KEY = getLegiscanAPIKey();
   console.log("Get Master List", sessionId);
   try {
     const results = await axios.get<LegiscanMasterListResult>(
@@ -47,6 +49,7 @@ const getBillDetailsFromMasterList = async (
 };
 
 const getBillById = async (id: string): Promise<LegiscanBillById> => {
+  const LEGISCAN_API_KEY = getLegiscanAPIKey();
   console.log("Get Bill By ID:", id);
   try {
     const results = await axios.get<GetBillByIdResponse>(
@@ -59,6 +62,7 @@ const getBillById = async (id: string): Promise<LegiscanBillById> => {
 };
 
 const getLatestSessionId = async (locale: LegiscanLocales): Promise<string> => {
+  const LEGISCAN_API_KEY = getLegiscanAPIKey();
   console.log("Get Session IDs for locale", locale);
   const stateLocaleMap: Record<LegiscanLocales, string> = {
     usa: "US",
@@ -112,7 +116,6 @@ export const getCiviLegislationBills = async ({
     if (skipCache) {
       cachedLegislation = [];
     } else {
-      // Get previous data from current release in GH
       cachedLegislation = await getCachedLegislation(locale);
     }
 
@@ -145,19 +148,6 @@ export const getCiviLegislationBills = async ({
     return civiLegislationData;
   } catch (e) {
     return Promise.reject(e);
-  }
-};
-
-const getCachedLegislation = async (
-  locale: Locales
-): Promise<CiviLegislationData[]> => {
-  try {
-    // Get previous data from current release in GH
-    const url = civiLegislationApi.getLegislationDataUrl(locale);
-    const cachedResult = await axios.get<CiviLegislationData[]>(url);
-    return cachedResult.data;
-  } catch {
-    return [];
   }
 };
 

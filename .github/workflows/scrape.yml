@@ -1,8 +1,8 @@
 name: Save Civi Formatted Legislation as JSON
 
 on:
-  schedule:
-    - cron: "0 0 * * *" # Run daily at midnight UTC
+  # schedule:
+  #   - cron: "0 0 * * *" # Run daily at midnight UTC
 
   # Allow manual running from Github Actions tab
   workflow_dispatch:

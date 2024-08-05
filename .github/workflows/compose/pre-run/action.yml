@@ -1,0 +1,19 @@
+name: Pre run
+description: "NPM Install and retrieve current release"
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+    - name: NPM Install
+      shell: bash
+      run: npm i
+    # Since each job may only update a subset of files, we pull the
+    # current release so that we update the release, we have all the files.
+    - name: Retrieve Current Release
+      shell: bash
+      run: npm run retrieve-current-release
