@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node
-        uses: ./prerun
+        uses: ./gh-action-composites/prerun
       - name: Run Scraper
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
