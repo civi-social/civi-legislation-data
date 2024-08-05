@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CiviLegislationData, Locales } from "../../api";
-import { LEGISCAN_API_KEY } from "../config";
+import { getLegiscanAPIKey } from "../../config/env";
 import {
   GetBillByIdResponse,
   GetSessionResult,
@@ -15,6 +15,7 @@ type LegiscanLocales = Exclude<Locales, "chicago">;
 const getMasterList = async (
   sessionId: string
 ): Promise<LegiscanMasterListBill[]> => {
+  const LEGISCAN_API_KEY = getLegiscanAPIKey();
   console.log("Get Master List", sessionId);
   try {
     const results = await axios.get<LegiscanMasterListResult>(
@@ -48,6 +49,7 @@ const getBillDetailsFromMasterList = async (
 };
 
 const getBillById = async (id: string): Promise<LegiscanBillById> => {
+  const LEGISCAN_API_KEY = getLegiscanAPIKey();
   console.log("Get Bill By ID:", id);
   try {
     const results = await axios.get<GetBillByIdResponse>(
@@ -60,6 +62,7 @@ const getBillById = async (id: string): Promise<LegiscanBillById> => {
 };
 
 const getLatestSessionId = async (locale: LegiscanLocales): Promise<string> => {
+  const LEGISCAN_API_KEY = getLegiscanAPIKey();
   console.log("Get Session IDs for locale", locale);
   const stateLocaleMap: Record<LegiscanLocales, string> = {
     usa: "US",

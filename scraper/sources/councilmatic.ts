@@ -148,7 +148,7 @@ type Bill = {
   voteHistory: Vote[];
 };
 
-async function getChicagoBills() {
+async function getChicagoBills({ skipCache }: { skipCache: boolean }) {
   console.log("Getting Chicago Bills");
   const billsRes = (await fetchBillsInChunks()) || [];
   const results = billsRes.map((bill) => {

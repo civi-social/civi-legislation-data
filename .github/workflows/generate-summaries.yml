@@ -1,4 +1,4 @@
-name: Save Summaries as JSON
+name: Generate Summaries
 
 on:
   # schedule:
@@ -9,22 +9,17 @@ on:
     inputs:
       skip_cache:
         type: string
-        description: Force run GPT? Set using locale name.
-
+        description: Skip Cache - Force update all summaries?
+      locale:
+        type: string
+        description: Run only on 1 locale
 jobs:
   update_summaries:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "npm"
-          cache-dependency-path: package-lock.json
-      - name: NPM Install
-        run: npm i
+      - uses: actions/checkout@v4
+      - name: Pre Run
+        uses: ./.github/workflows/compose/pre-run
       - name: Run GPT
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -34,11 +29,8 @@ jobs:
         env:
           GOOGLE_SPREADSHEET_API_KEY: ${{ secrets.GOOGLE_SPREADSHEET_API_KEY }}
         run: npm run wiki
-      - uses: IsaacShelton/update-existing-release@v1.3.4
+      - name: Publish
+        uses: ./.github/workflows/compose/publish
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          release: "Nightly"
-          tag: "nightly"
-          replace: false
-          files: |
-            ./dist_legislation/*.json
+          dry-run: ${{inputs.dry-run}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

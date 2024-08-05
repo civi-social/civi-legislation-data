@@ -1,6 +1,6 @@
-import { FilterMasterListFn, LegiscanToCiviMapFn } from "../api/legiscan";
-import { STATUS_MAP } from "../api/legiscan.types";
-import { legiscanFederalRepDistrictToOcd } from "../api/legiscan.utils";
+import { FilterMasterListFn, LegiscanToCiviMapFn } from "../sources/legiscan";
+import { STATUS_MAP } from "../sources/legiscan.types";
+import { legiscanFederalRepDistrictToOcd } from "../sources/legiscan.utils";
 
 export const filterMasterList: FilterMasterListFn = (bills) => {
   return (

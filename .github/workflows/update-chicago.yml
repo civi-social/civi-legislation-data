@@ -1,4 +1,4 @@
-name: Save State Federal Formatted Legislation as JSON
+name: Update Chicago Legislation
 
 on:
   #  schedule:
@@ -16,17 +16,18 @@ on:
         description: Dry Run - Don't publish release?
 
 jobs:
-  update_state_federal_legislation_data:
+  update_chicago_legislation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Pre Run
         uses: ./.github/workflows/compose/pre-run
-      - name: Run Scraper
+      - name: Update Chicago
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
-        run: npm run pull-legiscan
+          LOCALE: "chicago"
+        run: npm run scrape
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:

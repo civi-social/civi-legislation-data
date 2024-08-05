@@ -1,0 +1,41 @@
+name: Update State & Federal Legislation
+
+on:
+  #  schedule:
+  #    - cron: "0 0 * * *" # Run daily at midnight UTC
+
+  # Allow manual running from Github Actions tab
+  workflow_dispatch:
+    inputs:
+      skip_cache:
+        type: boolean
+        description: Skip Cache - Force update all legislation?
+      dry-run:
+        type: boolean
+        default: false
+        description: Dry Run - Don't publish release?
+
+jobs:
+  update_state_federal_legislation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pre Run
+        uses: ./.github/workflows/compose/pre-run
+      - name: Update Illinois
+        env:
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
+          LOCALE: "illinois"
+        run: npm run scrape
+      - name: Update USA
+        env:
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
+          LOCALE: "usa"
+        run: npm run scrape
+      - name: Publish
+        uses: ./.github/workflows/compose/publish
+        with:
+          dry-run: ${{inputs.dry-run}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

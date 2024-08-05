@@ -1,6 +1,6 @@
-import { FilterMasterListFn, LegiscanToCiviMapFn } from "../api/legiscan";
-import { STATUS_MAP } from "../api/legiscan.types";
-import { legiscanStateRepDistrictToOcd } from "../api/legiscan.utils";
+import { FilterMasterListFn, LegiscanToCiviMapFn } from "../sources/legiscan";
+import { STATUS_MAP } from "../sources/legiscan.types";
+import { legiscanStateRepDistrictToOcd } from "../sources/legiscan.utils";
 
 /**
  * Illinois bills have either SB0000, HB0000, HJR0000, or SJR0000.
