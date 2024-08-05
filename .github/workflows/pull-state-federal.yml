@@ -9,10 +9,10 @@ on:
     inputs:
       skip_cache:
         type: boolean
-        description: Skip pulling from cache?
+        description: Skip Cache - Force update all legislation?
       dry-run:
         type: boolean
-        description: Don't publish release?
+        description: Dry Run - Don't publish release?
 
 jobs:
   update_state_federal_legislation_data:
