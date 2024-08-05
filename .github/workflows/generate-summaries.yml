@@ -13,9 +13,6 @@ on:
       skip_cache:
         type: string
         description: Skip Cache - Force update all summaries?
-      dry_run:
-        type: boolean
-        description: Dry Run - Don't publish release?
 
 jobs:
   update_summaries:
@@ -37,5 +34,4 @@ jobs:
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:
-          dry_run: ${{inputs.dry_run}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

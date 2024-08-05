@@ -10,9 +10,6 @@ on:
       skip_cache:
         type: boolean
         description: Skip Cache - Force update all legislation?
-      dry_run:
-        type: boolean
-        description: Dry Run - Don't publish release?
 
 jobs:
   update_chicago_legislation:
@@ -30,5 +27,4 @@ jobs:
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:
-          dry_run: ${{inputs.dry_run}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
