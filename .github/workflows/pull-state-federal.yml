@@ -15,7 +15,8 @@ jobs:
   update_state_federal_legislation_data:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node
+      - uses: actions/checkout@v4
+      - name: Pre Run
         uses: ./gh-action-composites/prerun
       - name: Run Scraper
         env:
