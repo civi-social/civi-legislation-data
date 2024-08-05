@@ -25,12 +25,6 @@ jobs:
           SKIP_CACHE: ${{inputs.skip_cache}}
           LOCALE: "illinois"
         run: npm run scrape
-      - name: Update USA
-        env:
-          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_CACHE: ${{inputs.skip_cache}}
-          LOCALE: "usa"
-        run: npm run scrape
 
       - name: Publish
         uses: ./.github/workflows/compose/publish
