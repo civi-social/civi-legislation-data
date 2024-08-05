@@ -7,12 +7,12 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip_cache:
-        type: string
-        description: Skip Cache - Force update all summaries?
       locale:
         type: string
         description: Run only on 1 locale
+      skip_cache:
+        type: string
+        description: Skip Cache - Force update all summaries?
       dry_run:
         type: boolean
         description: Dry Run - Don't publish release?
