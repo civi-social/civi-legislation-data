@@ -30,3 +30,4 @@ jobs:
         uses: ./.github/workflows/compose/publish
         with:
           dry-run: ${{inputs.dry_run}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

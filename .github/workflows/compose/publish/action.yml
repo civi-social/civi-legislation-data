@@ -4,6 +4,9 @@ inputs:
   dry-run:
     description: "Don't publish release"
     default: false
+  GITHUB_TOKEN:
+    description: "Github Token"
+    required: true
 runs:
   using: "composite"
   steps:
@@ -15,7 +18,7 @@ runs:
       uses: andelf/nightly-release@v1
       if: ${{ inputs.dry-run == false }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ input.GITHUB_TOKEN }}
       with:
         tag_name: nightly
         name: "Nightly release of legislation $$"
