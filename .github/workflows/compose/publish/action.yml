@@ -14,6 +14,9 @@ runs:
       if: ${{ inputs.dry-run == true }}
       shell: bash
       run: ls -l ./dist_legislation
+    - shell: bash
+      run: |
+        echo "Publishing release"
     - name: Update Nightly Release
       uses: andelf/nightly-release@v1
       if: ${{ inputs.dry-run == false }}
