@@ -1,0 +1,24 @@
+name: Publish Release
+description: "Publish current release"
+inputs:
+  dry-run:
+    description: "Don't publish release"
+    default: false
+runs:
+  using: "composite"
+  steps:
+    - name: List Files On Dry Run
+      if: ${{ inputs.dry-run == true }}
+      shell: bash
+      run: ls -l ./dist_legislation/*.json
+    - name: Update Nightly Release
+      uses: andelf/nightly-release@v1
+      if: ${{ inputs.dry-run == false }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: nightly
+        name: "Nightly release of legislation $$"
+        prerelease: false
+        files: |
+          ./dist_legislation/*.json
