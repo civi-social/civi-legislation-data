@@ -13,7 +13,7 @@ runs:
     - name: List Files On Dry Run
       if: ${{ inputs.dry-run == true }}
       shell: bash
-      run: ls -l ./dist_legislation/*.json
+      run: ls -l ./dist_legislation
     - name: Update Nightly Release
       uses: andelf/nightly-release@v1
       if: ${{ inputs.dry-run == false }}
