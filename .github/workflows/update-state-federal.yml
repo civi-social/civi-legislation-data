@@ -7,7 +7,7 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip_cache:
+      skip-cache:
         type: boolean
         description: Skip Cache - Force update all legislation?
       dry-run:
@@ -25,13 +25,13 @@ jobs:
       - name: Update Illinois
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
+          SKIP_CACHE: ${{inputs.skip-cache}}
           LOCALE: "illinois"
         run: npm run scrape
       - name: Update USA
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
-          SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
+          SKIP_CACHE: ${{inputs.skip-cache}}
           LOCALE: "usa"
         run: npm run scrape
       - name: Publish
