@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Pre Run
-        uses: ./github/workflows/compose/pre-run
+        uses: ./.github/workflows/compose/pre-run
       - name: Run Scraper
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
