@@ -15,30 +15,20 @@ jobs:
   update_state_federal_legislation_data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "npm"
-          cache-dependency-path: package-lock.json
-      - name: NPM Install
-        run: npm i
-      - name: Retrieve Current Release
-        run: npm run retrieve-current-release
+        uses: ./prerun
       - name: Run Scraper
         env:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
           SKIP_LEGISLATION_CACHE: ${{inputs.skip_legislation_cache}}
         run: npm run pull-legiscan
-      - name: Update Nightly Release
-        uses: andelf/nightly-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: nightly
-          name: "Nightly release of legislation $$"
-          prerelease: false
-          files: |
-            ./dist_legislation/*.json
+      # - name: Update Nightly Release
+      #   uses: andelf/nightly-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: nightly
+      #     name: "Nightly release of legislation $$"
+      #     prerelease: false
+      #     files: |
+      #       ./dist_legislation/*.json
