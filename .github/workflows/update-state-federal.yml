@@ -10,7 +10,7 @@ on:
       skip-cache:
         type: boolean
         description: Skip Cache - Force update all legislation?
-      dry_run:
+      dry-run:
         type: boolean
         description: Dry Run - Don't publish release?
 

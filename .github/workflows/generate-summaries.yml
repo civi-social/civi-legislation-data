@@ -15,7 +15,6 @@ on:
         description: Run only on 1 locale
       dry-run:
         type: boolean
-        default: false
         description: Dry Run - Don't publish release?
 
 jobs:
