@@ -1,8 +1,7 @@
 import type { CiviLegislationData } from "../api/types";
-import { councilmatic } from "./api/councilmatic";
 import * as il from "./localities/illinois.legiscan";
 import * as usa from "./localities/usa.legiscan";
-import { writeJSON } from "../fs/write-file";
+import { writeLegislationJSON } from "../fs/write-file";
 
 const scrapeLegislation = async () => {
   const skipCache =
@@ -15,9 +14,9 @@ const scrapeLegislation = async () => {
 
   let legislation: CiviLegislationData[] = [];
   legislation = await il.getBills({ skipCache });
-  writeJSON("illinois.legislation", legislation);
+  writeLegislationJSON("illinois", legislation);
   legislation = await usa.getBills({ skipCache });
-  writeJSON("usa.legislation", legislation);
+  writeLegislationJSON("usa", legislation);
 };
 
 scrapeLegislation();

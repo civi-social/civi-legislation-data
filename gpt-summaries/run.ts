@@ -1,19 +1,11 @@
-import axios from "axios";
-import fs from "fs";
-import path from "path";
-import {
-  CiviGptLegislationData,
-  civiLegislationApi,
-  CiviLegislationData,
-  locales,
-  Locales,
-} from "../api";
-import { writeJSON } from "../fs/write-file";
+import { CiviGptLegislationData, locales, Locales } from "../api";
+import { getCachedGpt, getCachedLegislation } from "../cache-grabber/get";
+import { writeGptJSON } from "../fs/write-file";
 import { categorizeText, summarizeText } from "./prompts";
 
 const generateGptSummaries = async (locale: Locales) => {
   const cachedGpt = await getCachedGpt(locale);
-  const legislations = await getLegislation(locale);
+  const legislations = await getCachedLegislation(locale);
 
   // JSON to save
   const legislationWithAi = {} as CiviGptLegislationData;
@@ -116,48 +108,7 @@ const generateGptSummaries = async (locale: Locales) => {
     );
   }
 
-  writeJSON(`${locale}.legislation.gpt`, legislationWithAi);
-};
-
-const getLegislation = async (locale: Locales) => {
-  try {
-  const jsonStr = fs.readFileSync(
-    path.join(__dirname, `../dist_legislation/${locale}.legislation.json`),
-    "utf8"
-  );
-  const legislations = JSON.parse(jsonStr) as CiviLegislationData[];
-  return legislations;
-  } catch (e) {
-    console.log("local filesystem legislation data not found")
-  }
-
-  return getCachedLegislation(locale)
-};
-
-const getCachedLegislation = async (
-  locale: Locales
-): Promise<Partial<CiviLegislationData[]>> => {
-  try {
-    // Get previous data from current release in GH
-    const url = civiLegislationApi.getLegislationDataUrl(locale);
-    const cachedResult = await axios.get<CiviLegislationData[]>(url);
-    return cachedResult.data;
-  } catch {
-    return [];
-  }
-};
-
-const getCachedGpt = async (
-  locale: Locales
-): Promise<Partial<CiviGptLegislationData>> => {
-  try {
-    // Get previous data from current release in GH
-    const url = civiLegislationApi.getGptLegislationUrl(locale);
-    const cachedResult = await axios.get<CiviGptLegislationData>(url);
-    return cachedResult.data;
-  } catch {
-    return {};
-  }
+  writeGptJSON(locale, legislationWithAi);
 };
 
 const runGpt = async () => {

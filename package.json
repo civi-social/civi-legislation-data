@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "scrape": "npx ts-node scraper/run",
+    "retrieve-current-release": "npx ts-node cache-grabber/retrieve-current-release",
     "pull-legiscan": "npx ts-node scraper/run-legiscan",
     "pull-councilmatic": "npx ts-node scraper/run-councilmatic",
     "gpt": "npx ts-node gpt-summaries/run",

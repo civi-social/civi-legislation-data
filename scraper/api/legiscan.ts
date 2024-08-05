@@ -1,5 +1,5 @@
 import axios from "axios";
-import { civiLegislationApi, CiviLegislationData, Locales } from "../../api";
+import { CiviLegislationData, Locales } from "../../api";
 import { LEGISCAN_API_KEY } from "../config";
 import {
   GetBillByIdResponse,
@@ -8,6 +8,7 @@ import {
   LegiscanMasterListBill,
   LegiscanMasterListResult,
 } from "./legiscan.types";
+import { getCachedLegislation } from "../../cache-grabber/get";
 
 type LegiscanLocales = Exclude<Locales, "chicago">;
 
@@ -112,7 +113,6 @@ export const getCiviLegislationBills = async ({
     if (skipCache) {
       cachedLegislation = [];
     } else {
-      // Get previous data from current release in GH
       cachedLegislation = await getCachedLegislation(locale);
     }
 
@@ -145,19 +145,6 @@ export const getCiviLegislationBills = async ({
     return civiLegislationData;
   } catch (e) {
     return Promise.reject(e);
-  }
-};
-
-const getCachedLegislation = async (
-  locale: Locales
-): Promise<CiviLegislationData[]> => {
-  try {
-    // Get previous data from current release in GH
-    const url = civiLegislationApi.getLegislationDataUrl(locale);
-    const cachedResult = await axios.get<CiviLegislationData[]>(url);
-    return cachedResult.data;
-  } catch {
-    return [];
   }
 };
 

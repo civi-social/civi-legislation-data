@@ -7,7 +7,7 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip_legislation_cache:
+      skip_cache:
         type: boolean
         description: Skip pulling from cache?
 jobs:

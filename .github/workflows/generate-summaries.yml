@@ -7,7 +7,7 @@ on:
   # Allow manual running from Github Actions tab
   workflow_dispatch:
     inputs:
-      skip_gpt_cache:
+      skip_cache:
         type: string
         description: Force run GPT? Set using locale name.
 
