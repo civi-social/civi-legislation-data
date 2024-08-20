@@ -26,11 +26,11 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SKIP_CACHE: ${{inputs.skip_cache}}
           LOCALE: ${{inputs.locale}}
-        run: npm run gpt
+        run: cd scraper && npm run gpt
       - name: Run Wiki
         env:
           GOOGLE_SPREADSHEET_API_KEY: ${{ secrets.GOOGLE_SPREADSHEET_API_KEY }}
-        run: npm run wiki
+        run: cd scraper && npm run wiki
       - name: Publish
         uses: ./.github/workflows/compose/publish
         with:

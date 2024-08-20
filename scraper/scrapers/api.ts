@@ -1,7 +1,7 @@
 import { CiviLegislationData, Locales } from "../api";
-import { councilmatic } from "../scraper/sources/councilmatic";
-import * as il from "../scraper/localities/illinois.legiscan";
-import * as usa from "../scraper/localities/usa.legiscan";
+import { councilmatic } from "./sources/councilmatic";
+import * as il from "./localities/illinois.legiscan";
+import * as usa from "./localities/usa.legiscan";
 
 export const api: Record<
   Locales,

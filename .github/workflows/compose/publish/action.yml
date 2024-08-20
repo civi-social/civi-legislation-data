@@ -9,7 +9,7 @@ runs:
   steps:
     - name: List Files On Dry Run
       shell: bash
-      run: echo "Available files" && ls ./dist_legislation
+      run: echo "Available files" && ls ./scraper/dist_legislation
     - name: Update Nightly Release
       uses: andelf/nightly-release@v1
       env:
@@ -19,4 +19,4 @@ runs:
         name: "Nightly release of legislation $$"
         prerelease: false
         files: |
-          ./dist_legislation/*.json
+          ./scraper/dist_legislation/*.json
