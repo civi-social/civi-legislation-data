@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "get-cache": "npx ts-node cache-grabber/run",
-    "scrape": "npx ts-node scraper/run",
+    "scrape": "npx ts-node scrapers/run",
     "gpt": "npx ts-node gpt-summaries/run",
     "wiki": "npx ts-node wiki-summaries/run",
     "postinstall": "tsc api/*.ts --outDir dist_api --declaration --declarationMap --sourceMap"

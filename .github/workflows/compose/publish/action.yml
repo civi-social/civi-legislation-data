@@ -19,4 +19,4 @@ runs:
         name: "Nightly release of legislation $$"
         prerelease: false
         files: |
-          ./dist_legislation/*.json
+          ./scraper/dist_legislation/*.json

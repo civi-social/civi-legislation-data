@@ -11,9 +11,9 @@ runs:
         cache-dependency-path: package-lock.json
     - name: NPM Install
       shell: bash
-      run: npm i
+      run: cd scraper && npm i
     # Since each job may only update a subset of files, we pull the
     # current release so that we update the release, we have all the files.
     - name: Retrieve Current Release
       shell: bash
-      run: npm run get-cache
+      run: cd scraper && npm run get-cache
