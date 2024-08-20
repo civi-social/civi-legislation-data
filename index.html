@@ -2,7 +2,7 @@
   <body>
     <script type="module">
       async function fetchLegislationData() {
-     const url = new URL('db/illinois.legislation.json', import.meta.url)        
+     const url = new URL('db/illinois.json', import.meta.url)        
      try {
         const response = await fetch(url);
         if (!response.ok) {
