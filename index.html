@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <script>
+      async function fetchLegislationData() {
+    const url = 'https://github.com/civi-social/civi-legislation-data/releases/download/nightly/illinois.legislation.json';
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data); // Do something with the data
+    } catch (error) {
+        console.error('Error fetching the JSON file:', error);
+    }
+}
+
+fetchLegislationData();
+    </script>
+  </body>
+</html>
