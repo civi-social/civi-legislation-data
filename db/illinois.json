@@ -1,0 +1,1278 @@
+[
+  {
+    "id": "SB0001",
+    "title": "Department of Early Childhood Act",
+    "description": " Creates the Department of Early Childhood to begin operation on July 1, 2024 and transfers to it certain rights, powers, duties, and functions currently exercised by various agencies of State Government. Provides that, beginning July 1, 2026 the Department of Early Childhood shall be the lead State agency for administering and providing early childhood education and care programs and services to children and families including: home-visiting services; early intervention services; preschool services; child care services; licensing for day care centers, day care homes, and group day care homes; and other early childhood education and care programs and administrative functions historically managed by the State Board of Education, the Department of Human Services, and the Department of Children and Family Services.",
+    "status": [
+      "Pass"
+    ],
+    "statusDate": "2024-06-25",
+    "sponsors": [
+      {
+        "name": "Kimberly Lightford",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:4"
+      },
+      {
+        "name": "Julie Morrison",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:29"
+      },
+      {
+        "name": "Adriane Johnson",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:30"
+      },
+      {
+        "name": "Michael Halpin",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:36"
+      },
+      {
+        "name": "Meg Loughran Cappel",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:49"
+      },
+      {
+        "name": "Omar Aquino",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:2"
+      },
+      {
+        "name": "Javier Cervantes",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:1"
+      },
+      {
+        "name": "Ram Villivalam",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:8"
+      },
+      {
+        "name": "Rachel Ventura",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:43"
+      },
+      {
+        "name": "Mary Edly-Allen",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:31"
+      },
+      {
+        "name": "Cristina Castro",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:22"
+      },
+      {
+        "name": "David Koehler",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:46"
+      },
+      {
+        "name": "Napoleon Harris",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:15"
+      },
+      {
+        "name": "Mike Simmons",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:7"
+      },
+      {
+        "name": "Doris Turner",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:48"
+      },
+      {
+        "name": "Mike Porfirio",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:11"
+      },
+      {
+        "name": "Sara Feigenholtz",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:6"
+      },
+      {
+        "name": "Willie Preston",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:16"
+      },
+      {
+        "name": "Paul Faraci",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:52"
+      },
+      {
+        "name": "Christopher Belt",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:57"
+      },
+      {
+        "name": "Mattie Hunter",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:3"
+      },
+      {
+        "name": "Robert Martwick",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:10"
+      },
+      {
+        "name": "Laura Fine",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:9"
+      },
+      {
+        "name": "Michael Hastings",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:19"
+      },
+      {
+        "name": "Laura Murphy",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:28"
+      },
+      {
+        "name": "Celina Villanueva",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:12"
+      },
+      {
+        "name": "Suzanne Glowiak Hilton",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:23"
+      },
+      {
+        "name": "Robert Peters",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:13"
+      },
+      {
+        "name": "Emil Jones",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:14"
+      },
+      {
+        "name": "Mark Walker",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:27"
+      },
+      {
+        "name": "Lakesia Collins",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:5"
+      },
+      {
+        "name": "Mary Canty",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:54"
+      },
+      {
+        "name": "Joyce Mason",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:61"
+      },
+      {
+        "name": "Camille Lilly",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:78"
+      },
+      {
+        "name": "Elizabeth Hernandez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:2"
+      },
+      {
+        "name": "William Davis",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:30"
+      },
+      {
+        "name": "Sharon Chung",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:91"
+      },
+      {
+        "name": "Katie Stuart",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:112"
+      },
+      {
+        "name": "Terra Costa Howard",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:42"
+      },
+      {
+        "name": "Ann Williams",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:11"
+      },
+      {
+        "name": "Janet Yang Rohr",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:41"
+      },
+      {
+        "name": "Kimberly Du Buclet",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:5"
+      },
+      {
+        "name": "Theresa Mah",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:24"
+      },
+      {
+        "name": "Eva Dina Delgado",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:3"
+      },
+      {
+        "name": "Anna Moeller",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:43"
+      },
+      {
+        "name": "Natalie Manley",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:98"
+      },
+      {
+        "name": "Dagmara Avelar",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:85"
+      },
+      {
+        "name": "Robert Rita",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:28"
+      },
+      {
+        "name": "Diane Blair-Sherlock",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:46"
+      },
+      {
+        "name": "Gregg Johnson",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:72"
+      },
+      {
+        "name": "Daniel Didech",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:59"
+      },
+      {
+        "name": "Cyril Nichols",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:32"
+      },
+      {
+        "name": "Michelle Mussman",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:56"
+      },
+      {
+        "name": "Jennifer Gong-Gershowitz",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:17"
+      },
+      {
+        "name": "Bob Morgan",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:58"
+      },
+      {
+        "name": "Edgar Gonzalez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:23"
+      },
+      {
+        "name": "Justin Slaughter",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:27"
+      },
+      {
+        "name": "Hoan Huynh",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:13"
+      },
+      {
+        "name": "Sonya Harper",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:6"
+      },
+      {
+        "name": "Anne Stava-Murray",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:81"
+      },
+      {
+        "name": "Jenn Ladisch Douglass",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:45"
+      },
+      {
+        "name": "Harry Benton",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:97"
+      },
+      {
+        "name": "Michael Kelly",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:15"
+      },
+      {
+        "name": "Laura Faver Dias",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:62"
+      },
+      {
+        "name": "Will Guzzardi",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:39"
+      },
+      {
+        "name": "Maura Hirschauer",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:49"
+      },
+      {
+        "name": "Kelly Cassidy",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:14"
+      },
+      {
+        "name": "Jay Hoffman",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:113"
+      },
+      {
+        "name": "Kevin Olickal",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:16"
+      },
+      {
+        "name": "Maurice West",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:67"
+      },
+      {
+        "name": "Nabeela Syed",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:51"
+      },
+      {
+        "name": "Abdelnasser Rashid",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:21"
+      },
+      {
+        "name": "Tracy Katz Muhl",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:57"
+      },
+      {
+        "name": "Emanuel Welch",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:7"
+      },
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      },
+      {
+        "name": "Rita Mayfield",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:60"
+      },
+      {
+        "name": "Lilian Jimenez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:4"
+      },
+      {
+        "name": "Marcus Evans",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:33"
+      },
+      {
+        "name": "Norma Hernandez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:77"
+      },
+      {
+        "name": "Matt Hanson",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:83"
+      },
+      {
+        "name": "Martin Moylan",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:55"
+      },
+      {
+        "name": "Mary Gill",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:35"
+      },
+      {
+        "name": "Carol Ammons",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:103"
+      },
+      {
+        "name": "Kambium Buckner",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:26"
+      },
+      {
+        "name": "Kelly Burke",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:36"
+      },
+      {
+        "name": "Debbie Meyers-Martin",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:38"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=1&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672572"
+  },
+  {
+    "id": "HB0001",
+    "title": "Compassionate Use and Research of Entheogens Act",
+    "description": " Establishes the Illinois Psilocybin Advisory Board within the Department of Public Health for the purpose of advising and making recommendations to the Department regarding the provision of psilocybin and psilocybin services. Provides that the Department shall begin receiving applications for the licensing of persons to manufacture or test psilocybin products, operate service centers, or facilitate psilocybin services.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      },
+      {
+        "name": "Jonathan Carroll",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:57"
+      },
+      {
+        "name": "Harry Benton",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:97"
+      },
+      {
+        "name": "Kelly Cassidy",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:14"
+      },
+      {
+        "name": "Kevin Olickal",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:16"
+      },
+      {
+        "name": "Anne Stava-Murray",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:81"
+      },
+      {
+        "name": "Theresa Mah",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:24"
+      },
+      {
+        "name": "Aaron Ortiz",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:1"
+      },
+      {
+        "name": "Will Guzzardi",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:39"
+      },
+      {
+        "name": "Lindsey LaPointe",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:19"
+      },
+      {
+        "name": "Lilian Jimenez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:4"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=1&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635636"
+  },
+  {
+    "id": "HB0002",
+    "title": "Amend the Substance Use Disorder Act",
+    "description": " Requires the Department of Human Services to develop a pilot program aimed at saving the lives of people who use substances. Provides that the program shall include the establishment of at least one overdose prevention site.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      },
+      {
+        "name": "Kelly Cassidy",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:14"
+      },
+      {
+        "name": "Will Guzzardi",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:39"
+      },
+      {
+        "name": "Anna Moeller",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:43"
+      },
+      {
+        "name": "Theresa Mah",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:24"
+      },
+      {
+        "name": "Daniel Didech",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:59"
+      },
+      {
+        "name": "Bob Morgan",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:58"
+      },
+      {
+        "name": "Mark Walker",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:27"
+      },
+      {
+        "name": "Maura Hirschauer",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:49"
+      },
+      {
+        "name": "Lilian Jimenez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:4"
+      },
+      {
+        "name": "Kambium Buckner",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:26"
+      },
+      {
+        "name": "Justin Slaughter",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:27"
+      },
+      {
+        "name": "Sonya Harper",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:6"
+      },
+      {
+        "name": "Lindsey LaPointe",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:19"
+      },
+      {
+        "name": "Norma Hernandez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:77"
+      },
+      {
+        "name": "Cyril Nichols",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:32"
+      },
+      {
+        "name": "Diane Blair-Sherlock",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:46"
+      },
+      {
+        "name": "Barbara Hernandez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:50"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=2&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635614"
+  },
+  {
+    "id": "HB0004",
+    "title": "Universal Child Care Demonstration Program Act",
+    "description": " Requires the Department of Human Services to establish and administer a 5-year statewide Universal Child Care Demonstration Program to provide grants to eligible entities to develop, expand, and provide high-quality and affordable child care services for children age 0 to 6 years old regardless of family income. Provides that grants awarded under the Demonstration Program may be used to renovate or convert existing child care facilities to meet the goals of the Demonstration Program; to construct and maintain child care facilities in geographical areas with a demonstrated need for safe, affordable, and high-quality child care services; to train and pay child care providers, teachers, and staff; and to provide meal services to children receiving child care services.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=4&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635983"
+  },
+  {
+    "id": "HB0008",
+    "title": "Amend the Cannabis Regulation and Tax Act",
+    "description": " Provides that entities awarded a cannabis transporting license may defer paying the associated license fee for a period of no more than 2 years. Provides that from January 1, 2024 through January 1, 2026, the Department of Agriculture shall not issue any new transporting licenses.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=8&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635404"
+  },
+  {
+    "id": "HB0009",
+    "title": "Blight Mitigation Act",
+    "description": " Provides that a property owner that lives within one-fourth of a mile of and on the same street as residential real property that has been abandoned may, after the property has been continuously abandoned for 12 months, petition the court for title to the land. Provides that the court shall order that title to the real property be transferred to the petitioner if the petitioner presents clear and convincing evidence that: (1) the property is abandoned; (2) the owner of the property has been made a party to the action in accordance with the Code of Civil Procedure and court rules; and (3) the property is not: listed for sale on a multiple listing service; being maintained in receivership status; or under contract for sale.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=9&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635554"
+  },
+  {
+    "id": "SB0015",
+    "title": "Chicago Board of Education District Act",
+    "description": " Divides the City of Chicago into 10 districts and 20 subdistricts for the purpose of identifying persons who will serve on the Chicago Board of Education. Amends the School Code.",
+    "status": [
+      "Pass"
+    ],
+    "statusDate": "2024-03-18",
+    "sponsors": [
+      {
+        "name": "Don Harmon",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:39"
+      },
+      {
+        "name": "Ann Williams",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:11"
+      },
+      {
+        "name": "Marcus Evans",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:33"
+      },
+      {
+        "name": "Bradley Stephens",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:20"
+      },
+      {
+        "name": "Eva Dina Delgado",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:3"
+      },
+      {
+        "name": "Kambium Buckner",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:26"
+      },
+      {
+        "name": "Michael Kelly",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:15"
+      },
+      {
+        "name": "Will Guzzardi",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:39"
+      },
+      {
+        "name": "Aaron Ortiz",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:1"
+      },
+      {
+        "name": "Lindsey LaPointe",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:19"
+      },
+      {
+        "name": "Abdelnasser Rashid",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:21"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=15&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672901"
+  },
+  {
+    "id": "HB0025",
+    "title": "Amend the Cannabis Regulation and Tax Act",
+    "description": " Raises specified square footage requirements for craft growers. Removes language allowing the Department of Agriculture to authorize a decrease of flowering stage cultivation space used for cultivating specified plants.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=25&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635652"
+  },
+  {
+    "id": "SR0026",
+    "title": "Amend the Senate Rules for the 103rd General Assembly",
+    "description": " Changes Rules 1-28, 3-1, 3-2, 3-4, 3-6, 3-8, 3-12, 5-5, 6-1, 7-5, 7-15, 10-1, and 10-2..",
+    "status": [
+      "Pass"
+    ],
+    "statusDate": "2023-01-25",
+    "sponsors": [
+      {
+        "name": "Don Harmon",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:39"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=26&GAID=17&DocTypeID=SR&SessionID=112&GA=103",
+    "source_id": "1679384"
+  },
+  {
+    "id": "HB0027",
+    "title": "Amend the Freedom of Information Act",
+    "description": " Provides that a law enforcement agency may not electronically provide or publish booking photographs unless: (1) the booking photograph is posted to a social networking website to assist in the search for a missing person or to assist in the search for a fugitive, person of interest, or individual wanted in relation to a crime other than a petty offense, business offense, Class C misdemeanor, or Class B misdemeanor; or (2) the person is convicted of a crime other than a petty offense, business offense, Class C misdemeanor, or Class B misdemeanor. Deletes language providing that a law enforcement agency may publish on its social networking website booking photographs relating to charges other than civil offenses, petty offenses, business offenses, Class C misdemeanors, and Class B misdemeanors.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=27&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635745"
+  },
+  {
+    "id": "HB0030",
+    "title": "Amend the Cannabis Regulation and Tax Act",
+    "description": " Provides that, as a condition for the renewal of a cultivation center's license, and until January 1, 2028, a cultivation center shall set aside and offer wholesale to infuser organizations an amount of the cultivation center's monthly THC oil production. Requires the Department of Agriculture to ensure that for all cultivation centers the cumulative monthly amount of THC oil that is set aside and made available to infuser organizations is no less than specified amounts for calendar years 2023 through 2027.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=30&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635623"
+  },
+  {
+    "id": "HB0031",
+    "title": "Amend the Cannabis Regulation and Tax Act",
+    "description": " Removes language providing that any person or entity awarded a craft grower license under specified provisions shall only hold one craft grower license. Requires the Department of Agriculture to issue an additional 30 craft grower licenses on or before December 21, 2023 and an additional 30 craft grower licenses on or before March 15, 2024 under specified conditions.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=31&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635609"
+  },
+  {
+    "id": "HB0032",
+    "title": "Amend the Cannabis Regulation and Tax Act",
+    "description": " Provides that premises may be shared between up to 3 craft growers, an infuser organization, a cultivation center, a dispensing organization, or any combination thereof, provided that specified requirements are met. Effective immediately.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=32&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635342"
+  },
+  {
+    "id": "HB0035",
+    "title": "Amend the Wrongful Death Act",
+    "description": " Allows for the recovery of punitive damages in a wrongful death action..",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=35&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635757"
+  },
+  {
+    "id": "HB0037",
+    "title": "Amend the Illinois Income Tax Act",
+    "description": " Creates an income tax checkoff for the Mental Health Income Tax Checkoff Fund. Amends the State Finance Act to create the Fund.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=37&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635374"
+  },
+  {
+    "id": "HB0038",
+    "title": "Entertainment Industry Worker Training Program Act",
+    "description": " Provides that the Department of Labor, in collaboration with labor organizations representing theatrical stage workers and entertainment industry workers in this State, shall develop and establish an Entertainment Industry Worker Training Program. Provides that the Program shall include (i) a 3-year educational component that provides specific skill set training for 25 to 50 participants annually with a weekly stipend during the training and job referral services upon successful completion; and (ii) ongoing training for skilled professionals.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=38&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635738"
+  },
+  {
+    "id": "SB0040",
+    "title": "Electric Vehicle Charging Act",
+    "description": " Provides that the Act applies to new single-family homes and newly constructed or renovated multi-unit residential buildings that have parking spaces and are constructed or renovated after the effective date of the Act. Defines terms.",
+    "status": [
+      "Pass"
+    ],
+    "statusDate": "2023-06-09",
+    "sponsors": [
+      {
+        "name": "Sara Feigenholtz",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:6"
+      },
+      {
+        "name": "Rachel Ventura",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:43"
+      },
+      {
+        "name": "Mike Porfirio",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:11"
+      },
+      {
+        "name": "Laura Murphy",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:28"
+      },
+      {
+        "name": "Mattie Hunter",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:3"
+      },
+      {
+        "name": "Robyn Gabel",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:18"
+      },
+      {
+        "name": "Joyce Mason",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:61"
+      },
+      {
+        "name": "Elizabeth Hernandez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:2"
+      },
+      {
+        "name": "Terra Costa Howard",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:42"
+      },
+      {
+        "name": "Anna Moeller",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:43"
+      },
+      {
+        "name": "Laura Faver Dias",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:62"
+      },
+      {
+        "name": "Aaron Ortiz",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:1"
+      },
+      {
+        "name": "Cyril Nichols",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:32"
+      },
+      {
+        "name": "Norma Hernandez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:77"
+      },
+      {
+        "name": "Lilian Jimenez",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:4"
+      },
+      {
+        "name": "Martin Moylan",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:55"
+      },
+      {
+        "name": "Camille Lilly",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:78"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=40&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672870"
+  },
+  {
+    "id": "HB0040",
+    "title": "Amend the Revised Cities and Villages Act of 1941",
+    "description": " Establishes a procedure for a special recall election to recall the Mayor of Chicago and the election of a successor mayor at a special successor election or special runoff election. Effective immediately.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=40&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635362"
+  },
+  {
+    "id": "SB0041",
+    "title": "Amend the Nurse Practice Act",
+    "description": " Ratifies and approves the Nurse Licensure Compact, which allows for the issuance of multistate licenses that allow nurses to practice in their home state and other compact states. Provides that the Compact does not supersede existing State labor laws.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-20",
+    "sponsors": [
+      {
+        "name": "Sara Feigenholtz",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:6"
+      },
+      {
+        "name": "Chapin Rose",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:51"
+      },
+      {
+        "name": "Laura Fine",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:9"
+      },
+      {
+        "name": "Andrew Chesney",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:45"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=41&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672758"
+  },
+  {
+    "id": "HB0041",
+    "title": "Amend the Illinois Marriage and Dissolution of Marriage Act",
+    "description": " Deletes language providing that nothing in the Act requires that each parent be allocated decision-making responsibilities. Provides that it is presumed that fit parents act in the best interests of their children.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      },
+      {
+        "name": "Jed Davis",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:75"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=41&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635338"
+  },
+  {
+    "id": "SB0043",
+    "title": "Amend the Liquor Control Act of 1934",
+    "description": " Removes language repealing a provision concerning delivery and carry out of mixed drinks on January 3, 2024..",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-20",
+    "sponsors": [
+      {
+        "name": "Sara Feigenholtz",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:6"
+      },
+      {
+        "name": "Meg Loughran Cappel",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:49"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=43&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672563"
+  },
+  {
+    "id": "SB0044",
+    "title": "Amend the Illinois Domestic Violence Act of 1986",
+    "description": " Provides that if the respondent to an order of protection issued is required to surrender any firearms, the order of protection shall also include an order to surrender firearms. Requires the respondent to surrender any firearms under an order to surrender on the day the respondent is served with the order of protection.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-20",
+    "sponsors": [
+      {
+        "name": "Don Harmon",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:39"
+      },
+      {
+        "name": "Sara Feigenholtz",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:6"
+      },
+      {
+        "name": "Ann Gillespie",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:27"
+      },
+      {
+        "name": "Robert Peters",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:13"
+      },
+      {
+        "name": "Celina Villanueva",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:12"
+      },
+      {
+        "name": "Laura Fine",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:9"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=44&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672996"
+  },
+  {
+    "id": "HB0044",
+    "title": "Amend the Revised Cities and Villages Act of 1941",
+    "description": " Changes a requirement that each petition for a nomination for mayor, city clerk, or city treasurer in the City of Chicago must be signed by at least 12,500 legal voters of the City of Chicago to a requirement that at least 2,500 legal voters of the City of Chicago sign each of those petitions..",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=44&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635993"
+  },
+  {
+    "id": "SB0046",
+    "title": "Illinois Waterway Ports Commission Act",
+    "description": " Provides that the Illinois Waterway Ports Commission is created and shall exercise jurisdiction with respect to the duties and powers delegated to it under the Act within the following port districts and counties: the Seneca Regional Port District, the Ottawa Port District, the Illinois Valley Regional Port District, the Heart of Illinois Regional Port District, and the Havana Port District and Fulton, Mason, Tazewell, Peoria, Woodford, Marshall, Putnam, Bureau, LaSalle, and Grundy counties. Provides that the Commission shall (1) coordinate and synchronize common efforts and initiatives in the Commission area to enhance the reporting and benefits of statistical data; (2) make recommendations to the Governor, the General Assembly, Congress, and federal agencies on regional issues that impact multimodal transportation, economic development, environmental sustainability, and climate resiliency of the Commission area; (3) coordinate and synchronize common efforts and initiatives on the larger Illinois Waterway with the Mid-America Port Commission and the Joliet Regional Port District; (4) coordinate and synchronize federal activities associated with the nonfederal sponsorship of the M-55 Illinois-Gulf Marine Highway; and (5) request and assist in requesting funding for the Commission area and the surrounding areas, as the Commission deems necessary.",
+    "status": [
+      "Pass"
+    ],
+    "statusDate": "2023-06-30",
+    "sponsors": [
+      {
+        "name": "David Koehler",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:46"
+      },
+      {
+        "name": "Sally Turner",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:44"
+      },
+      {
+        "name": "Andrew Chesney",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:45"
+      },
+      {
+        "name": "Win Stoller",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:37"
+      },
+      {
+        "name": "Thomas Bennett",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:53"
+      },
+      {
+        "name": "Sharon Chung",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:91"
+      },
+      {
+        "name": "Jehan Gordon-Booth",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:92"
+      },
+      {
+        "name": "Dennis Tipsword",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:105"
+      },
+      {
+        "name": "Lance Yednock",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:76"
+      },
+      {
+        "name": "Travis Weaver",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:93"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=46&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1673074"
+  },
+  {
+    "id": "HB0046",
+    "title": "Isolated Confinement Restriction Act",
+    "description": " Provides that the Act may be referred to as the Anthony Gay Law. Provides that a committed person may not be placed in isolated confinement for more than 10 consecutive days.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      },
+      {
+        "name": "Marcus Evans",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:33"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=46&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635358"
+  },
+  {
+    "id": "SB0047",
+    "title": "Amend the Local Governmental and Governmental Employees Tort Immunity Act",
+    "description": " Provides that a public entity or a public employee is not liable for injury caused by any unauthorized access to government records, data, or electronic information systems by any person or entity..",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-20",
+    "sponsors": [
+      {
+        "name": "Linda Holmes",
+        "role": "Sen",
+        "district": "ocd-division/country:us/state:il/sldu:42"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=47&GAID=17&DocTypeID=SB&SessionID=112&GA=103",
+    "source_id": "1672971"
+  },
+  {
+    "id": "HB0048",
+    "title": "Amend the Criminal Identification Act",
+    "description": " Provides that the Illinois State Police and all law enforcement agencies within the State shall automatically expunge all criminal history records of an arrest or charge not initiated by arrest for driving with a driver's license suspended for failure to pay support or to comply with a visitation order committed prior to January 1, 2019 (the effective date of Public Act 100-1004) if: (1) one year or more has elapsed since the date of the arrest or law enforcement interaction documented in the records; and (2) no criminal charges were filed relating to the arrest or law enforcement interaction or criminal charges were filed and subsequently dismissed or vacated or the arrestee was acquitted. Establishes time frames in which the records shall be expunged.",
+    "status": [
+      "Intro"
+    ],
+    "statusDate": "2023-01-12",
+    "sponsors": [
+      {
+        "name": "LaShawn Ford",
+        "role": "Rep",
+        "district": "ocd-division/country:us/state:il/sldl:8"
+      }
+    ],
+    "link": "https://www.ilga.gov/legislation/BillStatus.asp?DocNum=48&GAID=17&DocTypeID=HB&SessionID=112&GA=103",
+    "source_id": "1635343"
+  }
+]
